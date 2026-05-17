@@ -1,0 +1,167 @@
+{% extends "base.html" %}{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Shares CGT Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate CGT on shares or funds sold outside an ISA or pension. Enter your figures below — results update instantly.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Shares Capital Gains Tax</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Sale proceeds</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sale_value" value="25000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Original purchase cost</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="purchase_value" value="10000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Dealing costs (broker fees, total)</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="dealing_costs" value="50" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Capital losses to offset</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="losses" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual exempt amount already used</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="exempt_used" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Taxable income before the gain</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="income" value="40000" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross gain</span><span class="results-value">£<span id="r_gross">0</span></span></div>
+      <div class="results-row"><span class="results-label">Losses deducted</span><span class="results-value">£<span id="r_losses">0</span></span></div>
+      <div class="results-row"><span class="results-label">Annual exempt amount</span><span class="results-value">£<span id="r_exempt">0</span></span></div>
+      <div class="results-row"><span class="results-label">Taxable gain</span><span class="results-value">£<span id="r_taxable">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 18% (basic-rate band)</span><span class="results-value">£<span id="r_cgt_lower">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 24% (higher-rate band)</span><span class="results-value">£<span id="r_cgt_higher">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total CGT estimate</span><span class="results-value">£<span id="r_total">0</span></span></div>
+      <p class="calc-disclaimer">This is a simplified estimate. Share matching rules and corporate actions are not modelled — see How it works below.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How it works</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);">This calculator uses 2026/27 CGT rates for shares and funds:</p>
+    <ol style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);margin-top:0.5rem;">
+      <li>Gross gain = sale proceeds minus original purchase cost minus dealing costs.</li>
+      <li>Deduct capital losses, then the annual exempt amount (£3,000).</li>
+      <li>The taxable gain is split across the basic-rate and higher-rate bands using your income.</li>
+      <li>18% applies to gains within the basic-rate band; 24% to the remainder.</li>
+    </ol>
+    <p style="font-size:0.9rem;color:var(--text-secondary);margin-top:0.75rem;"><strong>Share matching rules:</strong> HMRC uses a "same-day rule", "30-day rule" and "section 104 pool" to determine the cost base when shares are bought and sold at different times. This calculator assumes a single pool with the cost you enter — it is most accurate for a single purchase and single sale. Use a qualified tax adviser or HMRC's own tools for complex share portfolios.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Sale proceeds £25,000 minus purchase cost £10,000 minus dealing costs £50 = gross gain of £14,950. After the £3,000 annual exempt amount, £11,950 is taxable. With income of £40,000, £10,270 of basic-rate band remains, so CGT is £1,849 at 18% and £413 at 24% — a total of approximately £2,262.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Note about ISAs</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Shares, funds and investment trusts held inside a Stocks and Shares ISA are entirely free of CGT — dividends and capital gains are both sheltered. The ISA allowance is £20,000 per tax year. This calculator is for assets held outside an ISA or pension.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Official sources</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Capital gains tax rates</a></li>
+      <li><a href="https://www.gov.uk/capital-gains-tax/losses" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Capital gains tax losses</a></li>
+      <li><a href="https://www.gov.uk/guidance/share-reorganisations-company-takeovers-and-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Share identification rules</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <strong>Are shares inside an ISA subject to CGT?</strong>
+        <p>No. Gains and income inside a Stocks and Shares ISA are completely free of CGT and income tax.</p>
+      </li>
+      <li class="faq-item">
+        <strong>What are dealing costs?</strong>
+        <p>Broker commissions and stamp duty reserve tax (SDRT) paid on purchase are allowable costs. Platform fees and subscription costs are generally not deductible against CGT.</p>
+      </li>
+      <li class="faq-item">
+        <strong>What if I bought shares at different times?</strong>
+        <p>HMRC uses share identification rules — same-day, 30-day and a section 104 pool — to calculate the allowable cost. This calculator does not model those rules; enter your best estimate of the average cost for a simple approximation.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Related calculators</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="/" style="color:var(--accent);">UK Capital Gains Tax Calculator</a></li>
+      <li><a href="/crypto-cgt-calculator" style="color:var(--accent);">Crypto CGT Calculator</a></li>
+    </ul>
+  </div>
+
+  <p style="font-size:0.78rem;color:var(--text-secondary);margin-top:1rem;">This calculator provides estimates for guidance only and does not constitute tax or financial advice. Tax rules can change and individual circumstances vary. Consult a qualified tax adviser before making decisions based on these figures.</p>
+</section>
+
+<script>
+const BASIC_RATE_LIMIT = 50270;
+const ANNUAL_EXEMPT = 3000;
+const CGT_LOWER = 0.18;
+const CGT_HIGHER = 0.24;
+
+function calculate() {
+  const saleValue = +document.getElementById('sale_value').value || 0;
+  const purchaseValue = +document.getElementById('purchase_value').value || 0;
+  const dealingCosts = +document.getElementById('dealing_costs').value || 0;
+  const losses = +document.getElementById('losses').value || 0;
+  const exemptUsed = +document.getElementById('exempt_used').value || 0;
+  const income = +document.getElementById('income').value || 0;
+
+  const grossGain = saleValue - purchaseValue - dealingCosts;
+  const gainAfterLosses = Math.max(0, grossGain - losses);
+  const exemptRemaining = Math.max(0, ANNUAL_EXEMPT - exemptUsed);
+  const taxableGain = Math.max(0, gainAfterLosses - exemptRemaining);
+
+  const basicBandRemaining = Math.max(0, BASIC_RATE_LIMIT - Math.min(income, BASIC_RATE_LIMIT));
+  const gainAtBasic = Math.min(taxableGain, basicBandRemaining);
+  const gainAtHigher = taxableGain - gainAtBasic;
+  const cgtLower = gainAtBasic * CGT_LOWER;
+  const cgtHigher = gainAtHigher * CGT_HIGHER;
+  const totalCGT = cgtLower + cgtHigher;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0, maximumFractionDigits:0});
+  document.getElementById('r_gross').textContent = fmt(Math.max(0, grossGain));
+  document.getElementById('r_losses').textContent = fmt(Math.min(losses, Math.max(0, grossGain)));
+  document.getElementById('r_exempt').textContent = fmt(Math.min(exemptRemaining, gainAfterLosses));
+  document.getElementById('r_taxable').textContent = fmt(taxableGain);
+  document.getElementById('r_cgt_lower').textContent = fmt(cgtLower);
+  document.getElementById('r_cgt_higher').textContent = fmt(cgtHigher);
+  document.getElementById('r_total').textContent = fmt(totalCGT);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

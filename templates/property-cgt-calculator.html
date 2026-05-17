@@ -1,0 +1,199 @@
+{% extends "base.html" %}{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Property CGT Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate CGT on a second home, buy-to-let or residential property disposal. Enter your figures below — results update instantly.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Property Capital Gains Tax</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Sale price</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sale_price" value="300000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Purchase price</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="purchase_price" value="200000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Buying costs (stamp duty, solicitor, survey)</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="buying_costs" value="3000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Selling costs (estate agent, solicitor)</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="selling_costs" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Improvement costs</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="improvement_costs" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Your ownership share (%)</label>
+          <input type="number" id="ownership_pct" value="100" min="0" max="100" oninput="calculate()">
+        </div>
+        <div class="field">
+          <label>Capital losses to offset</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="losses" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual exempt amount already used</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="exempt_used" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Taxable income before the gain</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="income" value="40000" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross gain (your share)</span><span class="results-value">£<span id="r_gross">0</span></span></div>
+      <div class="results-row"><span class="results-label">Losses deducted</span><span class="results-value">£<span id="r_losses">0</span></span></div>
+      <div class="results-row"><span class="results-label">Annual exempt amount</span><span class="results-value">£<span id="r_exempt">0</span></span></div>
+      <div class="results-row"><span class="results-label">Taxable gain</span><span class="results-value">£<span id="r_taxable">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 18% (basic-rate band)</span><span class="results-value">£<span id="r_cgt_lower">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 24% (higher-rate band)</span><span class="results-value">£<span id="r_cgt_higher">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total CGT estimate</span><span class="results-value">£<span id="r_total">0</span></span></div>
+      <p class="calc-disclaimer">This is an estimate only. Private residence relief is not calculated — see Assumptions below.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How it works</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);">This calculator computes property capital gains tax using 2026/27 HMRC rules:</p>
+    <ol style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);margin-top:0.5rem;">
+      <li>Calculate the gross gain: sale price minus purchase price, buying costs, selling costs and improvement costs, scaled by your ownership share.</li>
+      <li>Deduct any capital losses (current or carried-forward).</li>
+      <li>Deduct any remaining annual exempt amount (£3,000 for 2026/27).</li>
+      <li>Split the taxable gain across the basic-rate and higher-rate bands based on your other income.</li>
+      <li>Apply 18% to gains within the basic-rate band and 24% to the remainder.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Using the default inputs: sale price £300,000 less purchase price £200,000 less buying costs £3,000 less selling costs £5,000 gives a gross gain of £92,000. After the £3,000 annual exempt amount, £89,000 is taxable. With income of £40,000, £10,270 of basic-rate band remains (£50,270 − £40,000), giving CGT of £1,849 at 18% and £18,888 at 24% — a total of approximately £20,737.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Assumptions</h2>
+    <ul style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);">
+      <li><strong>Private Residence Relief (PRR) is not calculated.</strong> If the property was your main home for part of your ownership period, PRR can substantially reduce or eliminate the gain. Use the calculator as a starting point and consult a tax adviser for the PRR element.</li>
+      <li>Lettings relief is not modelled (it is now limited to periods of shared occupancy).</li>
+      <li>The calculator assumes a standard disposal — not a gift, part-disposal or compulsory purchase.</li>
+      <li>Rates are for 2026/27 (18% basic rate, 24% higher rate for residential property).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Related guides</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="/capital-gains-tax-on-buy-to-let" style="color:var(--accent);">CGT on Buy-to-Let Property</a></li>
+      <li><a href="/capital-gains-tax-second-home" style="color:var(--accent);">CGT on a Second Home</a></li>
+      <li><a href="/capital-gains-tax-reporting-deadline" style="color:var(--accent);">CGT Reporting Deadlines (60-day rule)</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Official sources</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Capital gains tax rates</a></li>
+      <li><a href="https://www.gov.uk/report-and-pay-your-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Report and pay capital gains tax</a></li>
+      <li><a href="https://www.gov.uk/tax-sell-property" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Tax when you sell property</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <strong>Do I pay CGT on my main home?</strong>
+        <p>Usually no — your main home qualifies for Private Residence Relief, which typically eliminates CGT entirely. This calculator is for second homes, buy-to-let and other residential property.</p>
+      </li>
+      <li class="faq-item">
+        <strong>Can I deduct stamp duty I paid when buying?</strong>
+        <p>Yes. Stamp duty land tax paid on purchase is an allowable buying cost and reduces your chargeable gain.</p>
+      </li>
+      <li class="faq-item">
+        <strong>What improvements can I deduct?</strong>
+        <p>Capital improvements that add value — such as an extension or new kitchen — are allowable. Maintenance and repairs are not. Keep receipts as HMRC may ask for evidence.</p>
+      </li>
+      <li class="faq-item">
+        <strong>When do I have to pay the CGT on a property?</strong>
+        <p>For UK residential property, you must report and pay within 60 days of completion using HMRC's online service. Late filing can result in penalties.</p>
+      </li>
+    </ul>
+  </div>
+
+  <p style="font-size:0.78rem;color:var(--text-secondary);margin-top:1rem;">This calculator provides estimates for guidance only and does not constitute tax or financial advice. Tax rules can change and individual circumstances vary. Consult a qualified tax adviser before making decisions based on these figures.</p>
+</section>
+
+<script>
+const PERSONAL_ALLOWANCE = 12570;
+const BASIC_RATE_LIMIT = 50270;
+const ANNUAL_EXEMPT = 3000;
+const CGT_LOWER = 0.18;
+const CGT_HIGHER = 0.24;
+
+function calculate() {
+  const salePrice = +document.getElementById('sale_price').value || 0;
+  const purchasePrice = +document.getElementById('purchase_price').value || 0;
+  const buyingCosts = +document.getElementById('buying_costs').value || 0;
+  const sellingCosts = +document.getElementById('selling_costs').value || 0;
+  const improvementCosts = +document.getElementById('improvement_costs').value || 0;
+  const ownershipPct = Math.min(100, Math.max(0, +document.getElementById('ownership_pct').value || 100)) / 100;
+  const losses = +document.getElementById('losses').value || 0;
+  const exemptUsed = +document.getElementById('exempt_used').value || 0;
+  const income = +document.getElementById('income').value || 0;
+
+  const grossGain = (salePrice - purchasePrice - buyingCosts - sellingCosts - improvementCosts) * ownershipPct;
+  const gainAfterLosses = Math.max(0, grossGain - losses);
+  const exemptRemaining = Math.max(0, ANNUAL_EXEMPT - exemptUsed);
+  const taxableGain = Math.max(0, gainAfterLosses - exemptRemaining);
+
+  const basicBandRemaining = Math.max(0, BASIC_RATE_LIMIT - Math.min(income, BASIC_RATE_LIMIT));
+  const gainAtBasic = Math.min(taxableGain, basicBandRemaining);
+  const gainAtHigher = taxableGain - gainAtBasic;
+  const cgtLower = gainAtBasic * CGT_LOWER;
+  const cgtHigher = gainAtHigher * CGT_HIGHER;
+  const totalCGT = cgtLower + cgtHigher;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0, maximumFractionDigits:0});
+  document.getElementById('r_gross').textContent = fmt(Math.max(0, grossGain));
+  document.getElementById('r_losses').textContent = fmt(Math.min(losses, Math.max(0, grossGain)));
+  document.getElementById('r_exempt').textContent = fmt(Math.min(exemptRemaining, gainAfterLosses));
+  document.getElementById('r_taxable').textContent = fmt(taxableGain);
+  document.getElementById('r_cgt_lower').textContent = fmt(cgtLower);
+  document.getElementById('r_cgt_higher').textContent = fmt(cgtHigher);
+  document.getElementById('r_total').textContent = fmt(totalCGT);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

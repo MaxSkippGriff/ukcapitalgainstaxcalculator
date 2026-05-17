@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Disclaimer</div>
+  <h1>Disclaimer — UKCapitalGainsTaxCalculator.co.uk</h1>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Estimates only</h2>
+    <p style="margin-bottom:0;">Results produced by this calculator are estimates for guidance only. They are not a calculation of your actual CGT liability and should not be relied upon as tax advice. Individual circumstances — including the nature of the asset, how long it was held, whether reliefs apply and your overall tax position — can significantly affect the amount of CGT due.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Not financial or legal advice</h2>
+    <p style="margin-bottom:0;">Nothing on this site constitutes financial, tax or legal advice. This tool does not account for all available reliefs, exemptions or special rules such as Private Residence Relief, Business Asset Disposal Relief, share matching, non-resident CGT or trust disposals. You should consult a qualified tax adviser or accountant before making financial decisions based on any estimate produced here.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Accuracy</h2>
+    <p style="margin-bottom:0;">We use published HMRC rates and allowances for {{ tax_year }} and make reasonable efforts to keep figures up to date. However, we make no warranty as to the accuracy, completeness or fitness for purpose of the information on this site. Tax rules can change and figures shown may not reflect the very latest HMRC guidance.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Seek professional advice</h2>
+    <p style="margin-bottom:0;">If you have a complex CGT situation, are unsure about any relief, or are reporting gains to HMRC, please consult a qualified tax adviser, chartered accountant or contact HMRC directly at <a href="https://www.gov.uk/capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">gov.uk/capital-gains-tax</a>.</p>
+  </article>
+</section>
+{% endblock %}

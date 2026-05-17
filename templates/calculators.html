@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% block content %}
+<section class="section">
+  <div class="badge">Calculators</div>
+  <h1>CGT Calculators 2026/27</h1>
+  <p style="font-size:1rem;margin-bottom:1.5rem;">Free UK capital gains tax calculators for property, shares, crypto and the annual exempt amount.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;">
+    <a href="/" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;transition:box-shadow 0.15s;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">UK Capital Gains Tax Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate CGT on any asset: enter sale proceeds, cost base, costs, losses and income.</div>
+    </a>
+    <a href="/property-cgt-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;transition:box-shadow 0.15s;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Property CGT Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate CGT on a second home, buy-to-let or other residential property disposal.</div>
+    </a>
+    <a href="/shares-cgt-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;transition:box-shadow 0.15s;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Shares CGT Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate CGT on shares or funds held outside an ISA or pension.</div>
+    </a>
+    <a href="/crypto-cgt-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;transition:box-shadow 0.15s;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Crypto CGT Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate capital gains tax on a cryptocurrency disposal for 2026/27.</div>
+    </a>
+    <a href="/cgt-allowance-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;transition:box-shadow 0.15s;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">CGT Allowance Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">See how much of your £3,000 annual exempt amount remains after other gains.</div>
+    </a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends "base.html" %}{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Crypto Capital Gains Tax Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate CGT on a simplified cryptocurrency disposal in 2026/27. Enter your figures below — results update instantly.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Crypto CGT</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Disposal proceeds</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="disposal_proceeds" value="15000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Acquisition cost</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="acquisition_cost" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Transaction fees</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="fees" value="200" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Capital losses to offset</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="losses" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual exempt amount already used</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="exempt_used" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Taxable income before the gain</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="income" value="40000" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross gain</span><span class="results-value">£<span id="r_gross">0</span></span></div>
+      <div class="results-row"><span class="results-label">Losses deducted</span><span class="results-value">£<span id="r_losses">0</span></span></div>
+      <div class="results-row"><span class="results-label">Annual exempt amount</span><span class="results-value">£<span id="r_exempt">0</span></span></div>
+      <div class="results-row"><span class="results-label">Taxable gain</span><span class="results-value">£<span id="r_taxable">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 18% (basic-rate band)</span><span class="results-value">£<span id="r_cgt_lower">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 24% (higher-rate band)</span><span class="results-value">£<span id="r_cgt_higher">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total CGT estimate</span><span class="results-value">£<span id="r_total">0</span></span></div>
+      <p class="calc-disclaimer">Simplified estimate. Same-day rule and 30-day rule are not modelled — see How it works below.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How it works</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);">HMRC treats cryptocurrency as a capital asset, not currency. Each disposal (sale, swap, or use of crypto to buy goods) is a separate CGT event. This calculator uses 2026/27 rates:</p>
+    <ol style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);margin-top:0.5rem;">
+      <li>Gross gain = disposal proceeds minus acquisition cost minus fees.</li>
+      <li>Deduct capital losses, then the annual exempt amount (£3,000).</li>
+      <li>Apply 18% to gains in the basic-rate band and 24% to the remainder.</li>
+    </ol>
+    <h3 style="font-size:0.95rem;margin-top:1rem;">Rules this calculator does not cover</h3>
+    <ul style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);">
+      <li><strong>Same-day rule:</strong> If you buy and sell the same token on the same day, the sale is matched to the day's purchases first.</li>
+      <li><strong>30-day rule (bed-and-breakfasting):</strong> If you sell and re-buy the same token within 30 days, the sale is matched to the re-purchase cost, not your pool cost.</li>
+      <li><strong>Section 104 pool:</strong> For all other holdings, HMRC uses a pooled average cost across all purchases of that token.</li>
+      <li>Staking rewards, airdrops, hard forks and DeFi transactions may be treated differently — some may be income, not capital gains.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Disposal proceeds £15,000 minus acquisition cost £5,000 minus fees £200 = gross gain of £9,800. After the £3,000 annual exempt amount, £6,800 is taxable. With income of £40,000, £10,270 of basic-rate band remains, so the full £6,800 is charged at 18% — a total of £1,224.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Official sources</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="https://www.gov.uk/guidance/check-if-you-need-to-pay-tax-when-you-receive-cryptoassets" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Cryptoassets for individuals</a></li>
+      <li><a href="https://www.gov.uk/capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Capital gains tax overview</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <strong>Is swapping one crypto for another a taxable event?</strong>
+        <p>Yes. HMRC treats a swap (e.g. Bitcoin for Ethereum) as a disposal of the first token at its market value in GBP on the date of the swap. CGT may be due on any gain.</p>
+      </li>
+      <li class="faq-item">
+        <strong>Are staking rewards taxable?</strong>
+        <p>Staking rewards are generally treated as income at the point of receipt, not capital gains. You may also owe CGT when you later dispose of those tokens.</p>
+      </li>
+      <li class="faq-item">
+        <strong>What records do I need?</strong>
+        <p>HMRC requires records of all crypto transactions: dates, amounts in GBP, wallet addresses and transaction IDs. Keep these for at least five years after the Self Assessment deadline for the relevant tax year.</p>
+      </li>
+      <li class="faq-item">
+        <strong>Do I need to report crypto losses?</strong>
+        <p>Yes — if you want to claim losses to offset future gains, you must report them to HMRC, even if you don't owe any tax that year.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Related calculators</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="/" style="color:var(--accent);">UK Capital Gains Tax Calculator</a></li>
+      <li><a href="/shares-cgt-calculator" style="color:var(--accent);">Shares CGT Calculator</a></li>
+    </ul>
+  </div>
+
+  <p style="font-size:0.78rem;color:var(--text-secondary);margin-top:1rem;">This calculator provides estimates for guidance only and does not constitute tax or financial advice. Crypto tax rules are complex and can change. Consult a qualified tax adviser before making decisions based on these figures.</p>
+</section>
+
+<script>
+const BASIC_RATE_LIMIT = 50270;
+const ANNUAL_EXEMPT = 3000;
+const CGT_LOWER = 0.18;
+const CGT_HIGHER = 0.24;
+
+function calculate() {
+  const disposalProceeds = +document.getElementById('disposal_proceeds').value || 0;
+  const acquisitionCost = +document.getElementById('acquisition_cost').value || 0;
+  const fees = +document.getElementById('fees').value || 0;
+  const losses = +document.getElementById('losses').value || 0;
+  const exemptUsed = +document.getElementById('exempt_used').value || 0;
+  const income = +document.getElementById('income').value || 0;
+
+  const grossGain = disposalProceeds - acquisitionCost - fees;
+  const gainAfterLosses = Math.max(0, grossGain - losses);
+  const exemptRemaining = Math.max(0, ANNUAL_EXEMPT - exemptUsed);
+  const taxableGain = Math.max(0, gainAfterLosses - exemptRemaining);
+
+  const basicBandRemaining = Math.max(0, BASIC_RATE_LIMIT - Math.min(income, BASIC_RATE_LIMIT));
+  const gainAtBasic = Math.min(taxableGain, basicBandRemaining);
+  const gainAtHigher = taxableGain - gainAtBasic;
+  const cgtLower = gainAtBasic * CGT_LOWER;
+  const cgtHigher = gainAtHigher * CGT_HIGHER;
+  const totalCGT = cgtLower + cgtHigher;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0, maximumFractionDigits:0});
+  document.getElementById('r_gross').textContent = fmt(Math.max(0, grossGain));
+  document.getElementById('r_losses').textContent = fmt(Math.min(losses, Math.max(0, grossGain)));
+  document.getElementById('r_exempt').textContent = fmt(Math.min(exemptRemaining, gainAfterLosses));
+  document.getElementById('r_taxable').textContent = fmt(taxableGain);
+  document.getElementById('r_cgt_lower').textContent = fmt(cgtLower);
+  document.getElementById('r_cgt_higher').textContent = fmt(cgtHigher);
+  document.getElementById('r_total').textContent = fmt(totalCGT);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

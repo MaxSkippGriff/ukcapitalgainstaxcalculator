@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Capital Gains Tax on Gifts 2026/27</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">Giving away an asset is treated as a disposal for capital gains tax purposes — even if you receive nothing in return. You are deemed to have sold the asset at its <strong>market value on the date of the gift</strong>, which can trigger an immediate CGT liability. This guide explains how gifting works for CGT, the key exemptions and when Hold-Over Relief can defer the tax.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Gifting an asset is a CGT disposal</h2>
+    <p>When you gift an asset — whether property, shares, crypto or any other chargeable asset — HMRC treats the gift as if you had sold the asset at its open market value on the date it was given. Any gain between your original acquisition cost (plus any acquisition costs) and that market value is a chargeable gain.</p>
+    <p style="margin-bottom:0;">The fact that you receive no money for the gift makes no difference. CGT is based on the market value at the time of disposal, not the consideration actually received.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Gifts to a spouse or civil partner — no gain/no loss</h2>
+    <p>Transfers between spouses or civil partners who are living together are treated as <strong>no gain/no loss</strong> transfers. No CGT arises on the gift itself. Instead, the recipient is treated as having acquired the asset at the donor's original cost and acquisition date.</p>
+    <p style="margin-bottom:0;">This means CGT is simply deferred — it crystallises when the recipient eventually sells. It does not disappear permanently. The rule only applies to spouses and civil partners who are not separated. Transfers to cohabiting partners who are not married or in a civil partnership are treated at market value.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Gifts to charity</h2>
+    <p>Gifts to qualifying UK charities are exempt from CGT. No gain arises regardless of how much the asset has appreciated. The charity also pays no CGT when it eventually sells the asset (charities are exempt from CGT in their own right). This makes gifting appreciated assets to charity significantly more tax-efficient than selling them and donating the cash proceeds.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Gifts to children and other family members</h2>
+    <p>Gifts to adult children, other relatives or friends are treated at <strong>market value</strong> on the date of the gift. The donor pays CGT on any gain above the £3,000 annual exempt amount. The recipient's base cost is set at the market value used in the donor's CGT calculation — not at the donor's original cost.</p>
+    <p style="margin-bottom:0;">There is no CGT relief simply because the recipient is a family member (other than a spouse/civil partner). Gifts to minor children of assets other than cash can also attract anti-avoidance rules in certain circumstances.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Gift Hold-Over Relief</h2>
+    <p>Gift Hold-Over Relief allows the CGT on a gift to be deferred until the recipient eventually sells the asset. Both the donor and recipient must jointly elect for the relief. It is available for:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Business assets</strong> — assets used in a trade, shares in unlisted trading companies, agricultural property</li>
+      <li>Assets that attract an immediate inheritance tax charge (such as transfers into most trusts)</li>
+    </ul>
+    <p>When hold-over relief is claimed, the recipient takes the donor's original base cost — so the gain is held over, not eliminated. The recipient will pay CGT on a larger gain when they eventually sell.</p>
+    <p style="margin-bottom:0;">Hold-Over Relief is <strong>not</strong> available for most gifts of investment property or listed shares to individuals.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Worked example</h2>
+    <p>David gifts 10,000 shares in a listed company to his adult son Tom. David bought the shares for <strong>£5,000</strong> and they are worth <strong>£25,000</strong> on the date of the gift. David's taxable income is £45,000 — he has £5,270 of basic-rate band remaining.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Market value on gift date</span><span style="font-variant-numeric:tabular-nums;">£25,000</span>
+        <span>Minus original cost</span><span style="font-variant-numeric:tabular-nums;">−£5,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Gross gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£20,000</span>
+        <span>Minus annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Taxable gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£17,000</span>
+        <span>First £5,270 at 18% (basic-rate band)</span><span style="font-variant-numeric:tabular-nums;">£948.60</span>
+        <span>Remaining £11,730 at 24%</span><span style="font-variant-numeric:tabular-nums;">£2,815.20</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT (David pays)</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£3,763.80</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">Tom's base cost for future disposals is £25,000 — the market value used in David's CGT calculation. Hold-Over Relief is not available for listed shares gifted to an individual.</p>
+  </article>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Estimate the CGT on a gift</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Use the current market value as your sale proceeds and your original cost as the purchase price to estimate CGT on a gift using 2026/27 rates.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
+  </div>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/gifts" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax on gifts</a></li>
+      <li><a href="https://www.gov.uk/guidance/gift-hold-over-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Gift Hold-Over Relief</a></li>
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I pay CGT when I give property to my child?</summary>
+        <div class="faq-answer">
+          <p>Yes. Gifting property to your child (or any person other than your spouse or civil partner) is treated as a disposal at market value. If the property has increased in value since you acquired it, you have a chargeable gain — even though you receive no money. CGT is calculated on the difference between the market value on the date of the gift and your original acquisition cost, less any allowable costs and the £3,000 annual exempt amount.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Does my spouse's gift trigger CGT?</summary>
+        <div class="faq-answer">
+          <p>No. Transfers between spouses and civil partners who are living together are treated as no gain/no loss. No CGT arises on the gift. The recipient spouse takes the donor's original base cost. CGT will eventually be due when the recipient spouse disposes of the asset to a third party.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What is hold-over relief and when can I use it?</summary>
+        <div class="faq-answer">
+          <p>Gift Hold-Over Relief defers CGT that would otherwise arise on a gift. It is available for business assets (assets used in a qualifying trade, shares in unlisted trading companies, agricultural property) and for gifts that attract an immediate inheritance tax charge. Both the donor and recipient must jointly elect for the relief using HMRC's HS295 form. The CGT is not cancelled — it is deferred until the recipient sells the asset, at which point it becomes taxable in the recipient's hands.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a CGT annual exempt amount on gifts?</summary>
+        <div class="faq-answer">
+          <p>Yes. The £3,000 annual exempt amount applies to gifts in the same way as any other disposal. If the gain on all your disposals (including gifts) in the tax year is below £3,000, no CGT is due. The exempt amount is per individual per year — if you make multiple gifts in the same year, all the gains are pooled against one £3,000 allowance.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. CGT rules on gifts can be complex, particularly where business assets, trusts or inheritance tax interact. Consult a qualified tax adviser before making significant gifts.</p>
+</section>
+{% endblock %}

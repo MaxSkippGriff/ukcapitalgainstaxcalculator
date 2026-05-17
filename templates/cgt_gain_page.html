@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width:var(--max-w);margin:0 auto;padding:1.5rem 1.25rem 3rem;">
+
+  <h1 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:500;letter-spacing:-0.02em;color:var(--text-primary);margin-bottom:0.5rem;">
+    Capital Gains Tax on a £{{ "{:,}".format(gain) }} Gain 2026/27
+  </h1>
+  <p style="font-size:0.95rem;color:var(--text-secondary);max-width:640px;line-height:1.6;margin-bottom:2rem;">
+    After the £3,000 annual exempt amount, a basic-rate taxpayer (£35,000 other income) owes <strong>£{{ "{:,.0f}".format(calc_basic.total_cgt) }}</strong> CGT on a £{{ "{:,}".format(gain) }} gain.
+    A higher-rate taxpayer (£55,000 other income) owes <strong>£{{ "{:,.0f}".format(calc_higher.total_cgt) }}</strong>.
+  </p>
+
+  <!-- Two-column results -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
+    <div class="card" style="padding:1.1rem 1.25rem;">
+      <div style="font-size:0.72rem;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Basic-rate taxpayer</div>
+      <div style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.6rem;">£35,000 other taxable income</div>
+      <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:500;color:var(--accent);letter-spacing:-0.02em;">£{{ "{:,.0f}".format(calc_basic.total_cgt) }}</div>
+      <div style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.2rem;">CGT due</div>
+      <div style="border-top:1px solid var(--border);margin:0.75rem 0;"></div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.8;">
+        <div>Taxable gain: <strong>£{{ "{:,.0f}".format(calc_basic.taxable_gain) }}</strong></div>
+        <div>Rate: <strong>{{ "18%" if calc_basic.higher_rate_gain == 0 else "18% / 24%" }}</strong></div>
+        <div>Net proceeds: <strong>£{{ "{:,.0f}".format(calc_basic.net_proceeds_after_cgt) }}</strong></div>
+      </div>
+    </div>
+    <div class="card" style="padding:1.1rem 1.25rem;">
+      <div style="font-size:0.72rem;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Higher-rate taxpayer</div>
+      <div style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.6rem;">£55,000 other taxable income</div>
+      <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:500;color:var(--accent);letter-spacing:-0.02em;">£{{ "{:,.0f}".format(calc_higher.total_cgt) }}</div>
+      <div style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.2rem;">CGT due</div>
+      <div style="border-top:1px solid var(--border);margin:0.75rem 0;"></div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.8;">
+        <div>Taxable gain: <strong>£{{ "{:,.0f}".format(calc_higher.taxable_gain) }}</strong></div>
+        <div>Rate: <strong>24%</strong></div>
+        <div>Net proceeds: <strong>£{{ "{:,.0f}".format(calc_higher.net_proceeds_after_cgt) }}</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.5rem;">
+    <h2 style="font-size:1rem;margin-bottom:0.6rem;">How CGT is calculated on a £{{ "{:,}".format(gain) }} gain</h2>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;">
+      The annual exempt amount for 2026/27 is £3,000. After deducting this, the taxable gain is £{{ "{:,}".format(calc_basic.taxable_gain) }}.
+      Gains within your remaining basic-rate band are charged at 18%. Gains above the basic-rate band are charged at 24%.
+    </p>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0;">
+      Your other taxable income (salary, self-employment, etc.) fills the basic-rate band first.
+      A basic-rate taxpayer on £35,000 has £{{ "{:,}".format(50270 - 35000) }} of basic-rate band remaining — so smaller gains may fall entirely within the 18% band.
+      A higher-rate taxpayer on £55,000 has already exceeded the £50,270 limit, so gains are charged at 24%.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="card" style="padding:1rem 1.25rem;background:var(--accent-light);border-color:var(--accent);margin-bottom:1.5rem;">
+    <p style="font-size:0.88rem;line-height:1.6;margin:0;">
+      <strong>Enter your actual figures:</strong> the above uses simplified scenarios.
+      <a href="/calculator" style="color:var(--accent);font-weight:600;">Use the full calculator →</a> to enter your exact sale price, purchase cost, allowable expenses, losses and income.
+    </p>
+  </div>
+
+  <!-- Other gain amounts -->
+  <h2 style="font-size:1rem;margin-bottom:0.75rem;">CGT on other gain amounts</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;">
+    {% for amt in neighbours %}
+    <a href="/cgt/{{ amt }}" style="display:inline-block;padding:0.4rem 0.85rem;background:var(--surface);border:1px solid var(--border-strong);border-radius:20px;font-size:0.82rem;font-weight:500;color:var(--text-primary);text-decoration:none;">£{{ "{:,}".format(amt) }}</a>
+    {% endfor %}
+    {% for amt in [5000,10000,15000,20000,25000,30000,40000,50000,75000,100000,150000,200000] %}
+    {% if amt != gain and amt not in neighbours %}
+    <a href="/cgt/{{ amt }}" style="display:inline-block;padding:0.4rem 0.85rem;background:var(--surface);border:1px solid var(--border-strong);border-radius:20px;font-size:0.82rem;font-weight:500;color:var(--text-primary);text-decoration:none;">£{{ "{:,}".format(amt) }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Disclaimer -->
+  <p style="font-size:0.78rem;color:var(--text-tertiary);border-top:1px solid var(--border);padding-top:0.85rem;">
+    Figures are estimates for guidance only. CGT depends on your full tax position, allowable costs, losses and the asset type.
+    Consult a qualified tax adviser before making decisions.
+    <a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK CGT rates →</a>
+  </p>
+</div>
+{% endblock %}

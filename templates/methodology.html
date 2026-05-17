@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Methodology</div>
+  <h1>Methodology — How We Calculate UK Capital Gains Tax ({{ tax_year }})</h1>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Overview</h2>
+    <p>We calculate CGT using published {{ tax_year }} rates. The calculator runs entirely in the browser — no financial data is sent to our servers.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Step 1 — Calculate the gross gain</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">Gross gain = sale proceeds minus the original purchase cost, minus allowable buying costs (e.g. stamp duty, legal fees at acquisition) and minus allowable selling costs (e.g. estate agent fees, legal fees at disposal). All four inputs are entered by the user.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Step 2 — Deduct capital losses</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">Losses from the same tax year or brought forward from earlier years are deducted from the gross gain. The calculator accepts a single losses figure entered by the user. Losses cannot reduce the net gain below zero.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Step 3 — Apply the annual exempt amount</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">The annual exempt amount for {{ tax_year }} is £3,000. The calculator deducts any unused portion of this allowance from the net gain after losses. If the gain is already below the exempt amount, no CGT is due.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Step 4 — Band split at 18%/24%</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li>The user enters their taxable income before the gain (i.e. total income minus the personal allowance of £12,570).</li>
+      <li>The basic-rate band covers taxable income up to £37,700 (gross salary up to £50,270).</li>
+      <li>Any remaining basic-rate band headroom is filled first by the gain and taxed at 18%.</li>
+      <li>Any gain that exceeds the remaining basic-rate band is taxed at 24%.</li>
+      <li>These rates have applied since the October 2024 Autumn Budget and continue for {{ tax_year }}.</li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>What we do not model</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li>Private Residence Relief (PRR) on main homes.</li>
+      <li>Lettings relief on previously let properties.</li>
+      <li>Business Asset Disposal Relief (BADR), formerly Entrepreneurs' Relief.</li>
+      <li>Non-resident CGT rules.</li>
+      <li>Trust or estate disposals.</li>
+      <li>Share matching rules (30-day bed-and-breakfast rule, s.104 pool).</li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
+      <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances</a></li>
+    </ul>
+  </article>
+</section>
+{% endblock %}

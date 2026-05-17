@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>UK Capital Gains Tax Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate CGT on shares, property or other assets after the £3,000 annual exempt amount, split between 18% and 24% based on your taxable income.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Capital Gains Tax</h2>
+      <span class="calc-year-badge">2026/27 · £3,000 exempt</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Sale proceeds</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="proceeds" value="50000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Original cost</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="cost" value="30000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Allowable buying &amp; selling costs</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="costs" value="500" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Capital losses (current or prior years)</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="losses" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Taxable income (excluding gains)</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="income" value="35000" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross gain</span><span class="results-value">£<span id="r_gross_gain">0</span></span></div>
+      <div class="results-row"><span class="results-label">Less: losses applied</span><span class="results-value">£<span id="r_losses">0</span></span></div>
+      <div class="results-row"><span class="results-label">Less: annual exempt amount</span><span class="results-value">£<span id="r_exempt">0</span></span></div>
+      <div class="results-row"><span class="results-label">Taxable gain</span><span class="results-value">£<span id="r_taxable">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 18% (basic rate portion)</span><span class="results-value">£<span id="r_basic_cgt">0</span></span></div>
+      <div class="results-row"><span class="results-label">CGT at 24% (higher rate portion)</span><span class="results-value">£<span id="r_higher_cgt">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total CGT due</span><span class="results-value">£<span id="r_total_cgt">0</span></span></div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>CGT rates for 2026/27</h2>
+    <p>The CGT rates on most assets (shares, funds, second properties) are <strong>18%</strong> for gains falling in the basic rate band and <strong>24%</strong> for gains falling in the higher or additional rate band. Your taxable income before the gain determines how much basic rate band remains available.</p>
+    <p style="margin-bottom:0;">The annual exempt amount of <strong>£3,000</strong> shelters the first £3,000 of net gains from CGT. Capital losses reduce the gain before the exempt amount is applied.</p>
+  </article>
+
+  <article class="card">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does this calculator apply to residential property?</summary>
+        <div class="faq-answer">
+          <p>The 24% higher rate applies to residential property (replacing the previous 28% from Autumn Budget 2024). If the property qualifies for Private Residence Relief (your main home), different rules apply and CGT may not be due. Use our <a href="/property-cgt-calculator" style="color:var(--accent);">property CGT calculator</a> for a detailed property estimate.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I report a capital gain?</summary>
+        <div class="faq-answer">
+          <p>For UK residential property, you must report and pay CGT within 60 days of completion using the HMRC online service. For other assets, report via Self Assessment by 31 January following the tax year end.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I carry forward capital losses?</summary>
+        <div class="faq-answer">
+          <p>Yes. Unused capital losses can be carried forward indefinitely. Losses must be claimed within 4 years of the tax year in which they arose. Prior-year losses are applied only to the extent that gains exceed the annual exempt amount, preserving the £3,000 exempt amount.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What about Business Asset Disposal Relief?</summary>
+        <div class="faq-answer">
+          <p>Business Asset Disposal Relief (formerly Entrepreneurs' Relief) applies a reduced 14% CGT rate on qualifying business disposals, up to a lifetime limit of £1 million. It is not modelled in this calculator — use the <a href="/entrepreneurs-relief-calculator" style="color:var(--accent);">BADR calculator</a> for this scenario.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="card">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
+      <li><a href="https://www.gov.uk/capital-gains-tax/allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax allowances</a></li>
+    </ul>
+  </article>
+
+  <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+</section>
+
+<script>
+const ANNUAL_EXEMPT = 3000;
+const BASIC_RATE_LIMIT = 50270;
+const CGT_BASIC = 0.18;
+const CGT_HIGHER = 0.24;
+
+function calculate() {
+  const proceeds = +document.getElementById('proceeds').value || 0;
+  const cost = +document.getElementById('cost').value || 0;
+  const costs = +document.getElementById('costs').value || 0;
+  const losses = +document.getElementById('losses').value || 0;
+  const income = +document.getElementById('income').value || 0;
+
+  const grossGain = Math.max(0, proceeds - cost - costs);
+  const lossesApplied = Math.min(losses, grossGain);
+  const afterLosses = grossGain - lossesApplied;
+  const exemptUsed = Math.min(afterLosses, ANNUAL_EXEMPT);
+  const taxableGain = Math.max(0, afterLosses - ANNUAL_EXEMPT);
+
+  const remainingBasic = Math.max(0, BASIC_RATE_LIMIT - income);
+  const gainInBasic = Math.min(taxableGain, remainingBasic);
+  const gainInHigher = Math.max(0, taxableGain - gainInBasic);
+
+  const basicCGT = gainInBasic * CGT_BASIC;
+  const higherCGT = gainInHigher * CGT_HIGHER;
+  const totalCGT = basicCGT + higherCGT;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('r_gross_gain').textContent = fmt(grossGain);
+  document.getElementById('r_losses').textContent = fmt(lossesApplied);
+  document.getElementById('r_exempt').textContent = fmt(exemptUsed);
+  document.getElementById('r_taxable').textContent = fmt(taxableGain);
+  document.getElementById('r_basic_cgt').textContent = fmt(basicCGT);
+  document.getElementById('r_higher_cgt').textContent = fmt(higherCGT);
+  document.getElementById('r_total_cgt').textContent = fmt(totalCGT);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

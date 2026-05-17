@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ meta_description }}">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="alternate" hreflang="en-gb" href="{{ canonical_url }}">
+<meta property="og:locale" content="en_GB">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:site_name" content="UKCapitalGainsTaxCalculator.co.uk">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ site_url }}/static/logo-512.png">
+<meta property="og:image" content="{{ site_url }}/static/logo-512.png">
+{% if adsense_client %}
+<meta name="google-adsense-account" content="{{ adsense_client }}">
+{% endif %}
+<meta name="geo.region" content="GB">
+<meta name="geo.placename" content="United Kingdom">
+<link rel="icon" type="image/svg+xml" href="/static/site-logo.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/static/logo-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet">
+{% if adsense_client %}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_client }}" crossorigin="anonymous"></script>
+{% endif %}
+{% if ga_measurement_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','{{ ga_measurement_id }}',{anonymize_ip:true,allow_google_signals:false});
+  window.trackEvent=function(n,p){try{gtag('event',n,p||{});}catch(e){}};
+</script>
+{% else %}
+<script>window.dataLayer=[];window.trackEvent=function(n,p){window.dataLayer.push({event:n,...(p||{})});};</script>
+{% endif %}
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FAFAF8;--surface:#FFF;--surface-alt:#F5F4F0;
+  --border:#E8E6E1;--border-strong:#D4D1C9;
+  --text-primary:#1A1A18;--text-secondary:#6B6860;--text-tertiary:#9C9890;
+  --accent:#1B6B4A;--accent-light:#E8F5EE;--accent-hover:#155A3D;
+  --accent-warm:#D4763C;
+  --font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;
+  --radius:10px;--radius-sm:6px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04),0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:0 2px 8px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);
+  --shadow-lg:0 4px 24px rgba(0,0,0,0.10),0 8px 32px rgba(0,0,0,0.05);
+  --max-w:980px;--transition:0.2s ease;
+}
+html{font-size:16px;scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;}
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-brand{font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--text-primary);text-decoration:none;letter-spacing:-0.02em;white-space:nowrap;}
+.nav-brand span{color:var(--accent);}
+.nav-links{display:flex;gap:0.25rem;}
+.nav-links a{font-size:0.875rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:0.4rem 0.75rem;border-radius:var(--radius-sm);transition:all var(--transition);}
+.nav-links a:hover{color:var(--text-primary);background:var(--surface-alt);}
+.nav-links a.active{color:var(--accent);background:var(--accent-light);}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;width:36px;height:36px;align-items:center;justify-content:center;}
+.nav-mobile-toggle svg{width:22px;height:22px;color:var(--text-primary);}
+@media(max-width:860px){
+  .nav-mobile-toggle{display:flex;}
+  .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);flex-direction:column;padding:0.5rem 1rem;}
+  .nav-links.open{display:flex;}
+}
+.hero{max-width:var(--max-w);margin:0 auto;padding:1.08rem 1.15rem 0.62rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:var(--accent-light);color:var(--accent);font-size:0.8rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:100px;margin-bottom:0.85rem;letter-spacing:0.02em;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;display:block;}
+.hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.38rem,3vw,1.96rem);line-height:1.2;letter-spacing:-0.03em;margin-bottom:0.38rem;max-width:680px;}
+.hero p{color:var(--text-secondary);font-size:0.92rem;max-width:540px;line-height:1.5;}
+.hero-cta{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);color:white;font-family:var(--font-body);font-size:0.9rem;font-weight:600;padding:0.65rem 1.4rem;border-radius:100px;text-decoration:none;margin-top:1.25rem;margin-right:0.5rem;box-shadow:0 2px 10px rgba(27,107,74,0.28);transition:background var(--transition),transform var(--transition),box-shadow var(--transition);}
+.hero-cta:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(27,107,74,0.35);}
+.hero-cta svg{width:14px;height:14px;flex-shrink:0;}
+.hero-links{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.75rem;}
+.hero-links a{font-size:0.8rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:0.32rem 0.75rem;border:1px solid var(--border);border-radius:100px;transition:all var(--transition);}
+.hero-links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.hero-stats{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.72rem;padding-top:0.68rem;border-top:1px solid var(--border);}
+.hero-stat{font-size:0.77rem;color:var(--text-tertiary);padding:0.25rem 0.65rem;background:var(--surface);border:1px solid var(--border);border-radius:100px;}
+.hero-stat strong{color:var(--text-secondary);font-weight:600;}
+.calc-section{max-width:var(--max-w);margin:0 auto;padding:0 1.1rem 0.94rem;scroll-margin-top:104px;}
+.calc-card{background:var(--surface);border:1.5px solid var(--border-strong);border-top:3px solid var(--accent);border-radius:var(--radius);box-shadow:var(--shadow-lg);overflow:hidden;position:relative;}
+.calc-header{padding:0.74rem 0.96rem 0;display:flex;align-items:flex-start;justify-content:space-between;gap:0.58rem;flex-wrap:wrap;}
+.calc-header h2{font-family:var(--font-display);font-weight:500;font-size:1.08rem;letter-spacing:-0.02em;}
+.calc-header p{color:var(--text-secondary);font-size:0.8rem;margin-top:0.1rem;}
+.calc-year-badge{flex-shrink:0;display:inline-flex;align-items:center;background:var(--accent-light);color:var(--accent);font-size:0.69rem;font-weight:700;padding:0.24rem 0.58rem;border-radius:var(--radius-sm);letter-spacing:0.01em;border:1px solid rgba(27,107,74,0.18);}
+@media(max-width:560px){.calc-header{align-items:center;gap:0.5rem;}.calc-header h2{font-size:0.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:68vw;}.calc-header p{display:none;}.calc-year-badge{font-size:0.68rem;padding:0.24rem 0.55rem;}}
+.calc-split{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,0.92fr);align-items:stretch;margin-top:0.75rem;}
+@media(max-width:980px){.calc-split{grid-template-columns:minmax(0,1fr) minmax(0,0.95fr);}}
+@media(max-width:780px){.calc-split{grid-template-columns:1fr;}}
+.calc-inputs{padding:0.9rem 1.02rem 0.96rem;min-width:0;overflow:hidden;}
+.calc-inputs .field{transition:transform 0.18s ease,box-shadow 0.18s ease,background-color 0.18s ease;border-radius:8px;padding:0.15rem 0.15rem 0.18rem;}
+.calc-inputs .field:focus-within{transform:translateY(-1px);background:rgba(245,244,240,0.35);box-shadow:0 4px 10px rgba(0,0,0,0.035);}
+.field{margin-bottom:0.58rem;}.field:last-child{margin-bottom:0;}
+.field label{display:block;font-size:0.73rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.22rem;letter-spacing:0.02em;text-transform:uppercase;}
+.field input,.field select{width:100%;height:40px;padding:0 0.875rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.91rem;color:var(--text-primary);background:var(--surface);transition:border-color var(--transition),box-shadow var(--transition);-webkit-appearance:none;}
+.field select{padding-right:2rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236B6860'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.75rem center;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(27,107,74,0.12);}
+.currency-input{position:relative;}
+.currency-symbol{position:absolute;left:0.875rem;top:50%;transform:translateY(-50%);color:var(--text-tertiary);font-size:0.91rem;pointer-events:none;line-height:1;}
+.currency-input input{padding-left:1.75rem;}
+.field-hint{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.1rem;}
+.quick-amounts{display:flex;gap:0.3rem;margin-top:0.36rem;flex-wrap:wrap;}
+.quick-amounts button{font-family:var(--font-body);font-size:0.71rem;font-weight:500;padding:0.22rem 0.56rem;border:1.5px solid var(--border);border-radius:100px;background:var(--bg);color:var(--text-secondary);cursor:pointer;transition:all var(--transition);}
+.quick-amounts button:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.quick-amounts button.qa-active{border-color:var(--accent);color:var(--accent);background:var(--accent-light);font-weight:600;}
+.calc-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.96rem 1.02rem 0.72rem;gap:0.62rem;border-left:1px solid var(--border);min-width:0;}
+@media(max-width:780px){.calc-visual{border-left:none;border-top:1px solid var(--border);padding:0.86rem 0.94rem 0.9rem;gap:0.58rem;}}
+.visual-right{width:100%;max-width:360px;display:flex;flex-direction:column;gap:0.54rem;}
+@media(max-width:980px){.visual-right{max-width:340px;}}
+.donut-svg{width:194px;height:194px;display:block;overflow:visible;filter:drop-shadow(0 4px 10px rgba(26,26,24,0.06));transition:transform 0.3s ease,filter 0.3s ease;animation:donutFloat 5.2s ease-in-out infinite;justify-self:center;}
+@media(max-width:980px){.donut-svg{width:178px;height:178px;}}
+@media(max-width:780px){.donut-svg{width:166px;height:166px;}}
+.calc-visual:hover .donut-svg{transform:scale(1.02);filter:drop-shadow(0 8px 18px rgba(26,26,24,0.10));}
+@keyframes donutFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+.donut-track{fill:none;stroke:var(--border);stroke-width:26;}
+.donut-seg{fill:none;stroke-width:26;stroke-dasharray:0 452;stroke-dashoffset:0;stroke-linecap:round;transition:stroke-dasharray 0.5s cubic-bezier(0.4,0,0.2,1),stroke-dashoffset 0.5s cubic-bezier(0.4,0,0.2,1);}
+.donut-total-text{font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:600;fill:var(--text-primary);}
+.donut-sub-text{font-family:'DM Sans',system-ui,sans-serif;font-size:8px;fill:var(--text-tertiary);}
+.donut-month-text{font-family:'DM Sans',system-ui,sans-serif;font-size:9px;fill:var(--text-secondary);font-weight:700;}
+.visual-kpis{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.38rem;}
+@media(max-width:560px){.visual-kpis{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.visual-kpis{grid-template-columns:1fr;}}
+.vk{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:0.45rem;padding:0.42rem 0.54rem;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.7);}
+.vk-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.vk-label{font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;line-height:1.1;margin-bottom:0.08rem;}
+.vk-value{font-size:0.9rem;color:var(--text-primary);font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums;}
+.donut-legend{width:100%;}
+.legend-row{display:flex;align-items:center;gap:0.5rem;padding:0.28rem 0;border-bottom:1px solid var(--border);font-size:0.8rem;}
+.legend-row:last-child{border-bottom:none;}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.legend-name{flex:1;color:var(--text-secondary);font-size:0.8rem;}
+.legend-val{font-weight:600;color:var(--text-primary);font-variant-numeric:tabular-nums;font-size:0.83rem;}
+.calc-footer{padding:0.06rem 1rem 0.82rem;border-top:1px solid var(--border);}
+.breakdown{margin-top:0.04rem;}
+.breakdown summary{font-size:0.82rem;font-weight:600;color:var(--text-secondary);cursor:pointer;padding:0.18rem 0;list-style:none;display:flex;align-items:center;gap:0.4rem;}
+.breakdown summary::before{content:'▸';font-size:0.72rem;transition:transform var(--transition);}
+.breakdown[open] summary::before{transform:rotate(90deg);}
+.breakdown-table{width:100%;border-collapse:collapse;margin-top:0.24rem;overflow-x:auto;display:block;}
+.breakdown-table th,.breakdown-table td{text-align:left;padding:0.46rem 0.56rem;font-size:0.82rem;border-bottom:1px solid var(--border);white-space:nowrap;}
+.breakdown-table th{font-weight:600;color:var(--text-tertiary);text-transform:uppercase;font-size:0.68rem;letter-spacing:0.04em;}
+.breakdown-table td:last-child{text-align:right;font-variant-numeric:tabular-nums;}
+.breakdown-table tr:last-child td{border-bottom:none;font-weight:600;}
+.assumptions{margin-top:0.3rem;padding:0.56rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.73rem;color:var(--text-tertiary);line-height:1.42;}
+.section{max-width:var(--max-w);margin:0 auto;padding:2.25rem 1.25rem;}
+.section-label{font-size:0.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;}
+.section h2{font-family:var(--font-display);font-weight:500;font-size:1.45rem;letter-spacing:-0.02em;margin-bottom:0.45rem;}
+.section>p{color:var(--text-secondary);max-width:580px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.55rem;margin-top:1.4rem;}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-decoration:none;color:var(--text-primary);transition:all var(--transition);display:flex;flex-direction:column;}
+.tool-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.tool-card h3{font-size:0.92rem;font-weight:600;margin-bottom:0.28rem;}
+.tool-card p{font-size:0.79rem;color:var(--text-secondary);flex:1;}
+.tool-tag-live{margin-top:0.8rem;display:inline-flex;align-items:center;gap:0.32rem;font-size:0.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;background:var(--accent-light);padding:0.2rem 0.55rem;border-radius:100px;border:1px solid rgba(27,107,74,0.2);width:fit-content;}
+.tool-tag-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);display:block;flex-shrink:0;}
+.faq-list{margin-top:1.4rem;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-item summary{padding:0.9rem 0;font-weight:600;font-size:0.93rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.faq-item summary::after{content:'+';font-size:1.15rem;color:var(--text-tertiary);flex-shrink:0;margin-left:0.75rem;}
+.faq-item[open] summary::after{content:'−';}
+.faq-answer{padding:0 0 0.9rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7;max-width:680px;}
+.footer{border-top:1px solid var(--border);background:var(--surface);padding:2.25rem 1.25rem;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr;gap:2rem;}
+@media(min-width:768px){.footer-inner{grid-template-columns:1fr 1fr 1fr;}}
+.footer-col a{overflow-wrap:break-word;word-break:break-word;}
+.footer-col h4{font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin-bottom:0.7rem;}
+.footer-col a{display:block;font-size:0.84rem;color:var(--text-secondary);text-decoration:none;padding:0.18rem 0;transition:color var(--transition);}
+.footer-col a:hover{color:var(--accent);}
+.footer-col a.footer-self{color:var(--accent);font-weight:600;}
+.footer-bottom{max-width:var(--max-w);margin:1.4rem auto 0;padding-top:1.25rem;border-top:1px solid var(--border);font-size:0.77rem;color:var(--text-tertiary);line-height:1.6;}
+.sticky-result{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:2px solid var(--border);box-shadow:0 -4px 20px rgba(0,0,0,0.08);z-index:50;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);}
+.sticky-result.visible{transform:translateY(0);}
+.sticky-result-inner{max-width:var(--max-w);margin:0 auto;padding:0.8rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.sr-left{display:flex;align-items:center;gap:1.1rem;}
+.sr-divider{width:1px;height:32px;background:var(--border);flex-shrink:0;}
+.sticky-result .sr-label{font-size:0.73rem;color:var(--text-tertiary);margin-bottom:0.08rem;}
+.sticky-result .sr-value{font-family:var(--font-display);font-weight:500;font-size:1.15rem;color:var(--accent);letter-spacing:-0.01em;}
+.sticky-result .sr-detail{font-size:0.76rem;color:var(--text-tertiary);line-height:1.5;}
+.sr-back{font-size:0.79rem;font-weight:600;color:var(--accent);text-decoration:none;padding:0.42rem 0.95rem;border:1.5px solid var(--accent);border-radius:100px;transition:all var(--transition);white-space:nowrap;flex-shrink:0;}
+.sr-back:hover{background:var(--accent);color:white;}
+@media(max-width:520px){.sr-back{display:none;}.sr-divider{display:none;}}
+.guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.7rem;margin-top:1.4rem;}
+.guide-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.2rem 1rem;text-decoration:none;color:var(--text-primary);transition:all var(--transition);position:relative;overflow:hidden;display:block;}
+.guide-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-1px);}
+.guide-card .guide-topic{font-size:0.68rem;font-weight:700;color:var(--accent-warm);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.38rem;}
+.guide-card h3{font-size:0.92rem;font-weight:600;margin-bottom:0.28rem;line-height:1.4;padding-right:1.75rem;}
+.guide-card p{font-size:0.79rem;color:var(--text-secondary);margin-bottom:0;}
+.guide-arrow{position:absolute;top:1.15rem;right:1rem;font-size:0.95rem;color:var(--accent);opacity:0;transform:translateX(-5px);transition:opacity 0.2s ease,transform 0.2s ease;}
+.guide-card:hover .guide-arrow{opacity:1;transform:translateX(0);}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}","description":"Free UK capital gains tax calculator for {{ tax_year }}. Estimate CGT at 18% or 24% with the £3,000 annual exempt amount.","inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"UK Capital Gains Tax Calculator {{ tax_year }}","url":"{{ site_url }}/","description":"Free UK CGT calculator. Enter sale proceeds, cost and income to estimate capital gains tax for {{ tax_year }}.","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"en-GB","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"provider":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"}}
+</script>
+{% if faq_items %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in faq_items %}{"@type":"Question","name":{{ item.q|tojson }},"acceptedAnswer":{"@type":"Answer","text":{{ item.a|tojson }}}}{% if not loop.last %},{% endif %}{% endfor %}]}
+</script>
+{% endif %}
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">UKCapitalGainsTax<span>Calculator</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#calculator" class="active">Calculator</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="/methodology">Methodology</a>
+    </div>
+    <button class="nav-mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">Updated for {{ tax_year }}</div>
+  <h1>Capital Gains Tax Calculator UK {{ tax_year }}</h1>
+  <p>Estimate how much Capital Gains Tax you may owe on property, shares or other taxable gains using sale proceeds, purchase cost, allowable expenses, losses and your income.</p>
+  <a href="#calculator" class="hero-cta">
+    Calculate CGT
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <div class="hero-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#faq">Common questions</a>
+    <a href="/methodology">Methodology</a>
+    <a href="https://aftertaxsalary.co.uk" target="_blank" rel="noopener">Take-home pay</a>
+    <a href="https://ukdividendtaxcalculator.co.uk" target="_blank" rel="noopener">Dividend tax</a>
+  </div>
+  <div class="hero-stats">
+    <span class="hero-stat"><strong>18%</strong> CGT basic rate</span>
+    <span class="hero-stat"><strong>24%</strong> CGT higher rate</span>
+    <span class="hero-stat"><strong>£3,000</strong> annual exempt amount</span>
+    <span class="hero-stat">Updated April 2026</span>
+    <span class="hero-stat">Free to use</span>
+  </div>
+</header>
+
+<section class="calc-section" id="calculator">
+  <div class="calc-card">
+    <div class="calc-header">
+      <div>
+        <h2>Capital Gains Tax Calculator</h2>
+        <p>Adjust figures — results update instantly.</p>
+      </div>
+      <span class="calc-year-badge">Tax year {{ tax_year }}</span>
+    </div>
+    <div class="calc-split">
+      <div class="calc-inputs">
+        <div class="field">
+          <label for="saleProceeds">Sale proceeds</label>
+          <div class="currency-input">
+            <span class="currency-symbol" aria-hidden="true">£</span>
+            <input type="text" id="saleProceeds" inputmode="decimal" value="80,000" placeholder="e.g. 80,000">
+          </div>
+          <div class="quick-amounts">
+            <button onclick="setVal('saleProceeds',50000,this)">£50k</button>
+            <button onclick="setVal('saleProceeds',80000,this)" class="qa-active">£80k</button>
+            <button onclick="setVal('saleProceeds',150000,this)">£150k</button>
+            <button onclick="setVal('saleProceeds',300000,this)">£300k</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="purchaseCost">Original purchase cost</label>
+          <div class="currency-input">
+            <span class="currency-symbol" aria-hidden="true">£</span>
+            <input type="text" id="purchaseCost" inputmode="decimal" value="50,000" placeholder="e.g. 50,000">
+          </div>
+          <div class="quick-amounts">
+            <button onclick="setVal('purchaseCost',20000,this)">£20k</button>
+            <button onclick="setVal('purchaseCost',50000,this)" class="qa-active">£50k</button>
+            <button onclick="setVal('purchaseCost',100000,this)">£100k</button>
+            <button onclick="setVal('purchaseCost',200000,this)">£200k</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="allowableCosts">Allowable costs (buying + selling + improvements)</label>
+          <div class="currency-input">
+            <span class="currency-symbol" aria-hidden="true">£</span>
+            <input type="text" id="allowableCosts" inputmode="decimal" value="3,000" placeholder="e.g. 3,000">
+          </div>
+          <div class="field-hint">Legal fees, agent fees, stamp duty on purchase, improvement costs.</div>
+        </div>
+        <div class="field">
+          <label for="lossesOffset">Capital losses to offset</label>
+          <div class="currency-input">
+            <span class="currency-symbol" aria-hidden="true">£</span>
+            <input type="text" id="lossesOffset" inputmode="decimal" value="0" placeholder="0">
+          </div>
+          <div class="field-hint">Losses from the same or prior tax years.</div>
+        </div>
+        <div class="field">
+          <label for="taxableIncome">Taxable income before this gain</label>
+          <div class="currency-input">
+            <span class="currency-symbol" aria-hidden="true">£</span>
+            <input type="text" id="taxableIncome" inputmode="decimal" value="37,700" placeholder="e.g. 37,700">
+          </div>
+          <div class="field-hint">After Personal Allowance — determines 18% vs 24% split.</div>
+          <div class="quick-amounts">
+            <button onclick="setVal('taxableIncome',0,this)">£0</button>
+            <button onclick="setVal('taxableIncome',15000,this)">£15k</button>
+            <button onclick="setVal('taxableIncome',37700,this)" class="qa-active">£37,700</button>
+            <button onclick="setVal('taxableIncome',60000,this)">£60k</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-visual" id="resultsPanel">
+        <svg class="donut-svg" viewBox="0 0 200 200" role="img" aria-label="CGT breakdown">
+          <circle class="donut-track" cx="100" cy="100" r="72"/>
+          <circle class="donut-seg" id="seg-netgain" cx="100" cy="100" r="72" stroke="#1B6B4A" transform="rotate(-90 100 100)"/>
+          <circle class="donut-seg" id="seg-cgt-basic" cx="100" cy="100" r="72" stroke="#D4763C" transform="rotate(-90 100 100)"/>
+          <circle class="donut-seg" id="seg-cgt-higher" cx="100" cy="100" r="72" stroke="#5B8DB8" transform="rotate(-90 100 100)"/>
+          <circle class="donut-seg" id="seg-exempt" cx="100" cy="100" r="72" stroke="#B0A89E" transform="rotate(-90 100 100)"/>
+          <text class="donut-total-text" x="100" y="89" text-anchor="middle" id="donut-total">£{{ "{:,.0f}".format(calc.total_cgt) }}</text>
+          <text class="donut-sub-text" x="100" y="104" text-anchor="middle">estimated CGT</text>
+          <text class="donut-month-text" x="100" y="118" text-anchor="middle" id="donut-rate">{{ "{:.1f}".format(calc.effective_rate) }}% effective rate</text>
+        </svg>
+        <div class="visual-right">
+          <div class="visual-kpis" aria-live="polite">
+            <div class="vk">
+              <span class="vk-dot" style="background:#D4763C"></span>
+              <div><div class="vk-label">Total CGT</div><div class="vk-value" id="vkCGT">£{{ "{:,.0f}".format(calc.total_cgt) }}</div></div>
+            </div>
+            <div class="vk">
+              <span class="vk-dot"></span>
+              <div><div class="vk-label">Net proceeds</div><div class="vk-value" id="vkNet">£{{ "{:,.0f}".format(calc.net_proceeds_after_cgt) }}</div></div>
+            </div>
+            <div class="vk">
+              <span class="vk-dot" style="background:#5B8DB8"></span>
+              <div><div class="vk-label">Effective rate</div><div class="vk-value" id="vkRate">{{ "{:.1f}".format(calc.effective_rate) }}%</div></div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#1B6B4A"></span>
+              <span class="legend-name">Net gain after CGT</span>
+              <span class="legend-val" id="lNetGain">£{{ "{:,.0f}".format(calc.gross_gain - calc.total_cgt) }}</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#D4763C"></span>
+              <span class="legend-name">CGT at 18% (basic rate)</span>
+              <span class="legend-val" id="lCGTBasic">£{{ "{:,.0f}".format(calc.cgt_at_basic) }}</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#5B8DB8"></span>
+              <span class="legend-name">CGT at 24% (higher rate)</span>
+              <span class="legend-val" id="lCGTHigher">£{{ "{:,.0f}".format(calc.cgt_at_higher) }}</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#B0A89E"></span>
+              <span class="legend-name">Annual exempt amount</span>
+              <span class="legend-val" id="lExempt">£{{ "{:,.0f}".format(calc.exempt_amount_used) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-footer">
+      <details class="breakdown">
+        <summary>Gain calculation</summary>
+        <table class="breakdown-table">
+          <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Sale proceeds</td><td id="bdSaleProceeds">£{{ "{:,.0f}".format(calc.sale_proceeds_share) }}</td></tr>
+            <tr><td>Purchase cost</td><td id="bdPurchaseCost">£{{ "{:,.0f}".format(calc.purchase_cost_share) }}</td></tr>
+            <tr><td>Allowable costs</td><td id="bdAllowable">£{{ "{:,.0f}".format(calc.allowable_costs) }}</td></tr>
+            <tr><td>Gross gain</td><td id="bdGrossGain">£{{ "{:,.0f}".format(calc.gross_gain) }}</td></tr>
+            <tr><td>Losses used</td><td id="bdLosses">£{{ "{:,.0f}".format(calc.losses_used) }}</td></tr>
+            <tr><td>Gain after losses</td><td id="bdGainAfterLoss">£{{ "{:,.0f}".format(calc.gain_after_losses) }}</td></tr>
+            <tr><td>Annual exempt amount</td><td id="bdExempt">£{{ "{:,.0f}".format(calc.exempt_amount_used) }}</td></tr>
+            <tr><td><strong>Taxable gain</strong></td><td id="bdTaxable"><strong>£{{ "{:,.0f}".format(calc.taxable_gain) }}</strong></td></tr>
+          </tbody>
+        </table>
+      </details>
+      <details class="breakdown">
+        <summary>CGT breakdown</summary>
+        <table class="breakdown-table">
+          <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Gain taxed at 18%</td><td id="bdBasicGain">£{{ "{:,.0f}".format(calc.basic_rate_gain) }}</td></tr>
+            <tr><td>Gain taxed at 24%</td><td id="bdHigherGain">£{{ "{:,.0f}".format(calc.higher_rate_gain) }}</td></tr>
+            <tr><td>CGT at 18%</td><td id="bdCGTBasic">£{{ "{:,.0f}".format(calc.cgt_at_basic) }}</td></tr>
+            <tr><td>CGT at 24%</td><td id="bdCGTHigher">£{{ "{:,.0f}".format(calc.cgt_at_higher) }}</td></tr>
+            <tr><td><strong>Total CGT</strong></td><td id="bdTotalCGT"><strong>£{{ "{:,.0f}".format(calc.total_cgt) }}</strong></td></tr>
+            <tr><td>Net proceeds after CGT</td><td id="bdNetProceeds">£{{ "{:,.0f}".format(calc.net_proceeds_after_cgt) }}</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <div class="assumptions" id="assumptionsBlock">
+        Tax year {{ tax_year }} · CGT 18% basic rate · CGT 24% higher rate · Annual exempt amount £3,000 · Basic-rate band £37,700 · Estimates only — not financial or tax advice. Does not cover private residence relief, BADR or complex reliefs.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how-it-works" style="padding-top:0.9rem;padding-bottom:0.75rem;">
+  <div class="section-label">How it works</div>
+  <h2>Three steps to estimate your CGT</h2>
+  <div style="display:grid;gap:0.75rem;grid-template-columns:repeat(3,1fr);" class="cgt-steps">
+    <div class="card" style="padding:0.95rem 1rem;">
+      <div style="font-family:var(--font-display);font-size:1.35rem;color:var(--accent);line-height:1;margin-bottom:0.35rem;">01</div>
+      <h3 style="font-size:0.92rem;margin-bottom:0.15rem;">Enter the disposal details</h3>
+      <p style="font-size:0.82rem;line-height:1.55;color:var(--text-secondary);">Add sale proceeds, purchase cost and allowable expenses such as legal fees, agent fees and improvement costs.</p>
+    </div>
+    <div class="card" style="padding:0.95rem 1rem;">
+      <div style="font-family:var(--font-display);font-size:1.35rem;color:var(--accent);line-height:1;margin-bottom:0.35rem;">02</div>
+      <h3 style="font-size:0.92rem;margin-bottom:0.15rem;">Add losses and income</h3>
+      <p style="font-size:0.82rem;line-height:1.55;color:var(--text-secondary);">Enter any capital losses to offset the gain. Add taxable income so the calculator can work out whether the gain falls at 18% or 24%.</p>
+    </div>
+    <div class="card" style="padding:0.95rem 1rem;">
+      <div style="font-family:var(--font-display);font-size:1.35rem;color:var(--accent);line-height:1;margin-bottom:0.35rem;">03</div>
+      <h3 style="font-size:0.92rem;margin-bottom:0.15rem;">Review the CGT estimate</h3>
+      <p style="font-size:0.82rem;line-height:1.55;color:var(--text-secondary);">See CGT at each rate, the exempt amount used, net proceeds after tax, and effective CGT rate on the gross gain.</p>
+    </div>
+  </div>
+  <style>@media(max-width:640px){.cgt-steps{grid-template-columns:1fr!important;}}</style>
+</section>
+
+<section class="section" style="padding-top:0.5rem;">
+  <div class="section-label">Worked example</div>
+  <h2>Second home sold for £80,000 — bought for £50,000</h2>
+  <div class="card" style="padding:1.1rem 1.2rem; margin-top:0.9rem;">
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.6rem;">
+      Sale proceeds: £80,000. Purchase cost: £50,000. Allowable costs (legal and agent fees): £3,000. Gross gain: £27,000.
+      Annual exempt amount: £3,000. Taxable gain: <strong>£24,000</strong>.
+    </p>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.6rem;">
+      The owner already has £37,700 of taxable income, filling the entire basic-rate band. The full £24,000 taxable gain falls in the higher-rate band.
+      CGT = 24% × £24,000 = <strong>£5,760</strong>. Net proceeds after CGT: <strong>£74,240</strong>. Effective rate: <strong>21.3%</strong>.
+    </p>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0;">
+      If the owner had only £20,000 of taxable income, £17,700 of basic-rate band would remain, reducing some of the gain to 18% and lowering total CGT. Try adjusting the income figure in the calculator above.
+    </p>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section class="section" id="guides" style="padding-top:0.5rem;">
+  <div class="section-label">Guides</div>
+  <h2>Capital gains tax guides</h2>
+  <p>In-depth guides to CGT rules, rates and allowances for 2026/27. Written for UK taxpayers, not accountants.</p>
+  <div class="guides-grid">
+    <a href="/capital-gains-tax-second-home" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Property</div>
+      <h3>CGT on a Second Home</h3>
+      <p>No Private Residence Relief, 60-day reporting and 18%/24% rates. How CGT works on holiday homes and investment property.</p>
+    </a>
+    <a href="/capital-gains-tax-on-inherited-property" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Property</div>
+      <h3>CGT on Inherited Property</h3>
+      <p>Probate value as your base cost, allowable deductions and worked example of CGT on an inherited property sale.</p>
+    </a>
+    <a href="/capital-gains-tax-on-buy-to-let" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Property</div>
+      <h3>CGT on Buy-to-Let</h3>
+      <p>Capital gains tax when selling a buy-to-let property — allowable costs, 2026/27 rates and a worked example.</p>
+    </a>
+    <a href="/capital-gains-tax-losses" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Allowances</div>
+      <h3>Capital Gains Tax Losses</h3>
+      <p>How capital losses reduce taxable gains, when losses carry forward and how they interact with the annual exempt amount.</p>
+    </a>
+    <a href="/capital-gains-tax-reporting-deadline" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Reporting</div>
+      <h3>CGT Reporting Deadlines</h3>
+      <p>The 60-day rule for residential property and Self Assessment deadlines for other gains — what you must report and when.</p>
+    </a>
+    <a href="/capital-gains-tax-basic-rate-taxpayer" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Rates</div>
+      <h3>CGT for Basic-Rate Taxpayers</h3>
+      <p>How CGT is calculated when your income stays within the basic-rate band and why large gains can still hit 24%.</p>
+    </a>
+    <a href="/capital-gains-tax-business-sale" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Business</div>
+      <h3>CGT on a Business Sale</h3>
+      <p>Business Asset Disposal Relief at 14% for qualifying business sales — who qualifies and how it reduces your CGT bill.</p>
+    </a>
+    <a href="/capital-gains-tax-higher-rate-taxpayer" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Rates</div>
+      <h3>CGT for Higher-Rate Taxpayers</h3>
+      <p>When your income exceeds £50,270 all your taxable gains are charged at 24% — how that works and what reduces the bill.</p>
+    </a>
+    <a href="/capital-gains-tax-for-higher-rate-taxpayers" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Rates</div>
+      <h3>CGT for Higher-Rate Taxpayers — Full Guide</h3>
+      <p>How income interacts with CGT, worked example at £60k income, partial-rate scenarios and planning options.</p>
+    </a>
+    <a href="/capital-gains-tax-on-gifts" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Gifts</div>
+      <h3>CGT on Gifts</h3>
+      <p>Giving an asset can trigger CGT at market value — gifts to children, spouses, charities and when Hold-Over Relief applies.</p>
+    </a>
+    <a href="/capital-gains-tax-records" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Admin</div>
+      <h3>CGT Records</h3>
+      <p>What records to keep for HMRC, how long to keep them and what happens if records are lost or incomplete.</p>
+    </a>
+  </div>
+</section>
+
+<!-- CALCULATORS -->
+<section class="section" id="calculators" style="padding-top:0.5rem;">
+  <div class="section-label">Calculators</div>
+  <h2>CGT calculators</h2>
+  <p>Free tools to estimate capital gains tax on different asset types for 2026/27.</p>
+  <div class="guides-grid">
+    <a href="/" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">General</div>
+      <h3>UK Capital Gains Tax Calculator</h3>
+      <p>Estimate CGT on any disposal — shares, property, crypto or other assets. Enter proceeds, cost, losses and income.</p>
+    </a>
+    <a href="/property-cgt-calculator" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Property</div>
+      <h3>Property CGT Calculator</h3>
+      <p>Estimate capital gains tax on a second home, buy-to-let or inherited property using 2026/27 rates.</p>
+    </a>
+    <a href="/shares-cgt-calculator" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Investments</div>
+      <h3>Shares CGT Calculator</h3>
+      <p>Calculate CGT on shares, funds and other investment assets held outside an ISA or pension for 2026/27.</p>
+    </a>
+    <a href="/crypto-cgt-calculator" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Crypto</div>
+      <h3>Crypto CGT Calculator</h3>
+      <p>Estimate capital gains tax on cryptocurrency disposals for 2026/27, including pooling basics.</p>
+    </a>
+    <a href="/cgt-allowance-calculator" class="guide-card">
+      <span class="guide-arrow">→</span>
+      <div class="guide-topic">Allowances</div>
+      <h3>CGT Allowance Calculator</h3>
+      <p>Calculate how much of your £3,000 annual exempt amount remains after your gains for 2026/27.</p>
+    </a>
+  </div>
+</section>
+
+<!-- CALCULATOR SUITE -->
+<section class="section" style="padding-top:0.5rem;padding-bottom:2.5rem;">
+  <div class="section-label">Calculator suite</div>
+  <h2>Three more tools in the same network</h2>
+  <p>UKCapitalGainsTaxCalculator is part of the UK Money Calculators network — free, independent tools for estimating UK tax and finances.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem;margin-top:1.25rem;">
+    <a href="https://aftertaxsalary.co.uk" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:0.5rem;text-decoration:none;background:var(--surface);border:1.5px solid var(--border-strong);border-top:3px solid #1B6B4A;border-radius:var(--radius);padding:1.25rem 1.4rem;transition:all var(--transition);" onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" style="width:28px;height:28px;display:block;"><rect width="64" height="64" rx="14" fill="#1F2937"/><rect x="18" y="16" width="28" height="32" rx="7" stroke="white" stroke-width="4"/><line x1="24" y1="28" x2="40" y2="28" stroke="white" stroke-width="4" stroke-linecap="round"/><line x1="24" y1="38" x2="34" y2="38" stroke="white" stroke-width="4" stroke-linecap="round"/></svg>
+      <div style="font-size:0.7rem;font-weight:700;color:#1B6B4A;text-transform:uppercase;letter-spacing:0.06em;">AfterTaxSalary.co.uk</div>
+      <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em;">UK take-home pay calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;flex:1;">PAYE income tax, National Insurance, student loan and pension deductions — estimate your net salary after tax.</div>
+      <div style="font-size:0.79rem;font-weight:600;color:#1B6B4A;margin-top:0.25rem;">Visit AfterTaxSalary.co.uk →</div>
+    </a>
+    <a href="https://employercalculator.co.uk" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:0.5rem;text-decoration:none;background:var(--surface);border:1.5px solid var(--border-strong);border-top:3px solid #374151;border-radius:var(--radius);padding:1.25rem 1.4rem;transition:all var(--transition);" onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" style="width:28px;height:28px;display:block;"><rect width="64" height="64" rx="14" fill="#1F2937"/><rect x="18" y="16" width="28" height="32" rx="7" stroke="white" stroke-width="4"/><line x1="24" y1="28" x2="40" y2="28" stroke="white" stroke-width="4" stroke-linecap="round"/><line x1="24" y1="38" x2="34" y2="38" stroke="white" stroke-width="4" stroke-linecap="round"/></svg>
+      <div style="font-size:0.7rem;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:0.06em;">EmployerCalculator.co.uk</div>
+      <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em;">Employer NI &amp; cost calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;flex:1;">Employer NI at 15%, auto-enrolment pension and total cost to employ — the employer's perspective on payroll costs.</div>
+      <div style="font-size:0.79rem;font-weight:600;color:#374151;margin-top:0.25rem;">Visit EmployerCalculator.co.uk →</div>
+    </a>
+    <a href="https://ukdividendtaxcalculator.co.uk" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:0.5rem;text-decoration:none;background:var(--surface);border:1.5px solid var(--border-strong);border-top:3px solid #5B5BD6;border-radius:var(--radius);padding:1.25rem 1.4rem;transition:all var(--transition);" onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" style="width:28px;height:28px;display:block;"><rect width="64" height="64" rx="14" fill="#1F2937"/><rect x="18" y="16" width="28" height="32" rx="7" stroke="white" stroke-width="4"/><line x1="24" y1="28" x2="40" y2="28" stroke="white" stroke-width="4" stroke-linecap="round"/><line x1="24" y1="38" x2="34" y2="38" stroke="white" stroke-width="4" stroke-linecap="round"/></svg>
+      <div style="font-size:0.7rem;font-weight:700;color:#5B5BD6;text-transform:uppercase;letter-spacing:0.06em;">UKDividendTaxCalculator.co.uk</div>
+      <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em;">UK dividend tax calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;flex:1;">Estimate dividend tax at 10.75%, 35.75% and 39.35% after the £500 dividend allowance for 2026/27.</div>
+      <div style="font-size:0.79rem;font-weight:600;color:#5B5BD6;margin-top:0.25rem;">Visit UKDividendTaxCalculator.co.uk →</div>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label">FAQ</div>
+  <h2>Capital gains tax — common questions</h2>
+  <div class="faq-list">
+    {% for item in faq_items %}
+    <details class="faq-item">
+      <summary>{{ item.q }}</summary>
+      <div class="faq-answer">{{ item.a }}</div>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section" style="padding-top:0.5rem;">
+  <div class="section-label">Methodology</div>
+  <h2>How we calculate CGT</h2>
+  <div class="card" style="padding:1.1rem 1.2rem; margin-top:0.9rem;">
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.6rem;">
+      We calculate the gross gain (sale proceeds minus purchase cost and allowable costs), deduct capital losses and the £3,000 annual exempt amount, then split the taxable gain across the 18% and 24% CGT bands. Your taxable income before the gain determines how much basic-rate band (£37,700) remains.
+    </p>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.6rem;">
+      This calculator does not handle private residence relief, lettings relief, Business Asset Disposal Relief, non-UK residents, trusts, or complex share matching. It is a simplified estimate for standard individual disposals.
+    </p>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0;">
+      <a href="/methodology" style="color:var(--accent);font-weight:600;">Read full methodology →</a>
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0.25rem;padding-bottom:1rem;">
+  <div style="font-size:0.8rem;color:var(--text-tertiary);border-top:1px solid var(--border);padding-top:0.85rem;">
+    Published by the UK Money Calculators editorial team · Last updated for the {{ tax_year }} tax year ·
+    Calculations are estimates only and are not financial or tax advice. ·
+    <a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK CGT rates</a> ·
+    <a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--text-tertiary);">CGT rates and allowances</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Calculator suite</h4>
+      <a href="https://aftertaxsalary.co.uk" target="_blank" rel="noopener">AfterTaxSalary.co.uk</a>
+      <a href="https://homebuyingcosts.co.uk" target="_blank" rel="noopener">HomeBuyingCosts.co.uk</a>
+      <a href="https://ukbenefitscalculator.co.uk" target="_blank" rel="noopener">UKBenefitsCalculator.co.uk</a>
+      <a href="https://soletradertaxcalculator.co.uk" target="_blank" rel="noopener">SoleTraderTaxCalculator.co.uk</a>
+      <a href="https://limitedcompanytaxcalculator.co.uk" target="_blank" rel="noopener">LimitedCompanyTaxCalculator.co.uk</a>
+      <a href="https://employercalculator.co.uk" target="_blank" rel="noopener">EmployerCalculator.co.uk</a>
+      <a href="/" class="footer-self">UKCapitalGainsTaxCalculator.co.uk</a>
+      <a href="https://ukdividendtaxcalculator.co.uk" target="_blank" rel="noopener">UKDividendTaxCalculator.co.uk</a>
+      <a href="https://pensiontaxreliefcalculator.co.uk" target="_blank" rel="noopener">PensionTaxReliefCalculator.co.uk</a>
+      <a href="https://uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener">UKSalarySacrificeCalculator.co.uk</a>
+    </div>
+    <div class="footer-col">
+      <h4>This site</h4>
+      <a href="/">Home</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/disclaimer">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Part of the UK Money Calculators network — free, independent tools for estimating UK tax, income, benefits, pensions and business finances. Calculations are guides only and are not financial advice.
+  </div>
+</footer>
+
+<div class="sticky-result" id="stickyBar">
+  <div class="sticky-result-inner">
+    <div class="sr-left">
+      <div>
+        <div class="sr-label">Estimated CGT</div>
+        <div class="sr-value" id="srCGT">£{{ "{:,.0f}".format(calc.total_cgt) }}</div>
+      </div>
+      <div class="sr-divider"></div>
+      <div>
+        <div class="sr-label">Net proceeds after tax</div>
+        <div class="sr-detail" id="srNet">£{{ "{:,.0f}".format(calc.net_proceeds_after_cgt) }}</div>
+      </div>
+    </div>
+    <a href="#calculator" class="sr-back">Adjust</a>
+  </div>
+</div>
+
+<script>
+const CGT_LOWER=0.18,CGT_HR=0.24,AEA=3000,BASIC_BAND=37700,CIRC=452.39;
+function parseCur(s){return Math.max(0,parseFloat(String(s).replace(/[£,\s]/g,''))||0);}
+function fmt(n){if(!isFinite(n)||isNaN(n))return '—';return '£'+Math.round(n).toLocaleString('en-GB');}
+function fmtPct(n){if(!isFinite(n)||isNaN(n))return '—';return n.toFixed(1)+'%';}
+function seg(id,dash,off){const e=document.getElementById(id);if(!e)return;e.style.strokeDasharray=Math.max(0,dash)+' '+CIRC;e.style.strokeDashoffset=-Math.max(0,off);}
+function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+function setVal(iid,val,btn){
+  document.getElementById(iid).value=val.toLocaleString('en-GB');
+  const p=btn.closest('.field');
+  if(p)p.querySelectorAll('.quick-amounts button').forEach(b=>b.classList.remove('qa-active'));
+  btn.classList.add('qa-active');calculate();
+}
+function calculate(){
+  const sp=parseCur(document.getElementById('saleProceeds').value);
+  const pc=parseCur(document.getElementById('purchaseCost').value);
+  const ac=parseCur(document.getElementById('allowableCosts').value);
+  const lo=parseCur(document.getElementById('lossesOffset').value);
+  const ti=parseCur(document.getElementById('taxableIncome').value);
+  const gg=Math.max(0,sp-pc-ac);
+  const lu=Math.min(lo,gg);
+  const gal=gg-lu;
+  const eu=Math.min(AEA,gal);
+  const tg=Math.max(0,gal-eu);
+  const br=Math.max(0,BASIC_BAND-ti);
+  const bg=Math.min(tg,br);
+  const hg=Math.max(0,tg-bg);
+  const cb=bg*CGT_LOWER,ch=hg*CGT_HR,tc=cb+ch;
+  const np=sp-tc;
+  const er=gg>0?(tc/gg*100):0;
+  const nga=Math.max(0,gg-tc);
+  const tot=gg>0?gg:1;
+  seg('seg-netgain',(nga/tot)*CIRC,0);
+  seg('seg-cgt-basic',(cb/tot)*CIRC,(nga/tot)*CIRC);
+  seg('seg-cgt-higher',(ch/tot)*CIRC,((nga+cb)/tot)*CIRC);
+  seg('seg-exempt',(eu/tot)*CIRC,((nga+cb+ch)/tot)*CIRC);
+  setText('donut-total',fmt(tc));
+  setText('donut-rate',fmtPct(er)+' effective rate');
+  setText('vkCGT',fmt(tc));setText('vkNet',fmt(np));setText('vkRate',fmtPct(er));
+  setText('lNetGain',fmt(nga));setText('lCGTBasic',fmt(cb));setText('lCGTHigher',fmt(ch));setText('lExempt',fmt(eu));
+  setText('bdSaleProceeds',fmt(sp));setText('bdPurchaseCost',fmt(pc));setText('bdAllowable',fmt(ac));
+  setText('bdGrossGain',fmt(gg));setText('bdLosses',fmt(lu));setText('bdGainAfterLoss',fmt(gal));
+  setText('bdExempt',fmt(eu));setText('bdTaxable',fmt(tg));
+  setText('bdBasicGain',fmt(bg));setText('bdHigherGain',fmt(hg));
+  setText('bdCGTBasic',fmt(cb));setText('bdCGTHigher',fmt(ch));setText('bdTotalCGT',fmt(tc));setText('bdNetProceeds',fmt(np));
+  const a=document.getElementById('assumptionsBlock');
+  if(a)a.textContent='Tax year {{ tax_year }} · CGT 18% basic rate · CGT 24% higher rate · Annual exempt £3,000 · Taxable income before gain £'+Math.round(ti).toLocaleString('en-GB')+' · Estimates only — not advice.';
+  setText('srCGT',fmt(tc));setText('srNet',fmt(np));
+}
+['saleProceeds','purchaseCost','allowableCosts','lossesOffset','taxableIncome'].forEach(id=>{
+  const e=document.getElementById(id);if(e)e.addEventListener('input',calculate);
+});
+const sticky=document.getElementById('stickyBar'),panel=document.getElementById('resultsPanel');
+if(sticky&&panel)new IntersectionObserver(([e])=>sticky.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(panel);
+calculate();
+</script>
+</body>
+</html>

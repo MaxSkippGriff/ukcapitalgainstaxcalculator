@@ -1,0 +1,131 @@
+{% extends "base.html" %}{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>CGT Annual Exempt Amount Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">See how much of your £3,000 capital gains tax annual exempt amount remains and how much of a new gain would be taxable.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>CGT Annual Exempt Amount</h2>
+      <span class="calc-year-badge">2026/27 · £3,000 AEA</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gains already realised this tax year</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="gains_made" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Losses available to offset</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="losses_available" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>New gain you are planning</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="new_gain" value="0" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Annual exempt amount (2026/27)</span><span class="results-value">£<span id="r_total_exempt">3,000</span></span></div>
+      <div class="results-row"><span class="results-label">Exempt amount used so far</span><span class="results-value">£<span id="r_used">0</span></span></div>
+      <div class="results-row"><span class="results-label">Exempt amount remaining</span><span class="results-value">£<span id="r_remaining">3,000</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Taxable portion of new gain</span><span class="results-value">£<span id="r_taxable_new">0</span></span></div>
+      <p class="calc-disclaimer">The taxable portion is the amount above your remaining exempt amount. Use the <a href="/">main CGT calculator</a> to estimate the tax owed.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How the annual exempt amount works</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);">Every UK individual gets an annual exempt amount (AEA) — sometimes called the CGT allowance — of £3,000 for 2026/27. Gains below this threshold are free from CGT.</p>
+    <ul style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);margin-top:0.5rem;">
+      <li>The AEA applies per person, per tax year (6 April to 5 April).</li>
+      <li>It cannot be carried forward to a future year if unused.</li>
+      <li>Capital losses are deducted <em>before</em> the AEA is applied.</li>
+      <li>Spouses and civil partners each have their own AEA — useful for planning disposals jointly.</li>
+      <li>Trustees have a lower AEA of £1,500 for most trusts.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">You sold shares earlier in the year making a gain of £1,500 after losses. Your exempt amount used is £1,500, leaving £1,500 remaining. If you now sell a property with a £4,000 gain, only £2,500 (£4,000 − £1,500) is taxable. Use the <a href="/property-cgt-calculator" style="color:var(--accent);">property CGT calculator</a> to estimate the tax on that £2,500.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Planning points</h2>
+    <ul style="font-size:0.9rem;line-height:1.7;padding-left:1.3rem;color:var(--text-secondary);">
+      <li><strong>Use it or lose it.</strong> The AEA resets each 6 April. Consider realising gains up to the threshold if you expect future gains to be larger.</li>
+      <li><strong>Bed and ISA.</strong> Selling an asset and re-buying it inside an ISA crystallises a gain (using up the AEA) but shelters all future growth from CGT.</li>
+      <li><strong>Transfers between spouses.</strong> No-gain no-loss transfers between spouses or civil partners let you double up on the AEA before a disposal.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Official sources</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/allowances" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Capital gains tax allowances</a></li>
+      <li><a href="https://www.gov.uk/capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Capital gains tax overview</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <strong>Can I carry forward an unused annual exempt amount?</strong>
+        <p>No. The AEA cannot be carried forward. If you do not use it in a tax year, it is lost.</p>
+      </li>
+      <li class="faq-item">
+        <strong>Do losses reduce the annual exempt amount?</strong>
+        <p>Losses are deducted from gains before the AEA is applied. This means losses can "waste" some of your AEA. You only need to use enough losses to bring net gains down to the AEA level — any excess can be carried forward.</p>
+      </li>
+      <li class="faq-item">
+        <strong>Is the AEA the same for all assets?</strong>
+        <p>Yes, the £3,000 AEA applies across all capital gains in a tax year — property, shares, crypto and other assets combined.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Related calculators</h2>
+    <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">
+      <li><a href="/" style="color:var(--accent);">UK Capital Gains Tax Calculator</a></li>
+      <li><a href="/property-cgt-calculator" style="color:var(--accent);">Property CGT Calculator</a></li>
+      <li><a href="/shares-cgt-calculator" style="color:var(--accent);">Shares CGT Calculator</a></li>
+    </ul>
+  </div>
+
+  <p style="font-size:0.78rem;color:var(--text-secondary);margin-top:1rem;">This calculator provides estimates for guidance only and does not constitute tax or financial advice. Tax rules can change and individual circumstances vary. Consult a qualified tax adviser before making decisions based on these figures.</p>
+</section>
+
+<script>
+const ANNUAL_EXEMPT = 3000;
+
+function calculate() {
+  const gainsMade = +document.getElementById('gains_made').value || 0;
+  const losses = +document.getElementById('losses_available').value || 0;
+  const newGain = +document.getElementById('new_gain').value || 0;
+
+  const netGainsSoFar = Math.max(0, gainsMade - losses);
+  const exemptUsed = Math.min(netGainsSoFar, ANNUAL_EXEMPT);
+  const exemptRemaining = Math.max(0, ANNUAL_EXEMPT - exemptUsed);
+  const taxableNewGain = Math.max(0, newGain - exemptRemaining);
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0, maximumFractionDigits:0});
+  document.getElementById('r_total_exempt').textContent = fmt(ANNUAL_EXEMPT);
+  document.getElementById('r_used').textContent = fmt(exemptUsed);
+  document.getElementById('r_remaining').textContent = fmt(exemptRemaining);
+  document.getElementById('r_taxable_new').textContent = fmt(taxableNewGain);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

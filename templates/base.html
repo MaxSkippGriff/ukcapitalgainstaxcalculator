@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ meta_description }}">
+  <meta name="robots" content="{{ meta_robots|default('index,follow') }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="en-gb" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="en" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ meta_description }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:site_name" content="UKCapitalGainsTaxCalculator.co.uk">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ meta_description }}">
+  <meta name="twitter:image" content="{{ site_url }}/static/logo-512.png">
+  <meta property="og:image" content="{{ site_url }}/static/logo-512.png">
+  <meta property="og:image:alt" content="UKCapitalGainsTaxCalculator.co.uk — UK capital gains tax calculator">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta name="theme-color" content="#1B6B4A">
+  <meta name="msapplication-TileColor" content="#1B6B4A">
+  {% if adsense_client %}
+  <meta name="google-adsense-account" content="{{ adsense_client }}">
+  {% endif %}
+  <meta name="geo.region" content="GB">
+  <meta name="geo.placename" content="United Kingdom">
+  <meta name="ICBM" content="54.7023545, -3.2765753">
+  <link rel="icon" type="image/svg+xml" href="/static/site-logo.svg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/logo-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/static/logo-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet">
+  {% if adsense_client %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_client }}" crossorigin="anonymous"></script>
+  {% endif %}
+  {% if ga_measurement_id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ ga_measurement_id }}', {
+      anonymize_ip: true,
+      allow_google_signals: false
+    });
+    window.trackEvent = function(name, params) {
+      try { gtag('event', name, params || {}); } catch (e) {}
+    };
+  </script>
+  {% else %}
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.trackEvent = function(name, params) {
+      window.dataLayer.push({
+        event: name,
+        ...((params && typeof params === 'object') ? params : {})
+      });
+    };
+  </script>
+  {% endif %}
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --surface-alt: #F5F4F0;
+      --border: #E8E6E1;
+      --border-strong: #D4D1C9;
+      --text-primary: #1A1A18;
+      --text-secondary: #6B6860;
+      --text-tertiary: #9C9890;
+      --accent: #1B6B4A;
+      --accent-light: #E8F5EE;
+      --accent-hover: #155A3D;
+      --accent-warm: #D4763C;
+      --accent-warm-light: #FFF3EB;
+      --destructive: #C53030;
+      --destructive-light: #FFF5F5;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --radius: 10px;
+      --radius-sm: 6px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+      --max-w: 980px;
+      --transition: 0.2s ease;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    input, select, button,
+    .kpi-value, .result-primary, .result-total-value, .sr-value, .vk-value,
+    .legend-val, .legend-pct, .donut-total-text, .donut-month-text,
+    .table td:last-child, .breakdown-table td:last-child {
+      font-family: var(--font-body) !important;
+      font-variant-numeric: tabular-nums lining-nums !important;
+      font-feature-settings: 'tnum' 1, 'lnum' 1 !important;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-family: var(--font-display); font-weight: 600; font-size: 1.1rem;
+      color: var(--text-primary); text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 0.25rem; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; padding: 0.4rem 0.75rem; border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-light); }
+    .nav-mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 36px; height: 36px; align-items: center; justify-content: center;
+    }
+    .nav-mobile-toggle svg { width: 22px; height: 22px; color: var(--text-primary); }
+    .section { max-width: var(--max-w); margin: 0 auto; padding: 2.5rem 1.25rem; }
+    .breadcrumbs {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem 0;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+    .breadcrumbs ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+    }
+    .breadcrumbs li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .breadcrumbs li:not(:last-child)::after {
+      content: "/";
+      color: var(--text-tertiary);
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--accent);
+    }
+    .section h1, .section h2, .section h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; line-height: 1.25; }
+    .section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 0.75rem; }
+    .section h2 { font-size: 1.55rem; margin-bottom: 0.6rem; }
+    .section h3 { font-size: 1.15rem; margin-bottom: 0.45rem; }
+    .section p { color: var(--text-secondary); margin-bottom: 0.85rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.75rem;
+      border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: var(--radius); box-shadow: var(--shadow-sm);
+      padding: 1.1rem 1.25rem; margin-bottom: 0.85rem;
+    }
+    .pill-grid { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .pill {
+      font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; padding: 0.4rem 0.85rem;
+      border: 1px solid var(--border); border-radius: 999px;
+      background: var(--surface); transition: all var(--transition);
+    }
+    .pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
+    .tool-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem; text-decoration: none; color: var(--text-primary); transition: all var(--transition);
+    }
+    .tool-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .tool-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+    .tool-card p { font-size: 0.87rem; color: var(--text-secondary); margin-bottom: 0.6rem; }
+    .tool-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+    .faq-list { margin-top: 1.25rem; list-style: none; padding-left: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item summary {
+      list-style: none; cursor: pointer; padding: 0.95rem 0;
+      display: flex; justify-content: space-between; align-items: center; font-weight: 600;
+    }
+    .faq-item summary::after { content: '+'; color: var(--text-tertiary); font-size: 1.2rem; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-answer { color: var(--text-secondary); padding: 0 0 1rem; }
+    .cross-link { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem 0.75rem; }
+    .cross-link-inner {
+      background: var(--surface); border: 1.5px solid var(--border-strong);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius); padding: 1rem 1.25rem;
+      display: grid; grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center; gap: 1rem;
+      transition: box-shadow var(--transition);
+    }
+    .cross-link-inner:hover { box-shadow: var(--shadow-md); }
+    .cross-link-inner p {
+      margin: 0; color: var(--text-secondary);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-size: 0.87rem;
+    }
+    .cross-link-inner strong { color: var(--text-primary); }
+    .cross-link-inner a {
+      font-size: 0.82rem; font-weight: 700; color: var(--accent); text-decoration: none;
+      padding: 0.42rem 1rem; border-radius: 999px; border: 1.5px solid var(--accent);
+      white-space: nowrap; flex-shrink: 0; transition: all var(--transition);
+    }
+    .cross-link-inner a:hover { background: var(--accent); color: white; }
+    .footer { border-top: 1px solid var(--border); background: var(--surface); padding: 2.5rem 1.25rem 2rem; margin-top: 2rem; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    .footer a { overflow-wrap: break-word; word-break: break-word; }
+    .footer h4 { font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.7rem; }
+    .footer a { display: block; font-size: 0.86rem; color: var(--text-secondary); text-decoration: none; padding: 0.16rem 0; }
+    .footer a:hover { color: var(--accent); }
+    .footer-bottom {
+      max-width: var(--max-w); margin: 1.2rem auto 0;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--text-tertiary);
+    }
+    /* ── GUIDES GRID ── */
+    .guides-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.7rem; margin-top: 1.4rem;
+    }
+    .guide-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.2rem 1rem;
+      text-decoration: none; color: var(--text-primary);
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .guide-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .guide-card .guide-topic {
+      font-size: 0.68rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.38rem;
+    }
+    .guide-card h3 {
+      font-size: 0.92rem; font-weight: 600; margin-bottom: 0.28rem;
+      line-height: 1.4; padding-right: 1.75rem;
+    }
+    .guide-card p { font-size: 0.79rem; color: var(--text-secondary); }
+    .guide-arrow {
+      position: absolute; top: 1.15rem; right: 1rem;
+      font-size: 0.95rem; color: var(--accent); opacity: 0;
+      transform: translateX(-5px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .guide-card:hover .guide-arrow { opacity: 1; transform: translateX(0); }
+    @media (max-width: 860px) {
+      .nav-mobile-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 56px; left: 0; right: 0; z-index: 101;
+        background: var(--surface); border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: 0.6rem 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .cross-link-inner {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+      .cross-link-inner p {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+      }
+    }
+  /* ── CALCULATOR WIDGET (secondary pages) ── */
+  .calc-widget{background:var(--surface);border:1.5px solid var(--border-strong);border-top:3px solid var(--accent);border-radius:var(--radius);box-shadow:0 2px 12px rgba(0,0,0,0.06),0 4px 20px rgba(0,0,0,0.03);overflow:hidden;margin-bottom:1.5rem;}
+  .calc-widget-header{padding:0.75rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:0.5rem;}
+  .calc-widget-header h2{font-family:var(--font-display);font-weight:500;font-size:1.05rem;letter-spacing:-0.02em;margin:0;}
+  .calc-year-badge{display:inline-flex;align-items:center;background:var(--accent-light);color:var(--accent);font-size:0.69rem;font-weight:700;padding:0.24rem 0.58rem;border-radius:var(--radius-sm);letter-spacing:0.01em;border:1px solid rgba(27,107,74,0.18);white-space:nowrap;flex-shrink:0;}
+  .calc-widget-body{padding:1rem 1.1rem 0.75rem;}
+  .calc-widget-results{background:var(--surface-alt);border-top:1px solid var(--border);padding:0.9rem 1.1rem 1rem;}
+  .calc-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1.25rem;}
+  @media(max-width:580px){.calc-grid-2{grid-template-columns:1fr;}}
+  .field{margin-bottom:0.65rem;}
+  .field:last-child{margin-bottom:0;}
+  .field label{display:block;font-size:0.73rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.22rem;letter-spacing:0.02em;text-transform:uppercase;}
+  .field input,.field select{width:100%;height:40px;padding:0 0.875rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.91rem;color:var(--text-primary);background:var(--surface);box-sizing:border-box;transition:border-color var(--transition),box-shadow var(--transition);-webkit-appearance:none;}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(27,107,74,0.12);}
+  .currency-input{position:relative;}
+  .currency-symbol{position:absolute;left:0.875rem;top:50%;transform:translateY(-50%);color:var(--text-tertiary);font-size:0.91rem;pointer-events:none;line-height:1;}
+  .currency-input input{padding-left:1.75rem;}
+  .field-hint{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.18rem;line-height:1.4;}
+  .results-row{display:grid;grid-template-columns:1fr auto;gap:0.28rem 1rem;align-items:baseline;font-size:0.88rem;padding:0.3rem 0;border-bottom:1px solid var(--border);}
+  .results-row:last-child{border-bottom:none;}
+  .results-label{color:var(--text-secondary);}
+  .results-value{font-weight:700;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
+  .results-total .results-label{font-weight:700;color:var(--text-primary);}
+  .results-total .results-value{color:var(--accent);font-size:1rem;}
+  .calc-disclaimer{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.6rem;line-height:1.5;}
+  </style>
+  {% block head_extra %}{% endblock %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "UKCapitalGainsTaxCalculator.co.uk",
+    "url": "{{ site_url }}",
+    "description": "Free UK capital gains tax calculator. Estimate CGT on shares, property and other assets using {{ tax_year }} rates, the £3,000 annual exempt amount and 18%/24% band split.",
+    "inLanguage": "en-GB",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site_url }}/?proceeds={proceeds}",
+      "query-input": "required name=proceeds"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "UKCapitalGainsTaxCalculator.co.uk",
+    "url": "{{ site_url }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site_url }}/static/logo-512.png",
+      "width": 512,
+      "height": 512
+    },
+    "description": "Free UK capital gains tax calculator. Estimate CGT on shares, property and other assets using {{ tax_year }} rates, the £3,000 annual exempt amount and 18%/24% band split.",
+    "areaServed": {"@type": "Country", "name": "United Kingdom"},
+    "knowsAbout": ["Capital Gains Tax", "UK CGT rates", "Annual exempt amount", "CGT on shares", "CGT on property"],
+    "sameAs": [
+      "https://www.gov.uk/capital-gains-tax/rates",
+      "https://www.gov.uk/government/publications/rates-and-allowances-capital-gains-tax"
+    ]
+  }
+  </script>
+  {% if breadcrumbs %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {% for crumb in breadcrumbs %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "name": "{{ crumb.name }}",
+        "item": "{{ crumb.url }}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+  {% block jsonld %}
+  {% if faq_items and not skip_faq_schema %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for item in faq_items %}
+      {
+        "@type": "Question",
+        "name": {{ item.q|tojson }},
+        "acceptedAnswer": {"@type": "Answer", "text": {{ item.a|tojson }} }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+  {% endblock %}
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" style="white-space:nowrap;">UKCapitalGainsTax<span>Calculator</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Calculator</a>
+        <a href="/calculators">Calculators</a>
+        <a href="/guides">Guides</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <button class="nav-mobile-toggle" type="button" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  {% if breadcrumbs and breadcrumbs|length > 1 %}
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      {% for crumb in breadcrumbs %}
+      <li>
+        {% if loop.last %}
+        <span aria-current="page">{{ crumb.name }}</span>
+        {% else %}
+        <a href="{{ crumb.url }}">{{ crumb.name }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </nav>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+
+  {% if show_cross_links %}
+  <div class="cross-link">
+    <div class="cross-link-inner">
+      <p><strong>Check your take-home pay?</strong> Use AfterTaxSalary for PAYE, NI and student loan deductions from your salary.</p>
+      <a href="https://aftertaxsalary.co.uk" rel="noopener" target="_blank">AfterTaxSalary.co.uk -></a>
+    </div>
+  </div>
+  <div class="cross-link">
+    <div class="cross-link-inner">
+      <p><strong>Buying a home?</strong> Estimate stamp duty, conveyancing and total cash needed before setting your offer budget.</p>
+      <a href="https://homebuyingcosts.co.uk" rel="noopener" target="_blank">HomeBuyingCosts.co.uk -></a>
+    </div>
+  </div>
+  {% endif %}
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <h4>Calculator suite</h4>
+        <a href="https://aftertaxsalary.co.uk" target="_blank" rel="noopener">AfterTaxSalary.co.uk</a>
+        <a href="https://homebuyingcosts.co.uk" target="_blank" rel="noopener">HomeBuyingCosts.co.uk</a>
+        <a href="https://employercalculator.co.uk" target="_blank" rel="noopener">EmployerCalculator.co.uk</a>
+        <a href="https://ukbenefitscalculator.co.uk" target="_blank" rel="noopener">UKBenefitsCalculator.co.uk</a>
+        <a href="https://soletradertaxcalculator.co.uk" target="_blank" rel="noopener">SoleTraderTaxCalculator.co.uk</a>
+        <a href="https://limitedcompanytaxcalculator.co.uk" target="_blank" rel="noopener">LimitedCompanyTaxCalculator.co.uk</a>
+        <a href="/" style="color:var(--accent);font-weight:600;">UKCapitalGainsTaxCalculator.co.uk</a>
+        <a href="https://ukdividendtaxcalculator.co.uk" target="_blank" rel="noopener">UKDividendTaxCalculator.co.uk</a>
+        <a href="https://pensiontaxreliefcalculator.co.uk" target="_blank" rel="noopener">PensionTaxReliefCalculator.co.uk</a>
+        <a href="https://uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener">UKSalarySacrificeCalculator.co.uk</a>
+      </div>
+      <div>
+        <h4>This site</h4>
+        <a href="/">Home</a>
+        <a href="/methodology">Methodology</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/disclaimer">Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Part of the UK Money Calculators network — free, independent tools for estimating UK tax, income, benefits, pensions and business finances. Calculations are guides only and are not financial advice.
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+<a href="/trap" style="display:none;visibility:hidden;" aria-hidden="true" tabindex="-1" rel="nofollow"></a>
+
+  <!-- Cookie consent -->
+  <div id="cookie-consent-banner" role="dialog" aria-label="Cookie consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--surface,#fff);border-top:1px solid var(--border,#e2e8f0);box-shadow:0 -4px 20px rgba(0,0,0,0.08);padding:1rem 1.25rem;">
+    <div style="max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+      <p style="font-size:0.82rem;color:var(--text-secondary,#475569);line-height:1.6;margin:0;max-width:700px;">
+        We use essential cookies to keep the site working. If ads are shown, Google may also set cookies to measure performance.
+        See our <a href="/cookie-policy" style="color:var(--accent,#1B6B4A);text-decoration:underline;">cookie policy</a> and <a href="/privacy" style="color:var(--accent,#1B6B4A);text-decoration:underline;">privacy policy</a>.
+      </p>
+      <div style="display:flex;gap:0.6rem;flex-shrink:0;">
+        <button id="cookie-decline-btn" style="font-family:inherit;font-size:0.82rem;font-weight:600;padding:0.42rem 1rem;border-radius:100px;border:1.5px solid var(--border-strong,#cbd5e1);background:var(--surface,#fff);color:var(--text-secondary,#475569);cursor:pointer;">Decline optional</button>
+        <button id="cookie-accept-btn" style="font-family:inherit;font-size:0.82rem;font-weight:600;padding:0.42rem 1rem;border-radius:100px;border:none;background:var(--accent,#1B6B4A);color:#fff;cursor:pointer;">Accept all</button>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var b=document.getElementById('cookie-consent-banner');
+    if(b&&!localStorage.getItem('cookie_consent'))b.style.display='block';
+    ['cookie-accept-btn','cookie-decline-btn'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el)el.addEventListener('click',function(){
+        localStorage.setItem('cookie_consent',id==='cookie-accept-btn'?'accepted':'declined');
+        b.style.display='none';
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
