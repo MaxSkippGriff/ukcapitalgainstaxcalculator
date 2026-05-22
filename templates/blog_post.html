@@ -19,7 +19,7 @@
   "headline": "{{ post.title }}",
   "description": "{{ post.description }}",
   "datePublished": "{{ post.date_iso }}",
-  "author": {"@type": "Organization", "name": "EmployerCalculator Editorial", "url": "{{ site_url }}/about"},
+  "author": {"@type": "Organization", "name": "UKCapitalGainsTaxCalculator Editorial", "url": "{{ site_url }}/about"},
   "mainEntityOfPage": "{{ site_url }}/blog/{{ post.slug }}"
 }
 </script>
@@ -46,22 +46,10 @@
 <section class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-8">
   <nav class="text-sm text-slate-500 mb-4"><a href="/" class="hover:text-blue-600">Home</a> / <a href="/blog" class="hover:text-blue-600">Blog</a> / <span class="text-slate-700">{{ post.title }}</span></nav>
   <div class="text-sm text-slate-400">Last updated: {{ post.date }} · {{ post.reading_time }}</div>
-  <p class="mt-2 text-sm text-slate-500">Written by AfterTaxSalary Editorial. Reviewed against official UK guidance. <a href="/editorial-standards" class="underline hover:text-blue-600">Editorial standards</a> · <a href="/methodology" class="underline hover:text-blue-600">Methodology</a></p>
+  <p class="mt-2 text-sm text-slate-500">Written by UKCapitalGainsTaxCalculator Editorial. Reviewed against official UK guidance. <a href="/methodology" class="underline hover:text-blue-600">Methodology</a></p>
   <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">{{ post.title }}</h1>
   <p class="mt-4 text-lg text-slate-500">{{ post.description }}</p>
 
-  <div class="card p-5 mt-6 border-blue-200 bg-blue-50/60">
-    <h2 class="font-bold text-slate-900 mb-2">Quick examples ({{ tax_year }})</h2>
-    <p class="text-sm text-slate-700">Typical default take-home figures for fast context before reading.</p>
-    <div class="grid sm:grid-cols-3 gap-3 mt-3">
-      {% for row in examples %}
-      <a href="/salary/{{ row.salary }}/england" class="rounded-xl bg-white border border-slate-200 p-3 hover:border-blue-300">
-        <div class="text-xs text-slate-500">£{{ "{:,}".format(row.salary) }}</div>
-        <div class="font-semibold text-slate-900">{{ row.result.take_home.monthly|gbp2 }} /mo</div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
 </section>
 
 <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-20">
@@ -82,16 +70,15 @@
   <div class="card p-5 mt-8">
     <h3 class="font-bold text-slate-900 mb-2">Use the calculator and tools</h3>
     <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/calculator" class="text-blue-600 font-semibold hover:underline">Open salary calculator</a>
-      <a href="/salary/50000/england" class="text-blue-600 font-semibold hover:underline">Salary page: £50,000 England</a>
-      <a href="/salary/100000/england" class="text-blue-600 font-semibold hover:underline">Salary page: £100,000 England</a>
-      <a href="/compare/45000-vs-55000/england" class="text-blue-600 font-semibold hover:underline">Compare offers</a>
-      <a href="/target-take-home" class="text-blue-600 font-semibold hover:underline">Target net monthly</a>
+      <a href="/calculator" class="text-blue-600 font-semibold hover:underline">Open CGT calculator</a>
       <a href="/guides" class="text-blue-600 font-semibold hover:underline">Read all guides</a>
-      <a href="/city/london/take-home-pay" class="text-blue-600 font-semibold hover:underline">City salary examples</a>
+      <a href="/property-cgt-calculator" class="text-blue-600 font-semibold hover:underline">Property CGT calculator</a>
+      <a href="/shares-cgt-calculator" class="text-blue-600 font-semibold hover:underline">Shares CGT calculator</a>
+      <a href="/crypto-cgt-calculator" class="text-blue-600 font-semibold hover:underline">Crypto CGT calculator</a>
     </div>
   </div>
 
+  {% if reference_facts %}
   <div class="card p-5 mt-8">
     <h3 class="font-bold text-slate-900 mb-2">{{ tax_year }} factual reference points</h3>
     <p class="text-sm text-slate-600 mb-3">Use these current tax-year figures as context while reading this article.</p>
@@ -140,6 +127,7 @@
       </div>
     </details>
   </div>
+  {% endif %}
 
   {% if article_faqs %}
   <div class="card p-6 mt-8">
