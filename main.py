@@ -114,6 +114,16 @@ def robots():
     r.content_type = "text/plain"
     return r
 
+
+@app.route("/ads.txt")
+def ads_txt():
+    pub_id = ADSENSE_CLIENT.replace("ca-pub-", "").strip()
+    body = f"google.com, pub-{pub_id}, DIRECT, f08c47fec0942fa0\n" if pub_id else ""
+    resp = make_response(body)
+    resp.mimetype = "text/plain"
+    return resp
+
+
 @app.route("/sitemap.xml")
 def sitemap():
     now = datetime.utcnow().strftime("%Y-%m-%d")
