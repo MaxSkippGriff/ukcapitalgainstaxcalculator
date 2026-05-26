@@ -389,7 +389,7 @@ def cgt_allowance_calculator():
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"CGT Allowance Calculator","url":SITE_URL+"/cgt-allowance-calculator"}],
     ))
 
-CGT_GAIN_AMOUNTS = [5000, 10000, 15000, 20000, 25000, 30000, 40000, 50000, 75000, 100000, 150000, 200000]
+CGT_GAIN_AMOUNTS = [5000, 10000, 15000, 20000, 25000, 30000, 40000, 50000, 75000, 100000, 150000, 200000, 250000, 500000]
 
 @app.route("/cgt/<int:gain>")
 def cgt_gain_page(gain: int):
@@ -625,6 +625,222 @@ BLOG_POSTS = [
             {"q": "What is the CGT rate on shares in 2026/27?", "a": "18% for gains within the basic-rate band and 24% for gains in the higher-rate band. These rates have applied since October 2024."},
             {"q": "What are the share matching rules?", "a": "HMRC matches disposals first against same-day purchases, then against purchases within the following 30 days, then against the Section 104 pool average. This prevents selective lot matching and rapid recycling to avoid tax."},
             {"q": "Are shares inside an ISA exempt from CGT?", "a": "Yes. There is no CGT on gains from shares, funds or ETFs held inside a Stocks and Shares ISA."},
+        ],
+    },
+    {
+        "slug": "cgt-rates-2026-27",
+        "title": "Capital Gains Tax Rates 2026/27 — Full Guide",
+        "description": "A complete guide to CGT rates for 2026/27: residential property at 18%/24%, other assets at 10%/20%, the £3,000 annual exempt amount, the 60-day reporting rule and Business Asset Disposal Relief.",
+        "date_iso": "2026-05-26",
+        "date": "May 2026",
+        "reading_time": "8 min read",
+        "sections": [
+            {
+                "heading": "The Two CGT Rate Structures",
+                "paragraphs": [
+                    "CGT in 2026/27 operates on two separate rate structures depending on the type of asset. Residential property that is not your main home — second homes, buy-to-let properties, inherited property — is taxed at 18% for gains within the basic-rate band and 24% for gains in the higher or additional-rate band. Most other assets — shares, funds, crypto, commercial property, business assets — are taxed at 10% basic rate and 20% higher rate.",
+                    "The rate that applies is determined by your income tax position, not a separate CGT calculation. Your other taxable income (salary, pension, rental income) fills the basic-rate band first, up to the £50,270 threshold. Any remaining basic-rate band space is then available to absorb your taxable gains at the lower rate. Gains above that remaining space are charged at the higher rate. This means a basic-rate taxpayer with a large gain will often find part of it taxed at the higher rate — gains stack on top of income.",
+                    "The residential property rates of 18%/24% replaced the previous 18%/28% structure from 30 October 2024 onwards. For the 2026/27 tax year, all qualifying residential property disposals use the current 18%/24% rates throughout.",
+                ],
+            },
+            {
+                "heading": "The Annual Exempt Amount — £3,000",
+                "paragraphs": [
+                    "Every individual has an annual exempt amount (AEA) of £3,000 for 2026/27. Net gains below this threshold in a tax year are completely free from CGT. The AEA is applied after losses — so if you have £8,000 of gains and £3,000 of losses, your net gain is £5,000, and the £3,000 AEA reduces the taxable gain to £2,000.",
+                    "The AEA cannot be carried forward to the next tax year. If you do not make any gains in 2026/27, the £3,000 allowance is simply lost. It also cannot be transferred to a spouse — each individual has their own separate allowance. However, married couples should consider whose name an asset is held in before selling, since whichever spouse makes the disposal uses their own AEA and pays CGT at their own rate. A lower-income spouse with unused AEA and a lower CGT rate can reduce the household's total tax bill significantly.",
+                ],
+            },
+            {
+                "heading": "The 60-Day Reporting Requirement for Residential Property",
+                "paragraphs": [
+                    "If you sell a UK residential property (not your main home, or one with only partial main home relief) and a CGT liability arises, you must report the gain and pay an estimate of the tax within 60 days of the completion date. This is done through HMRC's online UK property reporting service — it is separate from the annual Self Assessment process. The 60-day clock starts on the completion date, not the exchange date.",
+                    "Failing to report within 60 days triggers a late filing penalty of £100 immediately, rising to £300 (or 5% of the tax due if higher) after 6 months, and a further £300 (or 5%) after 12 months. Daily penalties of £10 per day also apply after 3 months. If there is no CGT to pay — for example if the gain is within the AEA or fully covered by losses — no report is required. Non-UK resident individuals must report all UK residential property disposals through the same service, whether or not CGT is owed.",
+                ],
+            },
+            {
+                "heading": "Business Asset Disposal Relief",
+                "paragraphs": [
+                    "Business Asset Disposal Relief (BADR), previously known as Entrepreneurs' Relief, provides a reduced CGT rate of 10% on qualifying gains up to a lifetime limit of £1,000,000. For qualifying disposals on or after 6 April 2025, the BADR rate is 14% (it increased from 10% as announced in the October 2024 Budget). Check the applicable rate for your disposal date carefully.",
+                    "To qualify for BADR, the most common route is shares in your personal trading company: you must hold at least 5% of the ordinary share capital and voting rights, the company must be a trading company (or the holding company of a trading group), and you must have held the shares for at least two years immediately before disposal. You must also have been an officer or employee of the company throughout that two-year period. The £1,000,000 lifetime limit is cumulative across all qualifying disposals throughout your life. Once used up, it is gone — there is no annual reset.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "What are the CGT rates for 2026/27?", "a": "Residential property: 18% basic rate, 24% higher rate. Other assets (shares, crypto, etc.): 10% basic rate, 20% higher rate. Business Asset Disposal Relief: 14% on qualifying gains up to £1m lifetime limit."},
+            {"q": "How does my income affect my CGT rate?", "a": "Your salary and other income fill the basic-rate band first. Whatever space remains up to £50,270 is available for gains at the lower CGT rate. Gains above that threshold are at the higher rate. A large gain will often straddle both rates."},
+            {"q": "Do I have to report a property sale within 60 days?", "a": "Yes, if CGT is owed on the disposal of a UK residential property. The report and payment are due within 60 days of completion through HMRC's online property reporting service."},
+        ],
+    },
+    {
+        "slug": "private-residence-relief-explained",
+        "title": "Private Residence Relief Explained",
+        "description": "Private Residence Relief (PRR) exempts your main home from CGT. This guide covers the final 9 months rule, partial PRR for let periods, when PRR goes wrong and the rules for married couples.",
+        "date_iso": "2026-05-26",
+        "date": "May 2026",
+        "reading_time": "7 min read",
+        "sections": [
+            {
+                "heading": "What PRR Covers",
+                "paragraphs": [
+                    "Private Residence Relief exempts the gain on your only or main residence from CGT. If you own one property and it has been your main home throughout your entire period of ownership, the full gain is exempt. You do not need to claim the relief — it applies automatically, and you are not required to report the disposal on a Self Assessment return.",
+                    "The relief also covers the final 9 months of ownership, regardless of whether you are still living in the property. This grace period exists to help people who have moved out before completing the sale — for example after buying a new home and needing time to sell the old one. If you moved out 6 months before completion, those 6 months are still counted as a period of main residence. If you moved out 18 months before completion, only the last 9 months of that gap are covered; the other 9 months are potentially chargeable.",
+                ],
+            },
+            {
+                "heading": "Partial PRR — Let Property and Periods of Deemed Occupation",
+                "paragraphs": [
+                    "If you lived in the property for only part of your ownership period, PRR is apportioned. The exempt fraction is the proportion of time the property was your main residence (plus the final 9 months), divided by the total ownership period. Periods of absence can be treated as periods of occupation in certain circumstances — these are called deemed occupation periods. They include the last 9 months, any period working abroad for any length of time, and any period working elsewhere in the UK (up to 4 years), provided the property was your main residence before and after the absence.",
+                    "Let Property Relief used to provide a further exemption for periods when the property was let while you were absent, but the rules changed significantly from April 2020. The relief now only applies in situations where the owner is in shared occupation with the tenant — a narrow set of circumstances that does not cover standard buy-to-let periods. For most people who have let their former main home, Let Property Relief is no longer available.",
+                ],
+            },
+            {
+                "heading": "When PRR Goes Wrong",
+                "paragraphs": [
+                    "Several situations can unexpectedly reduce or eliminate PRR. Using part of your home exclusively for business — a room used only as an office, not as a room that doubles as an office — means that portion of the gain does not qualify for PRR. The key word is exclusively: a room used sometimes for work and sometimes as a bedroom retains PRR, but a dedicated office that was never used as living space does not. This is a common trap for the self-employed.",
+                    "Development land is another area where PRR can be challenged. If you sell your garden or grounds separately, or if the sale price reflects development potential rather than residential use, HMRC may argue that part of the gain relates to the development value rather than the residence itself. The interaction between PRR and development gains requires careful analysis. Similarly, converting a property from a main home to a buy-to-let before selling it creates a period of non-residence that is fully chargeable.",
+                ],
+            },
+            {
+                "heading": "PRR and Marriage — One Main Residence Per Couple",
+                "paragraphs": [
+                    "Married couples and civil partners can only nominate one property as their main residence for PRR purposes at any given time. If both spouses own separate properties, only one can be the couple's main residence — the same property applies to both of them. There is no ability for each spouse to separately claim PRR on different properties simultaneously.",
+                    "The election process allows couples who own more than one property to nominate which one is treated as the main residence. The election must be made within two years of acquiring the second property. If no election is made, HMRC looks at the facts of occupation. For couples buying a second property — a holiday home, a property for a child — understanding this election and making it promptly is essential to preserve PRR on the intended main home.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "Is my main home exempt from CGT?", "a": "Yes, in most cases. Private Residence Relief exempts the gain on your only or main home. The relief covers the period of occupation plus the final 9 months of ownership even after moving out."},
+            {"q": "Do I get PRR if I let my home out?", "a": "Only for the period it was your actual main residence. Periods when it was let rather than occupied by you do not qualify for PRR (with narrow exceptions). Let Property Relief no longer applies to standard letting periods since April 2020."},
+            {"q": "Can a married couple each claim PRR on different properties?", "a": "No. Married couples and civil partners share one main residence election — both spouses are bound by the same nominated main home."},
+        ],
+    },
+    {
+        "slug": "bed-and-isa-strategy",
+        "title": "Bed and ISA — CGT Tax Planning Strategy",
+        "description": "Bed and ISA is the strategy of selling investments outside an ISA and immediately rebuying them inside one. Future growth is then tax-free, and the sale uses your annual exempt amount.",
+        "date_iso": "2026-05-26",
+        "date": "May 2026",
+        "reading_time": "6 min read",
+        "sections": [
+            {
+                "heading": "What Bed and ISA Means",
+                "paragraphs": [
+                    "Bed and ISA refers to selling shares or funds held in a general investment account (GIA) and immediately repurchasing the same or equivalent investments inside a Stocks and Shares ISA. The effect is to move holdings from a taxable environment into a tax-free wrapper. Once inside the ISA, all future growth, dividends and capital gains are permanently free from tax — there is no CGT on gains within an ISA, however large they become.",
+                    "The term derives from the older 'bed and breakfast' strategy, where investors sold and repurchased outside any wrapper to crystallise a gain or loss. Bed and ISA is its successor — instead of repurchasing in the same account, the new holding goes into the ISA. This distinction is crucial for understanding how the tax rules apply.",
+                ],
+            },
+            {
+                "heading": "The CGT Implication of the 'Bed' Part",
+                "paragraphs": [
+                    "The sale itself — the 'bed' — is a disposal for CGT purposes. If the investment has grown in value, you crystallise a capital gain at the point of sale. That gain uses up your annual exempt amount (£3,000 for 2026/27). If the gain exceeds £3,000, CGT is payable on the excess. If the investment has fallen in value, you crystallise a capital loss, which can offset gains elsewhere.",
+                    "Ideally, bed and ISA is timed so that gains fall within the annual exempt amount — meaning no CGT arises. An investor with unrealised gains of £3,000 or less can execute the full transfer tax-free each year. Those with larger unrealised gains might split the bed and ISA across two tax years — selling some before 5 April and the rest after 6 April — to use two years' worth of the annual exempt amount.",
+                ],
+            },
+            {
+                "heading": "The 30-Day Rule Does Not Apply to ISA Rebuys",
+                "paragraphs": [
+                    "The bed-and-breakfast rule (Section 106A TCGA 1992) matches a sale with any purchase of the same shares within 30 days, neutralising the intended gain or loss crystallisation. This rule is specifically designed to prevent investors from selling and immediately repurchasing in the same account to manipulate their tax position.",
+                    "Crucially, the 30-day rule does not apply to purchases made inside an ISA. HMRC's position is that an ISA holding is a different legal entity from a direct holding, so the two are not 'the same' investment for matching purposes. You can sell shares in your GIA at 9am and buy the identical shares inside your ISA at 9.05am, and the 30-day rule does not apply. The gain (or loss) on the GIA sale stands in full. This is confirmed in HMRC's Capital Gains manual at CG42562.",
+                ],
+            },
+            {
+                "heading": "When Bed and ISA Makes Sense",
+                "paragraphs": [
+                    "Bed and ISA is most valuable for investments with significant unrealised growth that you intend to hold for a long time. The longer you hold, the more future gains accumulate inside the tax-free wrapper, and the greater the CGT saving compared to eventually selling from a GIA. For short-term holdings where you plan to sell within a year or two, the benefit may not justify the transaction costs.",
+                    "The optimal time to execute is when your unrealised gain is close to (but does not exceed) your remaining annual exempt amount for the year, and when your ISA allowance has not yet been fully used. For a couple, both partners can execute bed and ISA in the same tax year, using their individual AEAs and ISA allowances — up to £40,000 combined can move into ISAs in a single year this way. Anyone with substantial GIA holdings should run the bed and ISA calculation every April as part of year-end tax planning.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "Does the 30-day rule apply when rebuying inside an ISA?", "a": "No. The bed-and-breakfast 30-day matching rule only applies to repurchases in the same type of account. Repurchasing inside an ISA is not caught by the rule, so you can sell in a GIA and immediately rebuy in an ISA without the gain being neutralised."},
+            {"q": "Will I owe CGT on a bed and ISA transaction?", "a": "Only if the gain on the GIA sale exceeds your annual exempt amount (£3,000 for 2026/27). If the unrealised gain is within the AEA, no CGT arises."},
+            {"q": "Can I sell and immediately rebuy the same fund inside an ISA?", "a": "Yes. The sale and repurchase can happen on the same day. Your ISA subscription must be within your remaining annual allowance (£20,000 for 2026/27)."},
+        ],
+    },
+    {
+        "slug": "cgt-capital-losses",
+        "title": "Capital Losses — How to Offset Against Gains",
+        "description": "Capital losses reduce your CGT bill, but the offset rules are not straightforward. Same-year losses, carried-forward losses, reporting requirements and the rules on connected-person sales — all covered here.",
+        "date_iso": "2026-05-26",
+        "date": "May 2026",
+        "reading_time": "7 min read",
+        "sections": [
+            {
+                "heading": "The Offset Rules",
+                "paragraphs": [
+                    "Capital losses from the same tax year must be set against capital gains from that same year first, before the annual exempt amount is applied. You cannot choose to defer current-year losses — they must be deducted. If your losses exceed your gains in a year, the net loss is carried forward to future years.",
+                    "Losses brought forward from earlier years are treated differently. They are only applied to the extent necessary to reduce the net gain to the annual exempt amount (£3,000 for 2026/27). So if you have £15,000 of gains and £20,000 of brought-forward losses, you do not apply all £20,000 — you apply only £12,000 (to bring the net gain down to £3,000, which is then fully covered by the AEA and bears no CGT). The remaining £8,000 of brought-forward losses is preserved and carried forward again. This rule prevents losses from being wasted by being applied against gains that would have been exempt anyway.",
+                ],
+            },
+            {
+                "heading": "Reporting Losses",
+                "paragraphs": [
+                    "Capital losses are not automatically identified by HMRC. You must claim them, either on a Self Assessment tax return or by writing to HMRC if you are not within Self Assessment. The claim must be made within four years of the end of the tax year in which the loss arose. For a loss in 2022/23, the deadline to claim is 31 January 2027. Losses that are not claimed within the four-year window are permanently lost.",
+                    "On a Self Assessment return, capital losses are reported in the Capital Gains pages (SA108). You enter both gains and losses for the year, and HMRC's calculation applies them in the correct order. Carried-forward losses from previous years must also be entered on the return each year they are used, even partially. Keep a running log of your brought-forward losses — it is easy to lose track across multiple tax years.",
+                ],
+            },
+            {
+                "heading": "Negligible Value Claims",
+                "paragraphs": [
+                    "If an asset has become effectively worthless — for example shares in a company that has gone into liquidation — but you have not yet formally disposed of them, you may be able to make a negligible value claim. This allows you to treat the asset as having been sold and immediately reacquired at the negligible value, crystallising a loss even though no actual sale has occurred. You can specify a date in the past (going back up to two prior tax years) for the deemed disposal, provided the asset was of negligible value at that date.",
+                    "The claim is useful for extracting a loss from an investment that is stuck — either because the shares are in a suspended company, the asset has no buyer, or disposal is otherwise impractical. HMRC maintains a list of companies where negligible value claims have been accepted, which speeds up the process. For assets outside that list, you must demonstrate that the asset has no, or negligible, value at the claimed date.",
+                ],
+            },
+            {
+                "heading": "Selling at a Loss to a Connected Person",
+                "paragraphs": [
+                    "Sales to connected persons — which includes your spouse, civil partner, children, siblings, parents and companies you control — do not create allowable CGT losses. If you sell an asset to a connected person at a loss (whether at arm's length or at an undervalue), that loss is not deductible against other gains. It is a 'clogged' loss, which can only be set against gains arising on later transactions with the same connected person.",
+                    "This rule exists to prevent artificial loss creation within families. The no-gain/no-loss rule for spousal transfers means you cannot give an asset to your spouse, have them sell at a loss, and use that loss against your own gains. The connected-person rules also mean that selling a loss-making investment to your adult child at market value still produces a clogged loss if they are a connected person. Genuine arm's-length sales to unrelated third parties are not affected.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "Do I have to use losses against gains in the same year?", "a": "Yes, current-year losses must be set against current-year gains first. You cannot choose to carry them forward if there are gains available to offset in the same year."},
+            {"q": "How long can I carry forward capital losses?", "a": "Indefinitely, provided they were claimed within 4 years of the end of the tax year when they arose. There is no time limit on using losses once correctly claimed."},
+            {"q": "Can I claim a loss if my shares are worthless but I haven't sold them?", "a": "Yes, through a negligible value claim. You can treat the shares as sold and immediately reacquired at nil value, creating a capital loss. The claim can be backdated up to two prior tax years if the shares were worthless then."},
+        ],
+    },
+    {
+        "slug": "cgt-gifted-property",
+        "title": "Transferring Assets Between Spouses — CGT Rules",
+        "description": "Married couples and civil partners can transfer assets between themselves with no CGT charge. This guide covers the no-gain no-loss rule, its use in pre-sale planning, the year-of-separation trap and gifts to others.",
+        "date_iso": "2026-05-26",
+        "date": "May 2026",
+        "reading_time": "6 min read",
+        "sections": [
+            {
+                "heading": "No-Gain No-Loss Transfers",
+                "paragraphs": [
+                    "Transfers of assets between spouses and civil partners who are living together are treated as no-gain no-loss transactions for CGT purposes under TCGA 1992 s58. This means no CGT arises at the point of transfer, regardless of the asset's current market value. The receiving spouse acquires the asset at the transferring spouse's original acquisition cost (plus any capital improvements), not at its current value. The base cost carries over.",
+                    "This rule applies automatically to all transfers between cohabiting spouses and civil partners — there is no election required and no form to file. It applies to all assets: shares, property, crypto, business interests. The rule does not apply to couples who are separated or who have permanently ceased living together — see the year-of-separation trap below.",
+                ],
+            },
+            {
+                "heading": "Why This Matters for Planning",
+                "paragraphs": [
+                    "The no-gain no-loss rule enables a straightforward and HMRC-compliant strategy: transfer an asset to the lower-income spouse before sale, so that the eventual gain is taxed at their lower CGT rate. A higher-rate taxpayer with a £50,000 gain on shares would pay CGT at 20%, giving a liability of approximately £9,400 after the AEA. If the same asset is transferred to a basic-rate taxpayer spouse before disposal, the same gain is taxed at 10%, a liability of approximately £4,700 — a saving of £4,700.",
+                    "The strategy works for the annual exempt amount too. If one spouse has already used their £3,000 AEA and the other has not, transferring an asset with a £3,000 gain to the unused-AEA spouse before sale means the gain is entirely tax-free. Over a lifetime of investing, using both spouses' AEAs systematically generates meaningful tax savings. The transfer must be a genuine and unconditional gift to the other spouse — it cannot be conditional on the sale proceeds being returned.",
+                ],
+            },
+            {
+                "heading": "The Year-of-Separation Trap",
+                "paragraphs": [
+                    "The no-gain no-loss rule only applies while spouses or civil partners are living together. For CGT purposes, 'living together' means not separated under a court order or separation agreement, and not in circumstances where the separation is likely to be permanent. Once a couple separates permanently, the rule ceases to apply — even if the divorce has not yet been finalised.",
+                    "For tax years from 2023/24 onwards, there is an extended window: separating couples have until the end of the third tax year following the year of separation to transfer assets between themselves on a no-gain no-loss basis. This extended window was introduced to give divorcing couples more time to sort out financial settlements without tax charges arising. Before this change, the window closed at the end of the tax year of separation — often only weeks or months — creating urgent and poorly-timed disposals. The extended window significantly reduces pressure on separating couples to rush asset transfers.",
+                ],
+            },
+            {
+                "heading": "Gifts to Others — Deemed Proceeds Rule",
+                "paragraphs": [
+                    "The no-gain no-loss treatment is exclusive to spouses and civil partners. Gifts to anyone else — children, siblings, friends, cohabitees — trigger CGT at the asset's market value at the date of the gift, regardless of whether any money changes hands. This is the deemed proceeds rule: HMRC treats the gift as if you had sold the asset at open market value.",
+                    "For example, gifting shares currently worth £30,000 that you originally bought for £10,000 creates a taxable gain of £20,000. The fact that you received nothing for them is irrelevant — CGT is calculated on the market value. Hold-Over Relief is available in limited circumstances for gifts of business assets, meaning the gain can be deferred until the recipient eventually sells. But for most assets — shares in listed companies, investment property, crypto — no hold-over is available, and the gift triggers an immediate CGT charge at market value.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "Does transferring assets to my spouse trigger CGT?", "a": "No. Transfers between spouses and civil partners who are living together are no-gain no-loss — no CGT arises at the transfer. The receiving spouse takes the asset at the original acquisition cost."},
+            {"q": "When does the year-of-separation rule apply?", "a": "Once spouses permanently separate, the no-gain no-loss rule ends. From 2023/24, separating couples have three additional tax years to make no-gain no-loss transfers, giving more time for divorce financial settlements."},
+            {"q": "What CGT applies if I give shares to my adult child?", "a": "The gift is treated as a disposal at market value. CGT is calculated on the difference between market value and your acquisition cost. No hold-over relief is available for shares in listed companies."},
         ],
     },
     {
