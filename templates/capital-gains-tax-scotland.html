@@ -1,0 +1,105 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Capital Gains Tax in Scotland 2026/27","description":"CGT rates are identical across the UK, but Scottish income tax thresholds affect how the 18%/24% rate split works for Scottish taxpayers. Includes worked examples and planning strategies.","url":"{{ site_url }}/capital-gains-tax-scotland","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Capital Gains Tax in Scotland","item":"{{ site_url }}/capital-gains-tax-scotland"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do Scottish taxpayers pay higher CGT rates?","acceptedAnswer":{"@type":"Answer","text":"No. CGT rates of 18% and 24% apply identically across the UK. Scotland cannot vary CGT rates. The rates are set by the UK Government at Westminster."}},{"@type":"Question","name":"Which band threshold applies for CGT in Scotland?","acceptedAnswer":{"@type":"Answer","text":"The UK-wide basic-rate limit of £50,270 is used for CGT purposes, not the lower Scottish higher-rate threshold of £43,662."}},{"@type":"Question","name":"Does the annual exempt amount apply in Scotland?","acceptedAnswer":{"@type":"Answer","text":"Yes. The £3,000 annual exempt amount applies to all UK taxpayers including those in Scotland."}},{"@type":"Question","name":"Does LBTT count as an allowable cost for CGT?","acceptedAnswer":{"@type":"Answer","text":"Yes. Land and Buildings Transaction Tax paid on purchase of Scottish property is an allowable acquisition cost for CGT, reducing your gain when you sell."}}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Capital Gains Tax in Scotland 2026/27</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">CGT rates are set by the UK Government and apply identically across Scotland, England, Wales and Northern Ireland. However, because Scottish income tax thresholds differ from the rest of the UK, the CGT rate split, 18% vs 24%, can work differently for Scottish taxpayers.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Last updated for the 2026/27 tax year.</p>
+
+    <h2>CGT rates in Scotland 2026/27</h2>
+    <p>Scotland cannot vary CGT rates. The rates are set by Westminster and apply to all UK taxpayers equally:</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span style="font-weight:600;">Basic-rate CGT (all assets, 2026/27)</span><span style="font-weight:600;color:var(--accent);">18%</span>
+        <span style="font-weight:600;">Higher-rate CGT (all assets, 2026/27)</span><span style="font-weight:600;color:var(--accent);">24%</span>
+        <span>Annual exempt amount</span><span>£3,000</span>
+        <span>Band threshold used for CGT in Scotland</span><span>UK limit, £50,270</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">The key point: for CGT purposes, the <strong>UK-wide basic-rate limit of £50,270</strong> is used to determine which rate applies — not the Scottish higher-rate threshold of £43,662. Scottish and English taxpayers with the same income and gain pay the same CGT.</p>
+
+    <h2>Scottish income tax vs CGT, the key difference</h2>
+    <p>Scotland has its own income tax rates and bands: starter rate (19%), basic rate (20%), intermediate rate (21%), higher rate (42%) and top rate (48%). The Scottish higher-rate band starts at £43,662 for 2026/27 — lower than the rest of the UK (£50,270).</p>
+    <p>What does this mean in practice? A Scottish taxpayer earning £46,000 is already in the Scottish higher-rate band for <em>income tax</em>, paying 42% on income above £43,662. But for <em>CGT</em>, what matters is whether income exceeds the UK basic-rate limit of £50,270. At £46,000 of salary, there is still £4,270 of UK basic-rate band remaining (£50,270 − £46,000), so up to £4,270 of capital gains can be taxed at 18%.</p>
+    <p style="margin-bottom:0;">Scottish income tax and UK CGT use different thresholds. They interact through your income level, but the CGT calculation always uses the UK figures.</p>
+
+    <h2>Worked example: Scottish taxpayer with £46,000 salary</h2>
+    <p>Fiona is a Scottish higher-rate income taxpayer with a salary of £46,000. She sells shares and makes a £15,000 gain.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Gross gain</span><span style="font-variant-numeric:tabular-nums;">£15,000</span>
+        <span>Annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Taxable gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£12,000</span>
+        <span>UK basic-rate band remaining (£50,270 − £46,000)</span><span style="font-variant-numeric:tabular-nums;">£4,270</span>
+        <span>First £4,270 at 18%</span><span style="font-variant-numeric:tabular-nums;">£769</span>
+        <span>Remaining £7,730 at 24%</span><span style="font-variant-numeric:tabular-nums;">£1,855</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£2,624</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">If Fiona lived in England with the same salary and gain, the CGT calculation would be identical. The UK-wide £50,270 threshold is used in both cases.</p>
+
+    <h2>Worked example: Scottish basic-rate taxpayer</h2>
+    <p>Jamie earns £30,000 and sells a buy-to-let property with a £40,000 gain after the AEA.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Taxable income (£30,000 − £12,570)</span><span style="font-variant-numeric:tabular-nums;">£17,430</span>
+        <span>UK basic-rate band remaining (£37,700 − £17,430)</span><span style="font-variant-numeric:tabular-nums;">£20,270</span>
+        <span>First £20,270 of gain at 18%</span><span style="font-variant-numeric:tabular-nums;">£3,649</span>
+        <span>Remaining £19,730 of gain at 24%</span><span style="font-variant-numeric:tabular-nums;">£4,735</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£8,384</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">The calculation is identical for an English taxpayer with the same salary and property gain.</p>
+
+    <h2>CGT planning strategies for Scottish taxpayers</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><strong>Use the annual exempt amount</strong>, £3,000 applies equally in Scotland. Systematic annual crystallisation via bed-and-ISA is just as effective.</li>
+      <li><strong>Pension contributions</strong>, Scottish higher-rate taxpayers benefit from 41% income tax relief on pension contributions (Scottish intermediate rate is 21%, higher rate 42%). Contributions also reduce taxable income, potentially pushing more CGT into the 18% band.</li>
+      <li><strong>Spousal transfers</strong>, transfers between spouses are no-gain/no-loss across the UK. Transferring assets to a lower-income Scottish spouse before disposal uses their AEA and lower CGT rate.</li>
+      <li><strong>ISA wrapper</strong>, gains inside a Stocks and Shares ISA are completely CGT-free across the UK including Scotland.</li>
+    </ul>
+
+    <h2>The 60-day property reporting rule in Scotland</h2>
+    <p>The 60-day rule applies equally in Scotland. Sell a Scottish residential property (other than your main home) with CGT owed, and you must report and pay within 60 days of completion through HMRC's online property reporting service.</p>
+    <p style="margin-bottom:0;">Scotland uses Land and Buildings Transaction Tax (LBTT) instead of Stamp Duty Land Tax. LBTT paid on purchase is an allowable cost for CGT in the same way SDLT is in England.</p>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your CGT as a Scottish taxpayer</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Our calculator uses the UK-wide £50,270 threshold. Enter your income and gain for an accurate 2026/27 estimate.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
+  </div>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do Scottish taxpayers pay higher CGT rates?</summary>
+        <div class="faq-answer"><p>No. CGT rates of 18% and 24% apply identically across the UK. Scotland cannot vary CGT rates. The rates are set by the UK Government at Westminster.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Which band threshold applies for CGT in Scotland?</summary>
+        <div class="faq-answer"><p>The UK-wide basic-rate limit of £50,270 is used for CGT purposes, not the lower Scottish higher-rate threshold of £43,662.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does the annual exempt amount apply in Scotland?</summary>
+        <div class="faq-answer"><p>Yes. The £3,000 annual exempt amount applies to all UK taxpayers including those in Scotland.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does LBTT count as an allowable cost for CGT?</summary>
+        <div class="faq-answer"><p>Yes. Land and Buildings Transaction Tax paid on purchase of Scottish property is an allowable acquisition cost for CGT, reducing your gain when you sell.</p></div>
+      </details>
+    </div>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only. CGT rules are complex and individual circumstances vary. Consult a qualified tax adviser for personalised guidance.</p>
+</section>
+{% endblock %}

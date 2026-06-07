@@ -1,35 +1,28 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax on a Second Home 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">Selling a second home, holiday home or investment property that is not your main residence can trigger a significant capital gains tax bill. Because Private Residence Relief does not apply, the full gain is exposed to CGT — and you must report and pay within 60 days of completion. This guide explains the 2026/27 rules in full.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Why Private Residence Relief does not apply</h2>
-    <p>Private Residence Relief (PRR) can exempt all or most of the gain on your <strong>main home</strong> from CGT. For a second home or investment property, PRR does not apply unless you genuinely occupied that property as your only or main residence at some point.</p>
-    <p>If you did live there as your main home for part of the ownership period, you may be able to claim PRR on the proportion of time the property was your main residence, plus the final 9 months of ownership automatically (reduced from 18 months in April 2020). Any remaining period outside those windows is a chargeable gain.</p>
-    <p style="margin-bottom:0;">For a property that was never your main residence — such as a pure buy-to-let or a holiday cottage rented to guests — PRR does not apply at all.</p>
-  </article>
+    <p>Private Residence Relief (PRR) exempts all or most of the gain on your <strong>main home</strong>. For a second home or investment property, PRR does not apply unless you genuinely lived there as your only or main residence at some point.</p>
+    <p>If you did occupy it as your main home for part of the ownership period, you can claim PRR on that proportion of time, plus the final 9 months automatically (reduced from 18 months in April 2020). Any period outside those windows remains chargeable.</p>
+    <p style="margin-bottom:0;">For a property that was never your main residence — a pure buy-to-let or a holiday cottage rented to guests — PRR does not apply at all.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Letting Relief — very limited since April 2020</h2>
-    <p>Before April 2020, Letting Relief could reduce a CGT bill by up to £40,000. Since April 2020 it only applies where the owner was in <strong>shared occupancy</strong> with their tenants. For most landlords and holiday let owners who were not living in the property at the same time as tenants, Letting Relief is no longer available.</p>
-  </article>
+    <p>Before April 2020, Letting Relief could cut a CGT bill by up to £40,000. Since April 2020 it only applies where the owner was in <strong>shared occupancy</strong> with tenants. For most landlords and holiday let owners who were not living there at the same time as tenants, Letting Relief is gone.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>2026/27 CGT rates for residential property</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><strong>18%</strong> on gains falling within your remaining basic-rate band (income plus gain up to £50,270 after personal allowance)</li>
       <li><strong>24%</strong> on gains above the basic-rate band</li>
       <li>Annual exempt amount: <strong>£3,000</strong> per individual per tax year</li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Allowable costs you can deduct</h2>
-    <p>The following costs reduce the gain:</p>
+    <p>The following costs reduce the gain you are taxed on:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Purchase price and Stamp Duty Land Tax paid when you bought</li>
       <li>Solicitor/conveyancing fees on purchase and sale</li>
@@ -37,12 +30,10 @@
       <li>Costs of capital improvement works (extensions, renovations — not routine repairs or maintenance)</li>
       <li>Surveyor fees on purchase</li>
     </ul>
-    <p style="margin-bottom:0;">You cannot deduct mortgage interest, letting agent management fees, insurance or other running costs — those may have been claimed as income tax deductions while the property was let.</p>
-  </article>
+    <p style="margin-bottom:0;">You cannot deduct mortgage interest, letting agent fees, insurance or other running costs. Those may have been income tax deductions while the property was let, but they do not reduce your CGT gain.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example</h2>
-    <p>James bought a holiday cottage in 2015 for <strong>£180,000</strong> (including Stamp Duty and solicitor fees). He sells in 2026 for <strong>£260,000</strong>, paying estate agent and solicitor fees of <strong>£5,000</strong>. He spent £2,500 on a kitchen extension (capital improvement). His taxable income for the year is £60,000, so all gains are at the higher rate.</p>
+    <p>James bought a holiday cottage in 2015 for <strong>£180,000</strong>, including Stamp Duty and solicitor fees. He sells in 2026 for <strong>£260,000</strong>, paying estate agent and solicitor fees of <strong>£5,000</strong>. He spent £2,500 on a kitchen extension. His taxable income for the year is £60,000, so all gains are at the higher rate.</p>
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Sale proceeds</span><span style="font-variant-numeric:tabular-nums;">£260,000</span>
@@ -55,19 +46,16 @@
         <span>CGT at 24%</span><span style="font-variant-numeric:tabular-nums;">£16,680</span>
       </div>
     </div>
-    <p style="margin-bottom:0;">James must file and pay £16,680 to HMRC within 60 days of the completion date using HMRC's online property reporting service.</p>
-  </article>
+    <p style="margin-bottom:0;">James must report and pay £16,680 within 60 days of the completion date using HMRC's online property reporting service.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>The 60-day reporting and payment rule</h2>
-    <p>Since October 2021, if you sell a UK residential property and a CGT liability arises, you must:</p>
+    <p>Since October 2021, selling a UK residential property with a CGT liability means you must:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Report the disposal to HMRC within <strong>60 days</strong> of the completion date</li>
       <li>Pay any CGT due within the same 60-day window</li>
     </ul>
-    <p>Use HMRC's UK Property Reporting Service (accessed through your Government Gateway account). If you also file a Self Assessment return, you will need to include the property disposal there too — but the 60-day payment counts as an advance payment against your Self Assessment bill.</p>
-    <p style="margin-bottom:0;">Penalties apply for late reporting, starting at £100 for being up to 6 months late, rising further if the delay continues.</p>
-  </article>
+    <p>Use HMRC's UK Property Reporting Service via your Government Gateway account. If you also file Self Assessment, include the disposal there too — the 60-day payment counts as an advance payment against your Self Assessment bill.</p>
+    <p style="margin-bottom:0;">Penalties apply for late reporting. They start at £100 for up to 6 months late and rise further if the delay continues.</p>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Estimate your CGT on a second home</p>
@@ -75,16 +63,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/report-and-pay-your-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Report and pay CGT on UK property</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -118,7 +103,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. CGT rules are complex and your circumstances may differ. Consult a qualified tax adviser or accountant before making decisions about a property disposal.</p>
 </section>

@@ -1,39 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax on Inherited Property 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">When you inherit a property and later sell it, capital gains tax (CGT) may apply — but the gain is measured from the <strong>probate value</strong>, not the price the deceased originally paid. This guide explains how CGT works on inherited property, what costs you can deduct and how the 2026/27 rates apply.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>When does CGT apply to inherited property?</h2>
-    <p>Inheriting a property itself is not a CGT event. No CGT is due when you receive the asset. The potential CGT liability arises when you <strong>dispose of the property</strong> — typically when you sell it.</p>
-    <p>At the date of death, the property is revalued to its open-market value for probate purposes. This probate value becomes your <strong>base cost</strong> for CGT. You are, in effect, treated as having acquired the property at that value on the date of death.</p>
-    <p style="margin-bottom:0;">If the property has risen in value between the date of probate and the date you sell, you have a gain on which CGT may be due.</p>
-  </article>
+    <p>Inheriting a property is not a CGT event. No CGT is due when you receive the asset. The liability arises when you <strong>dispose of the property</strong> — typically when you sell it.</p>
+    <p>At the date of death, the property is revalued to its open-market value for probate. That probate value becomes your <strong>base cost</strong> for CGT. You are treated as having acquired the property at that value on the date of death.</p>
+    <p style="margin-bottom:0;">If the property rises in value between probate and the date you sell, you have a gain on which CGT may be due.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>What is the base cost?</h2>
-    <p>Your base cost is the <strong>probate value</strong> agreed with HMRC as part of the estate — the open-market value of the property at the date of death. You do not use the price the deceased paid decades ago.</p>
+    <p>Your base cost is the <strong>probate value</strong> agreed with HMRC — the open-market value at the date of death. The price the deceased paid decades ago is irrelevant.</p>
     <p style="margin-bottom:0;">If the property was jointly inherited, each beneficiary has a fractional base cost matching their share of the probate value.</p>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Allowable costs you can deduct</h2>
-    <p>When you sell, you can reduce the gain by deducting allowable costs incurred on the disposal:</p>
+    <p>When you sell, you can reduce the gain by deducting allowable costs:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Estate agent fees</li>
       <li>Solicitor/conveyancing fees on the sale</li>
       <li>Surveyor fees directly related to the disposal</li>
       <li>Costs of improvement works carried out after you inherited (not routine maintenance)</li>
     </ul>
-    <p style="margin-bottom:0;">You cannot deduct probate fees, mortgage repayments or the costs of running the property while you owned it.</p>
-  </article>
+    <p style="margin-bottom:0;">You cannot deduct probate fees, mortgage repayments or running costs while you owned it.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example</h2>
-    <p>Sarah inherits her mother's house. The probate value is agreed at <strong>£250,000</strong>. Two years later, Sarah sells for <strong>£290,000</strong>. Her solicitor and estate agent charge a total of <strong>£6,000</strong>.</p>
+    <p>Sarah inherits her mother's house. The probate value is agreed at <strong>£250,000</strong>. Two years later she sells for <strong>£290,000</strong>, paying solicitor and estate agent fees of <strong>£6,000</strong>.</p>
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Sale proceeds</span><span style="font-variant-numeric:tabular-nums;">£290,000</span>
@@ -44,38 +37,31 @@
         <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Taxable gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£31,000</span>
       </div>
     </div>
-    <p>The rate Sarah pays depends on her other income for the tax year:</p>
+    <p>What rate Sarah pays depends on her other income for the year:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li>If her taxable income is £35,000, she has £2,700 of basic-rate band remaining. The first £2,700 of the gain is taxed at 18% (£486); the remaining £28,300 at 24% (£6,792). Total CGT: £7,278.</li>
       <li>If her taxable income already exceeds £50,270, the full £31,000 is taxed at 24% — CGT of £7,440.</li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Inheritance tax and CGT are separate</h2>
-    <p>Inheritance tax (IHT) and CGT are two completely different taxes. IHT is paid by the estate on the value of assets at death. CGT is paid by the beneficiary on any gain between the probate value and the eventual sale price. Paying IHT does not reduce your CGT, and vice versa. Both can apply to the same property.</p>
-    <p style="margin-bottom:0;">The estate itself may have already paid IHT on the property. As the beneficiary, your CGT clock starts from the probate value — after IHT has been settled.</p>
-  </article>
+    <p>IHT and CGT are two entirely separate taxes. IHT is paid by the estate on the value of assets at death. CGT is paid by the beneficiary on any gain between the probate value and the eventual sale price. Paying one does not reduce the other. Both can apply to the same property.</p>
+    <p style="margin-bottom:0;">The estate may have already settled IHT on the property. As the beneficiary, your CGT clock starts from the probate value — after IHT has been dealt with.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>2026/27 CGT rates for residential property</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><strong>18%</strong> on gains that fall within your remaining basic-rate band (taxable income up to £50,270, personal allowance £12,570)</li>
       <li><strong>24%</strong> on gains above the basic-rate band</li>
       <li>Annual exempt amount: <strong>£3,000</strong> per individual per tax year</li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Limitations of this calculator</h2>
-    <p>This calculator gives a simplified estimate. It does not model:</p>
+    <p>This calculator gives a simplified estimate. It does not cover:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><strong>Private Residence Relief (PRR)</strong> — if you moved into the inherited property as your main home before selling, partial or full PRR may apply</li>
       <li><strong>Joint ownership</strong> — if multiple beneficiaries own fractional shares, each calculates CGT independently on their share</li>
       <li><strong>Deeds of variation</strong> — post-death changes to how the estate is divided can affect the base cost</li>
       <li><strong>Non-resident rules</strong> — different rules apply if you are not UK resident</li>
     </ul>
-  </article>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Estimate your CGT now</p>
@@ -83,16 +69,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
       <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and bands</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -126,7 +109,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. CGT rules are complex and your circumstances may differ. Consult a qualified tax adviser or accountant before making decisions about an inherited property disposal.</p>
 </section>

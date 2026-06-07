@@ -1,20 +1,17 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax Record Keeping 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">HMRC requires you to keep records to support any CGT computation for at least <strong>6 years</strong> after the end of the tax year in which the disposal took place. Losing records does not eliminate your tax liability — but it can make calculating a fair CGT figure difficult and penalties can apply. This guide sets out exactly what to keep and for how long.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>How long must you keep CGT records?</h2>
-    <p>For individuals filing Self Assessment, records relating to a CGT disposal must be kept for <strong>at least 5 years and 10 months after the end of the relevant tax year</strong> (which is approximately 6 years from 31 January following the tax year). HMRC can open an enquiry up to 12 months after your return is filed, and up to 4 years in cases of incomplete disclosure, or 6 years where there is a loss of tax.</p>
-    <p style="margin-bottom:0;">For practical purposes, retaining records for at least 6 years from the disposal date is the standard recommended approach.</p>
-  </article>
+    <p>For individuals filing Self Assessment, CGT records must be kept for <strong>at least 5 years and 10 months after the end of the relevant tax year</strong> — roughly 6 years from the 31 January following the tax year. HMRC can open an enquiry up to 12 months after your return is filed, 4 years for incomplete disclosure, or 6 years where there is a loss of tax.</p>
+    <p style="margin-bottom:0;">In practice, keep records for at least 6 years from the disposal date.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Records to keep for property</h2>
-    <p>For any property disposal — second home, buy-to-let, inherited property or commercial property — keep the following:</p>
+    <p>For any property disposal — second home, buy-to-let, inherited or commercial — keep the following:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Original purchase contract / completion statement</li>
       <li>Evidence of the purchase price paid (solicitor bill, bank statement showing funds transferred)</li>
@@ -26,12 +23,10 @@
       <li>Solicitor invoices on the sale</li>
       <li>Probate valuation documents (for inherited property)</li>
     </ul>
-    <p style="margin-bottom:0;">Keep digital copies and originals where possible. Solicitors and estate agents are usually willing to provide duplicate copies if originals are lost.</p>
-  </article>
+    <p style="margin-bottom:0;">Keep digital copies and originals where possible. Solicitors and estate agents will usually provide duplicates if originals are lost.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Records to keep for shares and funds</h2>
-    <p>Shares and unit trusts use pooling rules (the Section 104 pool) which means you must track the total cost of all shares of the same class in the same company across your entire holding period:</p>
+    <p>Shares and unit trusts use the Section 104 pool, which means you must track the total cost of all shares of the same class in the same company across your entire holding period:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Broker contract notes for every purchase and sale</li>
       <li>DRIP (dividend reinvestment plan) records — each reinvestment is a new purchase into the pool</li>
@@ -41,36 +36,29 @@
       <li>HMRC share scheme documents if shares were acquired through an employment scheme (SAYE, SIP, EMI, CSOP)</li>
       <li>Annual broker statements showing your holding at year end</li>
     </ul>
-    <p style="margin-bottom:0;">Most online brokers provide downloadable transaction histories going back many years. Download and store these regularly rather than relying on the broker's platform remaining accessible indefinitely.</p>
-  </article>
+    <p style="margin-bottom:0;">Most online brokers provide downloadable transaction histories going back many years. Download and save these regularly. Do not rely on the broker's platform staying accessible indefinitely.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Records for crypto assets</h2>
-    <p>Crypto disposals follow the same pooling rules as shares. You must keep a record of:</p>
+    <p>Crypto follows the same pooling rules as shares. Keep a record of:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Every purchase: date, amount of crypto, sterling cost at the time</li>
       <li>Every disposal (sale, swap, spend or gift): date, amount disposed of, sterling value at the time</li>
       <li>Mining, staking and airdrop receipts (separate income tax considerations also apply)</li>
       <li>Exchange transaction histories in CSV format</li>
     </ul>
-    <p style="margin-bottom:0;">Crypto exchanges may shut down or limit access to older records, so export your transaction history regularly.</p>
-  </article>
+    <p style="margin-bottom:0;">Crypto exchanges can shut down or restrict access to older records. Export your transaction history regularly.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>How to report and where records are needed</h2>
-    <p>CGT disposals are reported in one of two ways:</p>
+    <p>CGT disposals are reported in one of two ways, depending on the asset:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li><strong>UK Residential Property Service</strong> — used for residential property disposals where CGT is due. Report within 60 days of completion. You will need all the property records listed above to complete this accurately.</li>
       <li><strong>Self Assessment</strong> — all other CGT disposals (shares, crypto, commercial property, business assets) are reported via Self Assessment by 31 January following the tax year end.</li>
     </ul>
-    <p style="margin-bottom:0;">HMRC does not ask you to submit your records with your return — but they must be available if HMRC opens an enquiry.</p>
-  </article>
+    <p style="margin-bottom:0;">HMRC does not ask you to submit records with your return. But they must be available if HMRC opens an enquiry.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Penalties for not keeping records</h2>
-    <p>HMRC can charge a penalty of up to <strong>£3,000</strong> for failure to keep or preserve records as required. This is in addition to any penalty for filing an inaccurate return. If records are unavailable and you understate a gain, the accuracy penalty regime applies — from 30% to 100% of the tax unpaid depending on the nature of the error.</p>
-    <p style="margin-bottom:0;">If records are genuinely lost (for example in a fire or flood), notify HMRC promptly and provide the best estimate you can using reconstructed evidence such as bank statements, Land Registry records, or market data.</p>
-  </article>
+    <p>HMRC can charge up to <strong>£3,000</strong> for failure to keep records. That is on top of any penalty for an inaccurate return. If records are unavailable and you understate a gain, the accuracy penalty regime applies — from 30% to 100% of the unpaid tax depending on the nature of the error.</p>
+    <p style="margin-bottom:0;">If records are genuinely lost — say in a fire or flood — notify HMRC promptly and provide your best estimate using reconstructed evidence: bank statements, Land Registry records, or market data.</p>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your CGT before you report</p>
@@ -78,16 +66,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/self-assessment-tax-returns/keeping-records" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Keeping records for Self Assessment</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-record-keeping" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT record keeping guidance</a></li>
       <li><a href="https://www.gov.uk/report-and-pay-your-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Report and pay CGT on UK property</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -115,7 +100,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. Record-keeping requirements can vary depending on your specific circumstances. Consult a qualified accountant or tax adviser if you are unsure what records to keep.</p>
 </section>

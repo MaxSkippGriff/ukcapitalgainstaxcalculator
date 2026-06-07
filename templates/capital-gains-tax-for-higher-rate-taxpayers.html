@@ -1,12 +1,11 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax for Higher-Rate Taxpayers 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">If your taxable income already uses the basic-rate band, most or all of your capital gains will be charged at <strong>24%</strong> — the higher CGT rate for 2026/27. This guide explains exactly how income interacts with CGT, what to do when only part of a gain falls in the higher-rate band, and practical steps to reduce the bill.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>2026/27 CGT rates at a glance</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li><strong>18%</strong> — on the portion of gains that falls within the remaining basic-rate band</li>
@@ -16,11 +15,9 @@
       <li>Basic-rate band limit: <strong>£50,270</strong> (personal allowance + basic-rate band of £37,700)</li>
     </ul>
     <p style="margin-bottom:0;">Official source: <a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></p>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>How income interacts with CGT</h2>
-    <p>Capital gains are stacked on top of your taxable income when calculating CGT. The sequence HMRC uses is:</p>
+    <p>Capital gains sit on top of your taxable income when HMRC calculates your rate. The sequence is:</p>
     <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Calculate your taxable income: gross income minus the personal allowance of £12,570</li>
       <li>Work out how much basic-rate band you have left: £50,270 minus your taxable income (minimum zero)</li>
@@ -28,18 +25,14 @@
       <li>The first slice of the taxable gain uses up any remaining basic-rate band at 18%</li>
       <li>Gains above the remaining basic-rate band are charged at 24%</li>
     </ol>
-    <p style="margin-bottom:0;">If your taxable income is £50,270 or above, there is no remaining basic-rate band. Your entire taxable gain is charged at 24%.</p>
-  </article>
+    <p style="margin-bottom:0;">If your taxable income is £50,270 or above, there is no remaining basic-rate band. The entire taxable gain is charged at 24%.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Why higher-rate taxpayers usually pay 24%</h2>
-    <p>A higher-rate taxpayer has taxable income above the basic-rate band limit of £50,270. Because income fills the band first, capital gains have no room at the 18% rate. The calculation is straightforward: every pound of taxable gain (above the £3,000 annual exempt amount) is charged at 24%.</p>
-    <p style="margin-bottom:0;">This means someone earning £60,000 who realises a £20,000 gain has zero basic-rate band remaining. After the £3,000 annual exempt amount, the full £17,000 taxable gain is at 24%.</p>
-  </article>
+    <p>A higher-rate taxpayer has taxable income above the basic-rate band limit of £50,270. Income fills the band first, leaving no room for gains at 18%. Every pound of taxable gain above the £3,000 AEA is charged at 24%.</p>
+    <p style="margin-bottom:0;">Take someone earning £60,000 who realises a £20,000 gain. They have zero basic-rate band remaining. After the £3,000 AEA, the full £17,000 taxable gain is at 24%.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example — all gain at higher rate</h2>
-    <p>Alex has a salary of <strong>£60,000</strong> in 2026/27. He sells shares making a gain of <strong>£20,000</strong>. He has no capital losses and has not used any of his annual exempt amount.</p>
+    <p>Alex earns <strong>£60,000</strong> in 2026/27 and sells shares making a gain of <strong>£20,000</strong>. He has no capital losses and has not used any of his annual exempt amount.</p>
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Gross salary</span><span style="font-variant-numeric:tabular-nums;">£60,000</span>
@@ -54,29 +47,23 @@
         <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£3,909.60</span>
       </div>
     </div>
-    <p>Alex has a small amount of basic-rate band remaining (£2,840), so the first slice of gain is at 18%. The rest is at 24%.</p>
-    <p style="margin-bottom:0;"><strong>If Alex's salary were £72,600</strong> (taxable income £60,030 — all above the £50,270 limit), the entire £17,000 taxable gain would be at 24%, giving a CGT bill of £4,080.</p>
-  </article>
+    <p>Alex has a small slice of basic-rate band remaining (£2,840), so the first £2,840 of gain is at 18%. The rest is at 24%.</p>
+    <p style="margin-bottom:0;"><strong>If Alex earned £72,600</strong> (taxable income £60,030 — entirely above £50,270), the full £17,000 taxable gain would be at 24%, giving a CGT bill of £4,080.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>What if only part of the gain is higher-rate?</h2>
-    <p>It is common for taxpayers to have some basic-rate band left even though their income is relatively high. The calculation splits the gain at the boundary:</p>
+    <p>Many taxpayers have some basic-rate band left even with relatively high income. The calculation splits the gain at the boundary:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>The portion of the taxable gain that fits within remaining basic-rate band is charged at 18%</li>
       <li>The portion that exceeds the remaining basic-rate band is charged at 24%</li>
     </ul>
-    <p style="margin-bottom:0;">This split happens automatically in the CGT calculation. The worked example above illustrates it: £2,840 at 18%, then £14,160 at 24%.</p>
-  </article>
+    <p style="margin-bottom:0;">The split happens automatically. The worked example above shows it: £2,840 at 18%, then £14,160 at 24%.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>The annual exempt amount</h2>
-    <p>Every individual has a £3,000 annual exempt amount for 2026/27. This is deducted from the total gain before the rate calculation is applied. It does not increase the amount of basic-rate band available — it simply reduces the size of the taxable gain.</p>
-    <p style="margin-bottom:0;">If you make multiple disposals in the same tax year, all gains (and losses) are pooled and the £3,000 annual exempt amount is applied once to the net total. You cannot carry forward any unused annual exempt amount to the next tax year.</p>
-  </article>
+    <p>Every individual gets a £3,000 annual exempt amount for 2026/27. It is deducted from the total gain before the rate is applied. It does not widen your basic-rate band — it just reduces the size of the taxable gain.</p>
+    <p style="margin-bottom:0;">If you make multiple disposals in the same tax year, all gains and losses are pooled and the £3,000 is applied once to the net total. Any unused AEA at 5 April is gone — it cannot be carried forward.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Reducing the CGT bill as a higher-rate taxpayer</h2>
-    <p>Several strategies can reduce CGT for higher earners:</p>
+    <p>There are several ways to reduce CGT as a higher earner:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li><strong>Pension contributions</strong> — additional pension contributions reduce taxable income, which can free up basic-rate band for gains to be taxed at 18% rather than 24%</li>
       <li><strong>Gift Aid donations</strong> — Gift Aid extends the basic-rate band by the grossed-up value of the donation, creating space for gains at 18%</li>
@@ -84,8 +71,7 @@
       <li><strong>Spread disposals across tax years</strong> — selling in two separate tax years uses two annual exempt amounts (£6,000 combined) and may stagger income to keep you in a lower band</li>
       <li><strong>Offset capital losses</strong> — losses from previous tax years reduce the taxable gain before the rate is applied</li>
     </ul>
-    <p style="margin-bottom:0;">Each strategy has its own conditions and limits. Pension contributions are capped by the annual allowance (usually £60,000 or 100% of earnings). Tax advice from a qualified professional is recommended before making significant planning decisions.</p>
-  </article>
+    <p style="margin-bottom:0;">Each of these has conditions and limits. Pension contributions are capped by the annual allowance (usually £60,000 or 100% of earnings). Get qualified tax advice before any significant planning.</p>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your CGT as a higher-rate taxpayer</p>
@@ -93,16 +79,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
       <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and personal allowance</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -136,7 +119,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. CGT rules interact with income tax in ways that depend on your individual circumstances. Consult a qualified tax adviser before making disposal or planning decisions.</p>
 </section>

@@ -1,0 +1,86 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"The CGT 30-Day Rule (Bed and Breakfast Rule) Explained","description":"The CGT 30-day rule prevents selling and immediately repurchasing shares to crystallise a gain or loss. This guide explains how it works, when it applies, and the legal ways to plan around it including the ISA exception.","url":"{{ site_url }}/capital-gains-tax-30-day-rule","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"CGT 30-Day Rule","item":"{{ site_url }}/capital-gains-tax-30-day-rule"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the CGT 30-day rule?","acceptedAnswer":{"@type":"Answer","text":"If you sell shares and repurchase the same shares within 30 days, the sale is matched against the new purchase (not the pool average cost). This prevents using the pool cost to manufacture a specific gain or loss for tax purposes."}},{"@type":"Question","name":"Does the 30-day rule apply to ISA repurchases?","acceptedAnswer":{"@type":"Answer","text":"No. Repurchasing inside an ISA is not caught by the 30-day rule. You can sell shares in a GIA and immediately rebuy inside an ISA on the same day without triggering the rule. HMRC confirmed this at CG42562 in the Capital Gains manual."}},{"@type":"Question","name":"Does the rule apply if I buy shares before I sell?","acceptedAnswer":{"@type":"Answer","text":"The 30-day rule applies to purchases after the sale. The same-day rule covers purchases on the same day. Purchases before the sale (by more than one day) go into the pool normally."}},{"@type":"Question","name":"Does the 30-day rule apply to crypto?","acceptedAnswer":{"@type":"Answer","text":"Yes. HMRC applies the same matching rules to cryptocurrency. Selling and rebuying the same crypto within 30 days is matched against the new purchase."}}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>The CGT 30-Day Rule (Bed &amp; Breakfast Rule) Explained</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">The CGT 30-day rule prevents investors from selling and immediately repurchasing the same shares to crystallise a gain or loss for tax purposes. This guide explains how it works, when it applies, and the legal ways to plan around it, including the ISA exception.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Last updated for the 2026/27 tax year.</p>
+
+    <h2>What is the 30-day rule?</h2>
+    <p>The 30-day rule (formally Section 106A TCGA 1992, often called the "bed and breakfast rule") is a share-matching anti-avoidance measure. If you sell shares and then <strong>buy the same shares within 30 days after the sale</strong>, the sale is matched against the new purchase, not the existing pool. You cannot pick the pool average cost — the cost of the new shares is used instead.</p>
+    <p>The rule closes a specific technique: selling shares to crystallise a gain up to your AEA (£3,000 for 2026/27), or to create a loss to offset other gains, then buying straight back as if nothing changed economically.</p>
+    <p style="margin-bottom:0;">Without it, you could "bed and breakfast" shares every year — sell on 4 April, rebuy on 6 April, reset the cost base and bank the exempt amount tax-free each time.</p>
+
+    <h2>The matching order: how HMRC identifies which shares are sold</h2>
+    <p>HMRC applies matching rules to identify which shares are being sold (and therefore what the acquisition cost is). The order is:</p>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Same-day rule</strong>, shares acquired on the same day as the disposal are matched first</li>
+      <li><strong>30-day rule</strong>, shares acquired within the 30 days following the disposal are matched next</li>
+      <li><strong>Section 104 pool</strong>, all other shares of the same type are matched using the averaged pool cost</li>
+    </ol>
+    <p style="margin-bottom:0;">The 30-day rule applies to shares acquired <em>after</em> the sale, not before. Buying before the sale only triggers the same-day rule if it's the same day. Both rules apply to shares of the same type in the same company or fund. Different shares in different companies are not affected.</p>
+
+    <h2>Worked example: the 30-day rule in action</h2>
+    <p>Alice has 2,000 shares in a fund with an S104 pool average cost of £5.00 per share (total pool cost £10,000). The shares are now worth £3.00 each. She has a £4,000 gain elsewhere and wants to crystallise a matching loss from the fund.</p>
+    <p>She sells 1,000 shares at £3.00 on 1 March (proceeds £3,000). The intended loss is £3,000 − £5,000 = −£2,000. She plans to repurchase 1,000 shares at £3.00 on 3 March.</p>
+    <p>But the 30-day rule catches her. The 1 March sale is matched against the 3 March purchase. The gain/loss uses the 3 March cost (£3.00), not the pool average (£5.00). Sale price = £3.00, matched cost = £3.00. No gain, no loss. The loss is wiped out.</p>
+    <p style="margin-bottom:0;">To genuinely crystallise the loss, Alice must wait 31 days before repurchasing, or use one of the alternatives below.</p>
+
+    <h2>How to plan around the 30-day rule</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Wait 31 days</strong>, sell and wait more than 30 calendar days before repurchasing. This avoids the rule entirely, though you bear market risk during the gap.</li>
+      <li><strong>Rebuy inside an ISA</strong>, the 30-day rule only applies to repurchases of the same shares in the same account. Repurchasing the same shares inside a Stocks and Shares ISA is <strong>not caught</strong> by the rule (confirmed by HMRC at CG42562). The sale and ISA repurchase can happen the same day.</li>
+      <li><strong>Buy a correlated substitute fund</strong>, sell your fund and buy a similar (but legally different) fund for the interim period. For example, sell a FTSE All World ETF from one provider and buy an equivalent from a different provider. This maintains market exposure without triggering the 30-day rule, because they are different shares. After 31 days, you can switch back if you want the original fund.</li>
+      <li><strong>Gift to spouse, then sale</strong>, transfer to a spouse at no-gain/no-loss, let them sell (outside the 30-day period of your own sale). This is more complex but can be useful in specific circumstances.</li>
+    </ul>
+    <p style="margin-bottom:0;">The ISA route is by far the simplest. And it has the extra benefit of permanently sheltering the investment from future CGT, not just resetting the cost base.</p>
+
+    <h2>The 30-day rule and the annual exempt amount strategy</h2>
+    <p>Many investors use the annual exempt amount (£3,000 for 2026/27) to crystallise gains each year through bed-and-ISA. You sell investments in your GIA with up to £3,000 of unrealised gain, use the AEA to shelter it, and immediately rebuy inside the ISA. No CGT.</p>
+    <p>This is entirely legitimate. The repurchase is inside the ISA, so the 30-day rule does not apply. Year by year, you shift holdings from a taxable environment to a CGT-free one.</p>
+    <p style="margin-bottom:0;">For loss crystallisation — selling a loss-making holding to offset gains elsewhere — the ISA route works the same way. Sell at a loss, rebuy inside the ISA. The 30-day rule is not triggered.</p>
+
+    <h2>Does the 30-day rule apply to crypto?</h2>
+    <p>Yes. HMRC applies the same matching rules (same-day, 30-day, S104 pool) to cryptocurrency as it does to shares. Sell Bitcoin and rebuy within 30 days, and the sale is matched against the new purchase, not the pool.</p>
+    <p style="margin-bottom:0;">But unlike shares, you cannot rebuy crypto inside an ISA. ISAs do not hold crypto. Your only options to avoid the 30-day rule are: wait 31+ days before rebuying, or switch to a correlated but different asset for the interim period.</p>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate the CGT impact before you sell</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Use our calculator to see exactly how much CGT arises from a disposal, taking into account the AEA and your income.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
+  </div>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the CGT 30-day rule?</summary>
+        <div class="faq-answer"><p>If you sell shares and repurchase the same shares within 30 days, the sale is matched against the new purchase (not the pool average cost). This prevents using the pool cost to manufacture a specific gain or loss for tax purposes.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does the 30-day rule apply to ISA repurchases?</summary>
+        <div class="faq-answer"><p>No. Repurchasing inside an ISA is not caught by the 30-day rule. You can sell shares in a GIA and immediately rebuy inside an ISA on the same day without triggering the rule. HMRC confirmed this at CG42562 in the Capital Gains manual.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does the rule apply if I buy shares before I sell?</summary>
+        <div class="faq-answer"><p>The 30-day rule applies to purchases after the sale. The same-day rule covers purchases on the same day. Purchases before the sale (by more than one day) go into the pool normally.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does the 30-day rule apply to crypto?</summary>
+        <div class="faq-answer"><p>Yes. HMRC applies the same matching rules to cryptocurrency. Selling and rebuying the same crypto within 30 days is matched against the new purchase.</p></div>
+      </details>
+    </div>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial or tax advice. Always consult a qualified tax adviser before implementing CGT planning strategies.</p>
+</section>
+{% endblock %}

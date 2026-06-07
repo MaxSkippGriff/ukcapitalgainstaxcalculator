@@ -1,18 +1,15 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax for Basic-Rate Taxpayers 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">Being a basic-rate taxpayer does not mean all of your capital gain is taxed at 18%. A large enough gain can push part of your total income above the basic-rate threshold, meaning that portion is taxed at 24%. This guide explains how the band split works and how to calculate your CGT as a basic-rate taxpayer.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>How the CGT band split works</h2>
-    <p>CGT is calculated by treating the gain as sitting <strong>on top of your other taxable income</strong>. Your income fills the basic-rate band first. Whatever headroom remains — the gap between your taxable income and £37,700 — is available to absorb gain at the lower 18% rate. Any gain that exceeds that headroom is taxed at 24%.</p>
-    <p style="margin-bottom:0;">This means even a basic-rate taxpayer with a large enough gain will pay 24% on part of it. The 18% rate is not a flat rate — it only applies to the portion of the gain that fits within the remaining basic-rate band.</p>
-  </article>
+    <p>CGT is calculated by treating the gain as sitting <strong>on top of your other taxable income</strong>. Your income fills the basic-rate band first. Whatever headroom remains — the gap between your taxable income and £37,700 — absorbs gain at 18%. Any gain that exceeds that headroom is taxed at 24%.</p>
+    <p style="margin-bottom:0;">So even a basic-rate taxpayer with a large enough gain will pay 24% on part of it. The 18% rate only applies to the portion that fits within the remaining band.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>The key figures for 2026/27</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li>Personal Allowance: <strong>£12,570</strong> — income below this is free from income tax</li>
@@ -22,11 +19,9 @@
       <li>CGT lower rate: <strong>18%</strong> (gain within remaining basic-rate band)</li>
       <li>CGT higher rate: <strong>24%</strong> (gain above basic-rate band)</li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example</h2>
-    <p>Tom earns a salary of £47,570. After his £12,570 personal allowance, his taxable income is <strong>£35,000</strong>. He sells shares making a gain of £28,000. After the £3,000 annual exempt amount, his taxable gain is <strong>£25,000</strong>.</p>
+    <p>Tom earns £47,570. After the £12,570 personal allowance, his taxable income is <strong>£35,000</strong>. He sells shares making a gain of £28,000. After the £3,000 annual exempt amount, his taxable gain is <strong>£25,000</strong>.</p>
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Basic-rate band</span><span style="font-variant-numeric:tabular-nums;">£37,700</span>
@@ -42,12 +37,10 @@
         <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£5,838</span>
       </div>
     </div>
-    <p style="margin-bottom:0;">Although Tom is technically a basic-rate taxpayer on his income, most of his CGT is at 24% because his income leaves very little basic-rate band available.</p>
-  </article>
+    <p style="margin-bottom:0;">Tom is technically a basic-rate taxpayer on his income. But most of his CGT is at 24% because his salary leaves very little basic-rate band available for the gain.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>A second example: more headroom available</h2>
-    <p>Claire earns £30,000 gross. Her taxable income is £17,430 (£30,000 minus £12,570 personal allowance). She sells a rental property with a £25,000 taxable gain (after the £3,000 exempt amount).</p>
+    <p>Claire earns £30,000 gross. Taxable income: £17,430 (£30,000 minus £12,570 personal allowance). She sells a rental property with a £25,000 taxable gain after the £3,000 exempt amount.</p>
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Remaining basic-rate band (£37,700 − £17,430)</span><span style="font-variant-numeric:tabular-nums;">£20,270</span>
@@ -56,21 +49,16 @@
         <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£4,784</span>
       </div>
     </div>
-    <p style="margin-bottom:0;">With more basic-rate headroom, more of Claire's gain falls at 18% rather than 24%.</p>
-  </article>
+    <p style="margin-bottom:0;">With more headroom in the basic-rate band, more of Claire's gain falls at 18%.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Can pension contributions reduce CGT?</h2>
-    <p>Yes, in some cases. Pension contributions reduce your taxable income, which can widen the basic-rate band available to absorb capital gains at 18% rather than 24%.</p>
-    <p>For example, if Tom from the example above made a £5,000 pension contribution, his taxable income would fall to £30,000, leaving £7,700 of basic-rate band — so £7,700 of his gain would be taxed at 18% instead of just £2,700. That is an additional saving of £5,000 × (24% − 18%) = £300.</p>
-    <p style="margin-bottom:0;">This interaction between pension contributions and CGT can be meaningful for larger gains. A tax adviser can help you model this for your specific situation.</p>
-  </article>
+    <p>Yes, in some cases. Pension contributions reduce your taxable income, which widens the basic-rate band available to absorb gains at 18% rather than 24%.</p>
+    <p>If Tom from the example above made a £5,000 pension contribution, his taxable income would fall to £30,000, leaving £7,700 of basic-rate band. So £7,700 of his gain would be taxed at 18% instead of just £2,700. That is an extra saving of £5,000 × (24% − 18%) = £300.</p>
+    <p style="margin-bottom:0;">This interaction matters most for larger gains. A tax adviser can model the numbers for your specific position.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Am I a basic-rate taxpayer?</h2>
-    <p>You are broadly a basic-rate taxpayer if your gross income (salary, self-employment profit, rental income, etc.) is between £12,571 and £50,270. Above £50,270, you move into the higher-rate band and the full gain would be taxed at 24% (unless losses or the exempt amount absorb it).</p>
-    <p style="margin-bottom:0;">Note that income from dividends follows different bands and rates, and Scottish taxpayers have different income tax bands — though CGT rates are set by the UK Government and apply equally across the UK.</p>
-  </article>
+    <p>You are broadly a basic-rate taxpayer if your gross income — salary, self-employment profit, rental income — is between £12,571 and £50,270. Above £50,270, you are in the higher-rate band and the full gain is taxed at 24% (unless losses or the exempt amount absorb it).</p>
+    <p style="margin-bottom:0;">Dividend income follows different bands and rates. Scottish taxpayers also have different income tax bands. But CGT rates are set by the UK Government and apply equally across the UK.</p>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your exact CGT split</p>
@@ -78,16 +66,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
       <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and bands</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -121,7 +106,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. Your personal tax position depends on many factors — consult a qualified tax adviser or accountant for tailored guidance.</p>
 </section>

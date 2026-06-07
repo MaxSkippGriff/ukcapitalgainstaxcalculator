@@ -1,0 +1,104 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Capital Gains Tax Rates 2026/27: 18% and 24% Full Guide","description":"UK CGT rates for 2026/27: 18% basic rate and 24% higher rate on all assets including property, shares and crypto. Annual exempt amount £3,000. BADR 14%. Explains what changed in October 2024.","url":"{{ site_url }}/capital-gains-tax-rates-2026-27","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Capital Gains Tax Rates 2026/27","item":"{{ site_url }}/capital-gains-tax-rates-2026-27"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the CGT rates for 2026/27?","acceptedAnswer":{"@type":"Answer","text":"18% for gains within the basic-rate band (income + gain within £50,270) and 24% for gains above it. These rates apply to all assets — property, shares, crypto. Business Asset Disposal Relief is 14% on qualifying gains up to £1m lifetime."}},{"@type":"Question","name":"What is the CGT rate on residential property in 2026/27?","acceptedAnswer":{"@type":"Answer","text":"18% (basic rate) or 24% (higher rate). The previous higher rate for property was 28%, reduced to 24% from October 2024. There is no longer a separate rate for property versus shares."}},{"@type":"Question","name":"What is the CGT annual exempt amount for 2026/27?","acceptedAnswer":{"@type":"Answer","text":"£3,000 per individual. Net gains below this in a tax year are completely free from CGT. The AEA was cut from £12,300 to £3,000 in April 2024."}},{"@type":"Question","name":"Do pension contributions affect CGT rates?","acceptedAnswer":{"@type":"Answer","text":"Yes, indirectly. Pension contributions reduce your taxable income, which can create more basic-rate band headroom for your gain to be taxed at 18% rather than 24%. Each £1,000 of income brought below the higher-rate threshold shifts £1,000 of gain from 24% to 18%, saving £60."}}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Capital Gains Tax Rates 2026/27: 18% &amp; 24% Full Guide</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">UK CGT rates for 2026/27: <strong>18% basic rate</strong> and <strong>24% higher rate</strong> on all assets (property, shares, crypto). Annual exempt amount: <strong>£3,000</strong>. Business Asset Disposal Relief: <strong>14%</strong>. This guide explains what changed in October 2024 and how the rates apply to your gain.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Last updated for the 2026/27 tax year.</p>
+
+    <h2>Current CGT rates at a glance, 2026/27</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span style="font-weight:600;border-bottom:1px solid var(--border);padding-bottom:0.3rem;">Asset / situation</span><span style="font-weight:600;border-bottom:1px solid var(--border);padding-bottom:0.3rem;">CGT rate</span>
+        <span>All assets, basic-rate taxpayer portion</span><span style="color:var(--accent);font-weight:600;">18%</span>
+        <span>All assets, higher/additional-rate taxpayer portion</span><span style="color:var(--accent);font-weight:600;">24%</span>
+        <span>Business Asset Disposal Relief (qualifying gains)</span><span style="color:var(--accent);font-weight:600;">14%</span>
+        <span>Annual exempt amount (per individual)</span><span>£3,000</span>
+        <span>Basic-rate threshold (for CGT band split)</span><span>£50,270</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">Since October 2024, the UK uses a single CGT rate structure. The same rates apply to residential property, shares, crypto and all other assets. There is no longer a separate higher rate for property.</p>
+
+    <h2>What changed in October 2024?</h2>
+    <p>The Autumn Budget of 30 October 2024 made significant changes to CGT rates, effective from that date:</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.25rem 0.75rem;font-size:0.85rem;">
+        <span style="font-weight:600;border-bottom:1px solid var(--border);padding-bottom:0.3rem;">Asset</span><span style="font-weight:600;border-bottom:1px solid var(--border);padding-bottom:0.3rem;">Before Oct 2024</span><span style="font-weight:600;border-bottom:1px solid var(--border);padding-bottom:0.3rem;">From Oct 2024</span>
+        <span>Shares (basic rate)</span><span>10%</span><span style="color:var(--accent);">18%</span>
+        <span>Shares (higher rate)</span><span>20%</span><span style="color:var(--accent);">24%</span>
+        <span>Property (basic rate)</span><span>18%</span><span>18% (unchanged)</span>
+        <span>Property (higher rate)</span><span>28%</span><span style="color:var(--accent);">24%</span>
+        <span>BADR rate</span><span>10%</span><span style="color:var(--accent);">14%</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">For shares, the October 2024 Budget raised rates substantially. For residential property, the higher rate actually fell from 28% to 24%. All disposals on or after 30 October 2024 — including those in 2026/27 — use the new rates.</p>
+
+    <h2>How the rate is determined: income and gains stacking</h2>
+    <p>Your CGT rate depends on how much of the basic-rate band remains after your other taxable income. The calculation:</p>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li>Calculate your taxable income (gross income minus £12,570 personal allowance)</li>
+      <li>Subtract from the basic-rate band limit (£37,700) to find remaining basic-rate band</li>
+      <li>The first slice of your taxable gain fills this remaining band at <strong>18%</strong></li>
+      <li>Any gain above that remaining band is taxed at <strong>24%</strong></li>
+    </ol>
+    <p>Example: salary £40,000. Taxable income = £27,430. Remaining basic-rate band = £37,700 − £27,430 = <strong>£10,270</strong>. A £20,000 gain (after AEA) splits: first £10,270 at 18% = £1,849; remaining £9,730 at 24% = £2,335. Total CGT = £4,184.</p>
+    <p style="margin-bottom:0;">If your salary is above £50,270, there is no remaining basic-rate band. Your entire taxable gain is at 24%.</p>
+
+    <h2>The £3,000 annual exempt amount</h2>
+    <p>Before applying the rates, subtract the £3,000 annual exempt amount from your net gains. Gains below £3,000 in a tax year are free from CGT. The AEA is applied after current-year losses. Brought-forward losses are only applied to the extent needed to reduce the gain to the AEA level — they don't eat into the AEA itself.</p>
+    <p>The AEA is use-it-or-lose-it. You cannot carry it forward or transfer it to a spouse. Each partner in a couple has their own £3,000 (£6,000 combined). The AEA was £12,300 in 2022/23 and was cut to £3,000 from 2024/25 onwards.</p>
+    <p style="margin-bottom:0;">Use the <a href="/cgt-allowance-calculator" style="color:var(--accent);">CGT allowance calculator</a> to see how much of your AEA remains after previous disposals this year.</p>
+
+    <h2>Business Asset Disposal Relief, 14% rate</h2>
+    <p>BADR gives a reduced 14% rate on qualifying gains up to a <strong>£1 million lifetime limit</strong>. It applies to shares in personal trading companies where you hold at least 5%, have been an officer or employee for 2+ years, and the company is a trading company. The rate rose from 10% to 14% in October 2024.</p>
+    <p style="margin-bottom:0;">A further increase to 18% is scheduled from 6 April 2026. The disposal date determines which BADR rate applies. You must claim BADR on your Self Assessment return.</p>
+
+    <h2>The 60-day reporting rule for residential property</h2>
+    <p>Sell a UK residential property with CGT owed and you must report and pay within 60 days of completion. Use HMRC's online property reporting service. Late reporting triggers automatic penalties starting at £100. Non-property gains are reported through Self Assessment by 31 January.</p>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your CGT at 2026/27 rates</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Enter your gain, costs, losses and income for an instant CGT breakdown at 18% and 24%.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
+  </div>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What are the CGT rates for 2026/27?</summary>
+        <div class="faq-answer"><p>18% for gains within the basic-rate band (income + gain within £50,270) and 24% for gains above it. These rates apply to all assets, property, shares, crypto. Business Asset Disposal Relief is 14% on qualifying gains up to £1m lifetime.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the CGT rate on residential property in 2026/27?</summary>
+        <div class="faq-answer"><p>18% (basic rate) or 24% (higher rate). The previous higher rate for property was 28%, reduced to 24% from October 2024. There is no longer a separate rate for property versus shares.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the CGT annual exempt amount for 2026/27?</summary>
+        <div class="faq-answer"><p>£3,000 per individual. Net gains below this in a tax year are completely free from CGT. The AEA was cut from £12,300 to £3,000 in April 2024.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do pension contributions affect CGT rates?</summary>
+        <div class="faq-answer"><p>Yes, indirectly. Pension contributions reduce your taxable income, which can create more basic-rate band headroom for your gain to be taxed at 18% rather than 24%. Each £1,000 of income brought below the higher-rate threshold shifts £1,000 of gain from 24% to 18%, saving £60.</p></div>
+      </details>
+    </div>
+
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK, Capital Gains Tax rates</a></li>
+      <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">HMRC, CGT rates and allowances</a></li>
+    </ul>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only. Rates and rules change, always verify with HMRC or a qualified tax adviser for your specific situation.</p>
+</section>
+{% endblock %}

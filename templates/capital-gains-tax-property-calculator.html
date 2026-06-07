@@ -1,0 +1,76 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Capital Gains Tax Property Calculator UK 2026/27","description":"Free property CGT calculator for 2026/27. Enter purchase price, improvements, sale proceeds and income to estimate your capital gains tax at 18% or 24%.","url":"{{ site_url }}/capital-gains-tax-property-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Capital Gains Tax Property Calculator","item":"{{ site_url }}/capital-gains-tax-property-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Capital Gains Tax Property Calculator UK 2026/27</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">Use our free property CGT calculator to estimate your capital gains tax on a UK property disposal in 2026/27. Enter your purchase price, improvements, sale proceeds and income. Rates: 18% (basic rate) or 24% (higher rate) after the £3,000 annual exempt amount.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">2026/27 rates. Results are estimates, consult a tax adviser for your final position.</p>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin:1.25rem 0;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Open the full property CGT calculator</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Our calculator handles all property types, second homes, buy-to-let, inherited property. Enter costs, improvements, losses and your income for a full CGT breakdown.</p>
+    <a href="/property-cgt-calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Go to Property CGT Calculator</a>
+  </div>
+
+    <h2>How the property CGT calculation works</h2>
+    <p>The CGT on a property sale is calculated in four steps:</p>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Calculate the gross gain:</strong> sale proceeds minus purchase price, buying costs, capital improvements and selling costs</li>
+      <li><strong>Deduct losses:</strong> capital losses from the same year reduce the gain first; brought-forward losses reduce to the AEA level</li>
+      <li><strong>Deduct the AEA:</strong> subtract the £3,000 annual exempt amount to get the taxable gain</li>
+      <li><strong>Apply the rates:</strong> 18% on the portion within your remaining basic-rate band, 24% on the rest</li>
+    </ol>
+    <p style="margin-bottom:0;">See our <a href="/capital-gains-tax-on-property" style="color:var(--accent);">full guide to CGT on property</a> for detail on allowable costs, Private Residence Relief and the 60-day reporting rule.</p>
+
+    <h2>2026/27 property CGT rates at a glance</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span style="font-weight:600;">Basic-rate taxpayer portion</span><span style="font-weight:600;color:var(--accent);">18%</span>
+        <span style="font-weight:600;">Higher-rate taxpayer portion</span><span style="font-weight:600;color:var(--accent);">24%</span>
+        <span>Annual exempt amount</span><span>£3,000</span>
+        <span>60-day reporting rule</span><span>Applies if CGT owed</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">The property higher rate was 28% before 30 October 2024. It was cut to 24% from that date.</p>
+
+    <h2>Worked example: buy-to-let sale 2026/27</h2>
+    <p>Peter bought a buy-to-let for £200,000 in 2016 (buying costs £4,500) and spent £15,000 on a kitchen extension in 2020. He sells in 2026/27 for £320,000 (selling costs £8,000). Salary: £48,000.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Sale proceeds</span><span style="font-variant-numeric:tabular-nums;">£320,000</span>
+        <span>Purchase price</span><span style="font-variant-numeric:tabular-nums;">−£200,000</span>
+        <span>Buying costs</span><span style="font-variant-numeric:tabular-nums;">−£4,500</span>
+        <span>Capital improvement</span><span style="font-variant-numeric:tabular-nums;">−£15,000</span>
+        <span>Selling costs</span><span style="font-variant-numeric:tabular-nums;">−£8,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Gross gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£92,500</span>
+        <span>Annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;">Taxable gain</span><span style="font-weight:600;font-variant-numeric:tabular-nums;">£89,500</span>
+        <span>Taxable income (£48,000 − £12,570)</span><span style="font-variant-numeric:tabular-nums;">£35,430</span>
+        <span>Remaining basic-rate band (£37,700 − £35,430)</span><span style="font-variant-numeric:tabular-nums;">£2,270</span>
+        <span>First £2,270 at 18%</span><span style="font-variant-numeric:tabular-nums;">£409</span>
+        <span>Remaining £87,230 at 24%</span><span style="font-variant-numeric:tabular-nums;">£20,935</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£21,344</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">Peter must report and pay within <strong>60 days of completion</strong>.</p>
+
+    <h2>Related guides and calculators</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="/capital-gains-tax-on-property" style="color:var(--accent);">Capital Gains Tax on Property, full guide</a></li>
+      <li><a href="/capital-gains-tax-on-inherited-property" style="color:var(--accent);">CGT on Inherited Property</a></li>
+      <li><a href="/capital-gains-tax-on-buy-to-let" style="color:var(--accent);">CGT on Buy-to-Let Property</a></li>
+      <li><a href="/capital-gains-tax-second-home" style="color:var(--accent);">CGT on a Second Home</a></li>
+      <li><a href="/capital-gains-tax-reporting-deadline" style="color:var(--accent);">60-day reporting rule explained</a></li>
+    </ul>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page provides general information only. Results are estimates. Consult a qualified tax adviser before making disposal decisions.</p>
+</section>
+{% endblock %}

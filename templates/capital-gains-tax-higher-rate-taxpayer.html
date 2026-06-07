@@ -1,36 +1,31 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax for Higher-Rate Taxpayers 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">If your taxable income already exceeds the basic-rate limit of £50,270, there is no remaining basic-rate band to absorb any capital gains. Every pound of gain above the £3,000 annual exempt amount is taxed at the <strong>24% higher rate</strong>. This guide explains how the rates work for higher earners and the planning options available.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>CGT rates for higher-rate taxpayers in 2026/27</h2>
-    <p>Capital gains tax sits on top of your income for rate-band purposes. If your taxable income (after personal allowance) already fills the basic-rate band, your gains have no basic-rate band to fall into:</p>
+    <p>CGT sits on top of your income for rate-band purposes. If your taxable income after the personal allowance already fills the basic-rate band, your gains have nowhere to fall at 18%:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li><strong>Residential property gains</strong> (second homes, buy-to-let, inherited property): <strong>24%</strong></li>
       <li><strong>Other assets</strong> (shares, crypto, business assets): <strong>24%</strong></li>
     </ul>
-    <p style="margin-bottom:0;">Both residential and non-residential gains are now taxed at the same higher rate of 24% for higher-rate taxpayers — the distinction between the two asset types only affects the rate for basic-rate taxpayers (18% vs 18% — both 18% in the basic-rate band for 2026/27).</p>
-  </article>
+    <p style="margin-bottom:0;">Both residential and non-residential gains are taxed at 24% for higher-rate taxpayers. The distinction between asset types only matters for basic-rate taxpayers, where both property and shares are taxed at 18% within the basic-rate band.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>How gains are stacked on top of income</h2>
-    <p>HMRC calculates CGT by placing capital gains on top of your taxable income. The process is:</p>
+    <p>HMRC places capital gains on top of your taxable income to calculate CGT. The process is:</p>
     <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Calculate your taxable income (gross income minus personal allowance of £12,570)</li>
       <li>Identify how much basic-rate band is unused (basic-rate limit £50,270 minus taxable income)</li>
       <li>Apply the annual exempt amount (£3,000) to reduce the gain</li>
       <li>The first slice of the taxable gain fills any remaining basic-rate band at 18%; the rest is taxed at 24%</li>
     </ol>
-    <p style="margin-bottom:0;">If your taxable income is £50,270 or above, step 2 produces zero or a negative number — there is nothing remaining in the basic-rate band, so the entire taxable gain is at 24%.</p>
-  </article>
+    <p style="margin-bottom:0;">If your taxable income is £50,270 or above, step 2 produces zero. There is nothing left in the basic-rate band, so the entire taxable gain is at 24%.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example</h2>
-    <p>Rachel has a salary of £68,000 in 2026/27. She sells a buy-to-let property, making a gain of £30,000. She has no capital losses to offset.</p>
+    <p>Rachel earns £68,000 in 2026/27 and sells a buy-to-let property making a gain of £30,000. She has no capital losses to offset.</p>
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Taxable income (salary minus personal allowance)</span><span style="font-variant-numeric:tabular-nums;">£55,430</span>
@@ -41,17 +36,13 @@
         <span>CGT at 24% (all at higher rate)</span><span style="font-variant-numeric:tabular-nums;">£6,480</span>
       </div>
     </div>
-    <p style="margin-bottom:0;">Rachel owes £6,480 CGT. Because this is a residential property, she must also report and pay within 60 days of the completion date.</p>
-  </article>
+    <p style="margin-bottom:0;">Rachel owes £6,480 CGT. Because this is a residential property, she must report and pay within 60 days of completion.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Can pension contributions help?</h2>
-    <p>Making additional pension contributions before the end of the tax year can reduce your taxable income. If a pension contribution brings your taxable income below £50,270, some of the capital gain may fall into the basic-rate band and be taxed at 18% rather than 24%. This is the most commonly cited CGT-planning strategy for higher earners.</p>
-    <p><strong>Example:</strong> If your income is £52,000 and you make a pension contribution of £5,000 (grossed up to £6,250 with basic-rate relief added), your taxable income falls to approximately £45,750 — leaving £4,520 of basic-rate band available for gains.</p>
-    <p style="margin-bottom:0;">However, there are limits on pension contributions: the annual allowance is typically £60,000 (or 100% of earnings, whichever is lower). Take advice to ensure any contribution is within your allowance.</p>
-  </article>
+    <p>Additional pension contributions made before 5 April reduce your taxable income. If a contribution brings you below £50,270, some of the gain may fall into the basic-rate band and be taxed at 18% rather than 24%.</p>
+    <p><strong>Example:</strong> Income of £52,000 and a £5,000 pension contribution (grossed up to £6,250 with basic-rate relief). Taxable income falls to approximately £45,750, leaving £4,520 of basic-rate band available for gains.</p>
+    <p style="margin-bottom:0;">But there are limits. The annual allowance is typically £60,000 (or 100% of earnings, whichever is lower). Take advice to confirm any contribution is within your allowance.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Other planning considerations</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><strong>Use your spouse's allowances</strong> — transfers to a spouse/civil partner before sale are no-gain/no-loss, allowing both annual exempt amounts and potentially both rate bands to be used</li>
@@ -59,7 +50,6 @@
       <li><strong>Offset capital losses</strong> — losses from previous years can reduce the taxable gain</li>
       <li><strong>ISA transfers</strong> — shares held within an ISA are CGT-free; shares outside an ISA can be transferred in using a Bed &amp; ISA transaction (though this crystallises any gain at the point of sale)</li>
     </ul>
-  </article>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your CGT as a higher-rate taxpayer</p>
@@ -67,16 +57,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
       <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and bands</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -104,7 +91,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. Your individual circumstances will affect your CGT position. Consult a qualified tax adviser before making disposal or planning decisions.</p>
 </section>

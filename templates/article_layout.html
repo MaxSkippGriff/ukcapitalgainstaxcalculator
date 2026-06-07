@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<style>
+  #read-progress { position: fixed; top: 0; left: 0; width: 0; height: 3px; background: var(--accent); z-index: 9999; transition: width 0.1s linear; }
+
+  .art-wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+  /* ── Breadcrumb ──────────────────────────────────── */
+  .art-bc {
+    padding: 1.1rem 0 0; font-size: 0.8rem; color: var(--text-tertiary);
+    display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+  }
+  .art-bc a { color: var(--text-tertiary); text-decoration: none; }
+  .art-bc a:hover { color: var(--accent); }
+  .art-bc-sep { opacity: 0.4; }
+
+  /* ── Hero header ─────────────────────────────────── */
+  .art-hero { padding: 1.1rem 0 0; max-width: 760px; }
+
+  /* Badge inside article body */
+  .art-body .badge, .art-body [style*="text-transform:uppercase"][style*="font-weight:700"] {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.7rem !important; font-weight: 700 !important; text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: var(--accent) !important; background: var(--accent-light) !important;
+    border: 1px solid rgba(27,107,74,0.18) !important;
+    border-radius: 100px !important; padding: 0.25rem 0.75rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  /* Undo badge styling for elements inside sections (only badge at top level) */
+  .art-body h2 ~ * [style*="text-transform:uppercase"] { all: revert; }
+
+  /* H1 in article body */
+  .art-body h1 {
+    font-size: clamp(1.5rem, 3vw, 2.1rem) !important;
+    font-weight: 700 !important; letter-spacing: -0.02em !important;
+    line-height: 1.18 !important; color: var(--text-primary) !important;
+    margin: 0 0 0.75rem !important; max-width: 22ch;
+  }
+  /* Meta / disclaimer line right after h1 */
+  .art-body h1 + p {
+    font-size: 0.78rem !important; color: var(--text-tertiary) !important;
+    line-height: 1.5 !important; margin-bottom: 1.2rem !important;
+    border: none !important; background: none !important;
+  }
+  /* Intro description (second p after h1) */
+  .art-body h1 + p + p {
+    font-size: 1rem !important; color: var(--text-secondary) !important;
+    line-height: 1.75 !important; max-width: 66ch; margin-bottom: 1.5rem !important;
+    border: none !important; background: none !important;
+  }
+
+  /* ── Body sections ───────────────────────────────── */
+  /* Neutralize outer .section wrapper */
+  .art-body > section.section, .art-body > .section {
+    max-width: none !important; margin: 0 !important; padding: 0 !important;
+  }
+
+  /* H2 section headings with separator */
+  .art-body h2 {
+    font-size: 1.1rem !important; font-weight: 700 !important;
+    letter-spacing: -0.01em !important; color: var(--text-primary) !important;
+    margin: 1.9rem 0 0.65rem !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1.5px solid var(--border) !important;
+    line-height: 1.3 !important;
+    scroll-margin-top: 88px;
+  }
+  /* First h2 after intro gets a bit less top spacing */
+  .art-body h1 + p + p + h2,
+  .art-body h1 + p + h2 { margin-top: 1.4rem !important; }
+
+  .art-body h3 {
+    font-size: 0.96rem !important; font-weight: 700 !important;
+    color: var(--text-primary) !important; margin: 1.1rem 0 0.35rem !important;
+  }
+
+  .art-body p {
+    font-size: 0.96rem; line-height: 1.78; color: var(--text-secondary);
+    max-width: 68ch; margin-bottom: 0.75rem;
+  }
+  .art-body p:last-child { margin-bottom: 0; }
+
+  .art-body ul, .art-body ol {
+    font-size: 0.93rem; color: var(--text-secondary); line-height: 1.8;
+    padding-left: 1.4rem; margin-bottom: 0.85rem;
+  }
+
+  /* Tables inside body */
+  .art-body table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 0.85rem; }
+  .art-body th { color: var(--text-tertiary); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--border); text-align: left; }
+  .art-body td { padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+  .art-body tr:last-child td { border-bottom: none; }
+  .art-body thead tr { background: var(--surface-hover, var(--surface-alt)); }
+
+  /* Bottom CTA div inside body */
+  .art-body > section > div:last-child,
+  .art-body > section.section > div:last-of-type {
+    margin-top: 2rem; padding: 1.1rem 1.25rem;
+    background: var(--surface-alt); border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Two-column layout ───────────────────────────── */
+  .art-layout {
+    display: grid; grid-template-columns: minmax(0,1fr) 268px;
+    gap: 2.25rem; align-items: start; margin-top: 1.5rem;
+  }
+
+  /* ── Sidebar ─────────────────────────────────────── */
+  .art-aside { position: sticky; top: 72px; display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .art-toc-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.05rem 1.1rem;
+  }
+  .art-toc-label {
+    font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-tertiary); margin-bottom: 0.65rem;
+  }
+  #art-toc-list { list-style: none; padding: 0; margin: 0; }
+  #art-toc-list li a {
+    display: flex; align-items: flex-start; gap: 0.55rem;
+    text-decoration: none; color: var(--text-secondary); font-size: 0.83rem;
+    line-height: 1.45; padding: 0.3rem 0.3rem; border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+  }
+  #art-toc-list li a:hover, #art-toc-list li a.art-toc-active { color: var(--accent); background: var(--accent-light); }
+  .art-toc-n { font-size: 0.67rem; font-weight: 700; color: var(--text-tertiary); min-width: 1.4em; flex-shrink: 0; padding-top: 0.13em; }
+  #art-toc-list li a.art-toc-active .art-toc-n { color: var(--accent); }
+
+  .art-calc-card {
+    background: var(--accent); border-radius: 14px; padding: 1.1rem 1.1rem; color: #fff;
+  }
+  .art-calc-label {
+    font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65); margin-bottom: 0.5rem;
+  }
+  .art-calc-links { display: flex; flex-direction: column; gap: 0.2rem; }
+  .art-calc-links a {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.83rem; font-weight: 500; color: rgba(255,255,255,0.92);
+    text-decoration: none; padding: 0.35rem 0.3rem; border-radius: 6px; transition: background 0.15s;
+  }
+  .art-calc-links a:hover { background: rgba(255,255,255,0.13); }
+  .art-calc-links a::before { content: "→"; color: rgba(255,255,255,0.55); font-size: 0.75rem; }
+
+  @media (max-width: 860px) {
+    .art-layout { grid-template-columns: 1fr; margin-top: 1rem; }
+    .art-aside { display: none; }
+    .art-body h1 { max-width: none; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="read-progress"></div>
+<div class="art-wrap">
+
+  <nav class="art-bc" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="art-bc-sep">›</span>
+    <a href="/guides">Guides</a><span class="art-bc-sep">›</span>
+    <span>{% block breadcrumb_title %}Guide{% endblock %}</span>
+  </nav>
+
+  <div class="art-layout">
+    <article class="art-body">
+      {% block article_body %}{% endblock %}
+    </article>
+    <aside class="art-aside">
+      <div class="art-toc-card">
+        <div class="art-toc-label">In this guide</div>
+        <ol id="art-toc-list"></ol>
+      </div>
+      <div class="art-calc-card">
+        <div class="art-calc-label">{% block sidebar_label %}Free calculators{% endblock %}</div>
+        <div class="art-calc-links">
+          {% block sidebar_links %}
+          <a href="/calculator">CGT calculator</a>
+          <a href="/property-cgt-calculator">Property CGT</a>
+          <a href="/shares-cgt-calculator">Shares CGT</a>
+          <a href="/crypto-cgt-calculator">Crypto CGT</a>
+          {% endblock %}
+        </div>
+      </div>
+    </aside>
+  </div>
+
+</div>
+<script>
+  (function() {
+    var bar = document.getElementById('read-progress');
+    if (!bar) return;
+    function upd() { var s = document.documentElement, h = s.scrollHeight - s.clientHeight; bar.style.width = h > 0 ? (s.scrollTop / h * 100) + '%' : '0'; }
+    window.addEventListener('scroll', upd, { passive: true }); upd();
+  })();
+  (function() {
+    var body = document.querySelector('.art-body');
+    var toc = document.getElementById('art-toc-list');
+    if (!body || !toc) return;
+    var h2s = body.querySelectorAll('h2');
+    if (!h2s.length) return;
+    var links = [];
+    h2s.forEach(function(h, i) {
+      h.id = 'as' + (i + 1);
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#as' + (i + 1);
+      a.setAttribute('data-toc', 'as' + (i + 1));
+      var s1 = document.createElement('span'); s1.className = 'art-toc-n'; s1.textContent = (i + 1) + '.';
+      var s2 = document.createElement('span'); s2.textContent = h.textContent.trim();
+      a.appendChild(s1); a.appendChild(s2);
+      li.appendChild(a); toc.appendChild(li);
+      links.push(a);
+    });
+    var active = null;
+    function spy() {
+      var top = window.scrollY + 110, cur = null;
+      h2s.forEach(function(h) { if (h.offsetTop <= top) cur = h.id; });
+      if (cur === active) return; active = cur;
+      links.forEach(function(a) { a.classList.toggle('art-toc-active', a.getAttribute('data-toc') === cur); });
+    }
+    window.addEventListener('scroll', spy, { passive: true }); spy();
+  })();
+</script>
+{% endblock %}

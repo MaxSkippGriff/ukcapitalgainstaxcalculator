@@ -1,12 +1,11 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax Reporting Deadlines 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">When and how you report a capital gain depends on the type of asset you have sold. UK residential property has a strict 60-day deadline after completion. Other assets are generally reported through Self Assessment by 31 January. Missing these deadlines can result in penalties and interest.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>UK residential property: 60-day rule</h2>
     <p>If you sell a UK residential property and CGT is due, you must:</p>
     <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
@@ -14,40 +13,32 @@
       <li>Pay the estimated CGT</li>
       <li>Do both within <strong>60 days of the date of completion</strong></li>
     </ol>
-    <p>This 60-day rule has applied since 27 October 2021 (previously 30 days). The deadline runs from completion, not exchange of contracts.</p>
-    <p style="margin-bottom:0;">Missing the 60-day deadline results in an automatic late-filing penalty. Interest also accrues on any unpaid tax from the 60-day point. The penalty starts at £100 for up to six months late, increasing thereafter.</p>
-  </article>
+    <p>The 60-day rule has applied since 27 October 2021 (previously 30 days). The deadline runs from completion, not exchange of contracts.</p>
+    <p style="margin-bottom:0;">Miss the 60-day deadline and you get an automatic late-filing penalty. Interest also accrues on unpaid tax from day 61. The penalty starts at £100 for up to six months late, and increases beyond that.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Other assets: Self Assessment</h2>
-    <p>For gains on shares, funds, crypto, second properties that are not UK residential, and other assets, you report through Self Assessment:</p>
+    <p>For gains on shares, funds, crypto, non-UK-residential property, and other assets, you report through Self Assessment:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>File your Self Assessment tax return by <strong>31 January</strong> following the end of the tax year</li>
       <li>Pay the CGT by the same 31 January deadline</li>
       <li>For 2026/27 (ending 5 April 2027), the deadline is <strong>31 January 2028</strong></li>
     </ul>
-    <p style="margin-bottom:0;">If you do not normally complete a Self Assessment return, you may need to register with HMRC. Registration for Self Assessment has its own deadline — generally 5 October following the tax year in which the gain arose.</p>
-  </article>
+    <p style="margin-bottom:0;">If you do not normally file Self Assessment, you may need to register with HMRC. The registration deadline is generally 5 October following the tax year in which the gain arose.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>When you may need to report even with no CGT due</h2>
-    <p>You may need to report a disposal on your Self Assessment return even if no CGT is due. As a general guide, HMRC expects disclosure if:</p>
+    <p>You may need to report a disposal even if no CGT is due. As a general guide, HMRC expects disclosure if:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
       <li>Your total disposal proceeds for the year exceed four times the annual exempt amount (approximately £12,000 for 2026/27 at the £3,000 exempt amount)</li>
       <li>You disposed of assets that are within the CGT regime, even if the gain is covered by losses or the exempt amount</li>
     </ul>
     <p style="margin-bottom:0;font-size:0.88rem;color:var(--text-secondary);">The rules around when disclosure is strictly required are nuanced. Check the current GOV.UK guidance or speak to a tax adviser if you are unsure whether a disposal needs to be reported.</p>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Reporting a loss</h2>
-    <p>Losses are claimed through your Self Assessment return. If you do not file Self Assessment, you can write to HMRC to claim a loss. The deadline to claim a loss is <strong>four years</strong> from the end of the tax year in which the loss arose. For a 2026/27 loss, the claim deadline is 31 January 2032.</p>
-    <p style="margin-bottom:0;">Without claiming, the loss cannot be used to offset future gains. You do not have to pay anything when reporting a loss — it is purely a record-keeping exercise that protects your ability to use the loss later.</p>
-  </article>
+    <p>Losses are claimed through your Self Assessment return. If you do not file Self Assessment, write to HMRC to claim the loss. The deadline is <strong>four years</strong> from the end of the tax year the loss arose. For a 2026/27 loss, that is 31 January 2032.</p>
+    <p style="margin-bottom:0;">Without claiming, the loss cannot offset future gains. You pay nothing when reporting a loss — it is purely a record-keeping step that protects your ability to use it later.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Records you need to keep</h2>
-    <p>Keep the following records for at least <strong>five years</strong> after the 31 January Self Assessment deadline for the relevant year (longer if you are still using losses from that year):</p>
+    <p>Keep the following for at least <strong>five years</strong> after the 31 January Self Assessment deadline for the relevant year (longer if you are still using losses from that year):</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li>Completion statements or contract notes showing purchase and sale prices</li>
       <li>Solicitor invoices confirming buying and selling legal fees</li>
@@ -56,9 +47,7 @@
       <li>SDLT or LBTT returns (for property purchases)</li>
       <li>Correspondence about probate valuations (for inherited assets)</li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Common mistakes</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li>Confusing the completion date with exchange of contracts — the 60-day clock runs from completion</li>
@@ -67,7 +56,6 @@
       <li>Losing records from the original purchase, which are needed years later to prove your base cost</li>
       <li>Not claiming losses because there is no tax to pay — unclaimed losses expire after four years</li>
     </ul>
-  </article>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Estimate your CGT before the deadline</p>
@@ -75,16 +63,13 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
       <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and bands</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -118,7 +103,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. Reporting deadlines and requirements can change — always check current GOV.UK guidance or consult a qualified tax adviser for your specific circumstances.</p>
 </section>

@@ -1,18 +1,15 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Capital Gains Tax Losses 2026/27</h1>
   <p style="font-size:1.05rem;margin-bottom:0.4rem;">Capital losses reduce the amount of gain on which you pay CGT. They are deducted from your gains before the annual exempt amount is applied — but to use them in future years, you must tell HMRC about them even if no tax was due when they arose.</p>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>How capital losses reduce your CGT bill</h2>
-    <p>A capital loss arises when you dispose of an asset for less than you paid for it (after deducting allowable costs). Losses from the same tax year are set against gains from the same tax year first. Any remaining losses can be carried forward indefinitely to set against future gains.</p>
-    <p style="margin-bottom:0;">Losses are deducted <strong>before</strong> the annual exempt amount is applied. This ordering matters: it means losses are used first, which can sometimes reduce or eliminate the benefit of the annual exempt amount if the net gain after losses falls below £3,000 anyway.</p>
-  </article>
+    <p>A capital loss arises when you dispose of an asset for less than you paid (after deducting allowable costs). Losses from the same tax year are set against gains from the same year first. Any remaining losses carry forward indefinitely to set against future gains.</p>
+    <p style="margin-bottom:0;">Losses are deducted <strong>before</strong> the annual exempt amount. The ordering matters. Losses go first, which can sometimes wipe out the benefit of the AEA if the net gain after losses is already below £3,000.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>The ordering: losses, then annual exempt amount</h2>
     <p>HMRC's ordering rules:</p>
     <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
@@ -22,11 +19,10 @@
       <li>Deduct the annual exempt amount from whatever net gain remains</li>
     </ol>
     <p style="margin-bottom:0;font-size:0.88rem;color:var(--text-secondary);">Note the subtlety in step 3: brought-forward losses are only used to the extent needed to bring the gain down to the exempt amount level. You do not have to use more brought-forward losses than necessary — HMRC preserves the excess for future years.</p>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example</h2>
     <p>In 2026/27 Emma sells shares at a £20,000 gain. She also sold different shares at a £5,000 loss in the same year.</p>
+
     <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
       <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
         <span>Gross gain</span><span style="font-variant-numeric:tabular-nums;">£20,000</span>
@@ -36,29 +32,21 @@
         <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Taxable gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£12,000</span>
       </div>
     </div>
-    <p>If Emma is a higher-rate taxpayer, CGT at 24% on £12,000 is <strong>£2,880</strong>. Without the loss, she would have had a £17,000 taxable gain and a CGT bill of £4,080 — a saving of £1,200 from the £5,000 loss.</p>
-    <p style="margin-bottom:0;">If Emma also had £8,000 of brought-forward losses from previous years, she could use £12,000 of those (bringing her net gain down to exactly £3,000, i.e. the exempt amount) and preserve the remaining £8,000 for future years — but since her net gain after current-year losses is already £15,000, she could use £12,000 of brought-forward losses to reach the £3,000 exempt threshold, resulting in zero CGT.</p>
-  </article>
+    <p>As a higher-rate taxpayer, Emma's CGT at 24% on £12,000 is <strong>£2,880</strong>. Without the loss she would have had a £17,000 taxable gain and a £4,080 bill — the £5,000 loss saved her £1,200.</p>
+    <p style="margin-bottom:0;">If Emma also had £8,000 of brought-forward losses, she could apply £12,000 of them to bring her net gain down to exactly £3,000 (sheltered by the AEA), preserving the remaining £8,000 for future years. Her net gain after current-year losses is £15,000, so using £12,000 of brought-forward losses reaches the £3,000 threshold — zero CGT.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Carrying losses forward</h2>
-    <p>Capital losses can be carried forward indefinitely — there is no time limit. However, you must claim them by telling HMRC. The usual way is via your Self Assessment tax return for the year in which the loss arose. If you do not file a Self Assessment return, you can write to HMRC to claim the loss.</p>
-    <p style="margin-bottom:0;">Losses are tracked by HMRC in your CGT record. When you use them in a future year, you report them on that year's Self Assessment return.</p>
-  </article>
+    <p>Capital losses carry forward indefinitely — there is no time limit. But you must claim them by telling HMRC. The usual route is your Self Assessment return for the year the loss arose. If you do not file Self Assessment, write to HMRC to claim the loss.</p>
+    <p style="margin-bottom:0;">HMRC tracks your losses in your CGT record. When you use them in a future year, you report them on that year's Self Assessment return.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>The annual exempt amount is use-it-or-lose-it</h2>
-    <p>Unlike losses, the £3,000 annual exempt amount cannot be carried forward. If your net gains in a tax year are less than £3,000, you simply do not use all of it — the unused portion is lost. It does not add to next year's exempt amount.</p>
-    <p style="margin-bottom:0;">This is why the ordering matters: if you use brought-forward losses to reduce a gain to zero before the exempt amount is reached, you have "wasted" the exempt amount for that year. HMRC's rule limiting brought-forward loss usage (step 3 above) exists precisely to avoid this outcome.</p>
-  </article>
+    <p>Unlike losses, the £3,000 AEA cannot be carried forward. If your net gains are below £3,000, the unused portion is simply lost. It does not roll into next year.</p>
+    <p style="margin-bottom:0;">This is why the ordering matters. If you use brought-forward losses to drive a gain all the way to zero before the AEA is applied, you waste the AEA for that year. HMRC's rule limiting brought-forward loss usage at step 3 exists precisely to prevent this.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>You must report losses even if no tax is due</h2>
-    <p>A common oversight: if you make a capital loss and have no gains to offset it against, there is still no CGT to pay — but you <strong>must tell HMRC</strong> about the loss within four years of the end of the tax year in which it arose if you want to carry it forward. The deadline for claiming losses for 2026/27 is 31 January 2032.</p>
-    <p style="margin-bottom:0;">If you do not claim the loss within this window, it is forfeited. You cannot claim it later.</p>
-  </article>
+    <p>A common mistake: if you make a capital loss with no gains to offset it, there is no CGT to pay — but you <strong>must still tell HMRC</strong> about the loss within four years of the end of the tax year if you want to carry it forward. The deadline for claiming a 2026/27 loss is 31 January 2032.</p>
+    <p style="margin-bottom:0;">Miss this window and the loss is forfeited. You cannot go back and claim it later.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>What losses cannot do</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li>Losses cannot be set against income — only against capital gains</li>
@@ -66,7 +54,6 @@
       <li>Losses on assets that are exempt from CGT (e.g. your main home) do not create allowable losses</li>
       <li>Bed-and-breakfasting rules prevent artificial loss creation by buying back the same shares within 30 days</li>
     </ul>
-  </article>
 
   <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
     <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">See how losses affect your CGT</p>
@@ -74,15 +61,12 @@
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:1.25rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Capital Gains Tax rates</a></li>
       <li><a href="https://www.gov.uk/guidance/capital-gains-tax-rates-and-allowances" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — CGT rates and allowances guidance</a></li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -116,7 +100,6 @@
         </div>
       </details>
     </div>
-  </article>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. Loss relief rules can be complex — consult a qualified tax adviser or accountant for advice on your specific position.</p>
 </section>

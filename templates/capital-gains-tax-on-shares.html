@@ -1,0 +1,116 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Capital Gains Tax on Shares UK 2026/27","description":"Guide to capital gains tax on shares and funds in 2026/27. Covers 18%/24% rates, S104 pooling, the 30-day rule, bed-and-ISA strategy and worked examples.","url":"{{ site_url }}/capital-gains-tax-on-shares","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Capital Gains Tax on Shares","item":"{{ site_url }}/capital-gains-tax-on-shares"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the CGT rate on shares in 2026/27?","acceptedAnswer":{"@type":"Answer","text":"18% for gains within the basic-rate band (income up to £50,270) and 24% for gains above it. These rates replaced the previous 10%/20% rates in October 2024."}},{"@type":"Question","name":"How do share matching rules work?","acceptedAnswer":{"@type":"Answer","text":"Disposals are matched first against same-day purchases, then against purchases within 30 days (bed-and-breakfast rule), then against the S104 pool average. This prevents selective lot picking and rapid buy-sell cycling to avoid tax."}},{"@type":"Question","name":"Do shares inside an ISA have CGT?","acceptedAnswer":{"@type":"Answer","text":"No. Shares, funds and ETFs inside a Stocks and Shares ISA are entirely exempt from CGT, regardless of how large the gains become."}},{"@type":"Question","name":"Can I sell shares to crystallise a loss and immediately rebuy?","acceptedAnswer":{"@type":"Answer","text":"Not in the same account, the 30-day rule would match the repurchase against the sale, neutralising the loss. To genuinely crystallise a loss: wait 31+ days to repurchase; buy back inside an ISA; or switch to a similar but different fund."}},{"@type":"Question","name":"Do I need to report share disposals to HMRC?","acceptedAnswer":{"@type":"Answer","text":"Yes, through Self Assessment if your total disposals exceeded four times the AEA (£12,000 for 2026/27), or if CGT is owed. Unlike property, there is no 60-day reporting rule for shares, the deadline is 31 January following the end of the tax year."}}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Capital Gains Tax on Shares UK 2026/27</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">Gains on shares and funds held outside ISAs and pensions are subject to CGT at <strong>18%</strong> (basic rate) or <strong>24%</strong> (higher rate) in 2026/27. This guide covers the S104 pool, the 30-day rule, the bed-and-ISA strategy and worked calculation examples.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Last updated for the 2026/27 tax year. Rates from October 2024 Autumn Budget.</p>
+
+    <h2>CGT rates on shares 2026/27</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span style="font-weight:600;">Basic-rate taxpayer (income up to £50,270)</span><span style="font-weight:600;color:var(--accent);">18%</span>
+        <span style="font-weight:600;">Higher/additional-rate taxpayer (income over £50,270)</span><span style="font-weight:600;color:var(--accent);">24%</span>
+        <span>Annual exempt amount</span><span>£3,000</span>
+        <span>Shares inside an ISA</span><span>Exempt, no CGT</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">The rates for shares changed in October 2024 from 10%/20% to 18%/24%. Shares and residential property now use the same structure. All share disposals outside ISAs and pensions use these rates in 2026/27.</p>
+
+    <h2>How the Section 104 pool works</h2>
+    <p>When you sell shares, you cannot pick which specific lot you're selling. HMRC's Section 104 pool rule averages the cost across all acquisitions of the same share type:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li>All purchases of the same share are pooled into one holding</li>
+      <li>The total cost is divided by the total number of shares to get an average cost per share</li>
+      <li>When you sell, you use the average cost per share to calculate the gain</li>
+    </ul>
+    <p>Example: 1,000 shares bought at £2.00 (cost £2,000) plus 500 shares bought later at £4.00 (cost £2,000). Pool: 1,500 shares, total cost £4,000, average cost £2.67/share. Sell 600 shares at £5.00 (proceeds £3,000). Gain = £3,000 − (600 × £2.67) = £3,000 − £1,600 = £1,400.</p>
+    <p style="margin-bottom:0;">After the £3,000 AEA, if your total gains for the year are below £3,000, no CGT is due. If the taxable gain is positive, apply the relevant rate.</p>
+
+    <h2>The 30-day matching rule (bed and breakfast)</h2>
+    <p>Before using the S104 pool, HMRC applies priority matching rules:</p>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Same-day rule</strong>, shares bought on the same day as the sale are matched first</li>
+      <li><strong>30-day rule</strong>, shares bought within 30 days after the sale are matched next (the "bed and breakfast" rule)</li>
+      <li><strong>S104 pool</strong>, all remaining shares use the pool average cost</li>
+    </ol>
+    <p>The 30-day rule stops you selling shares to crystallise a loss (or use your AEA) and immediately buying back. If you sell on 15 March and rebuy the same shares on 1 April (within 30 days), the rebuy is matched against the sale. The pool cost is not used.</p>
+    <p style="margin-bottom:0;"><strong>To avoid the rule:</strong> wait 31 days before repurchasing, buy back inside an ISA (the 30-day rule does not apply to ISA repurchases), or switch to a similar but different fund in the meantime.</p>
+
+    <h2>Worked example: shares CGT calculation</h2>
+    <p>David earns a salary of £45,000. He sells 1,000 shares in a fund for £18,000. His average pool cost was £10,000.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Sale proceeds</span><span style="font-variant-numeric:tabular-nums;">£18,000</span>
+        <span>Pool cost (1,000 shares × average cost)</span><span style="font-variant-numeric:tabular-nums;">−£10,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Gross gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£8,000</span>
+        <span>Annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;">Taxable gain</span><span style="font-weight:600;font-variant-numeric:tabular-nums;">£5,000</span>
+      </div>
+    </div>
+    <p>David's taxable income = £45,000 − £12,570 = £32,430. Remaining basic-rate band = £37,700 − £32,430 = £5,270. The £5,000 gain is below £5,270, so all of it falls within the basic-rate band.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>£5,000 at 18% (all within basic-rate band)</span><span style="font-variant-numeric:tabular-nums;">£900</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">If David earned £55,000 instead (higher-rate band), the same £5,000 gain would be taxed at 24% = £1,200.</p>
+
+    <h2>Bed-and-ISA strategy</h2>
+    <p>The bed-and-ISA strategy moves holdings from a taxable general investment account (GIA) into an ISA, where all future growth is permanently CGT-free.</p>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li>Sell shares or funds in your GIA, this crystallises the gain (using your AEA to shelter up to £3,000)</li>
+      <li>Immediately repurchase the same investments inside a Stocks and Shares ISA</li>
+      <li>Future growth is now inside the ISA, entirely CGT-free forever</li>
+    </ol>
+    <p>The repurchase inside the ISA can happen the same day. <strong>The 30-day rule does not apply to ISA repurchases</strong> — HMRC confirmed this at CG42562. The ISA holding is legally distinct, so a same-day GIA sale and ISA rebuy fully crystallises the gain.</p>
+    <p style="margin-bottom:0;">Time the bed-and-ISA so gains fall within your AEA (£3,000). A couple with £6,000 of combined unrealised gains can move £6,000 of value into ISAs with zero CGT.</p>
+
+    <h2>ISA exemption, zero CGT on gains inside an ISA</h2>
+    <p>Any shares, funds or ETFs held inside a Stocks and Shares ISA are <strong>completely exempt from CGT</strong>. There is no ceiling on gains — a £500,000 profit inside an ISA is entirely tax-free. The annual subscription limit is <strong>£20,000 per person</strong> for 2026/27.</p>
+    <p style="margin-bottom:0;">Put your highest-growth assets inside the ISA wrapper. Over a lifetime that is where the real CGT saving comes from.</p>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your shares CGT</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Enter your share sale details and income into our shares CGT calculator for an instant 2026/27 estimate.</p>
+    <a href="/shares-cgt-calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Shares CGT Calculator</a>
+  </div>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the CGT rate on shares in 2026/27?</summary>
+        <div class="faq-answer"><p>18% for gains within the basic-rate band (income up to £50,270) and 24% for gains above it. These rates replaced the previous 10%/20% rates in October 2024.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How do share matching rules work?</summary>
+        <div class="faq-answer"><p>Disposals are matched first against same-day purchases, then against purchases within 30 days (bed-and-breakfast rule), then against the S104 pool average. This prevents selective lot picking and rapid buy-sell cycling to avoid tax.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do shares inside an ISA have CGT?</summary>
+        <div class="faq-answer"><p>No. Shares, funds and ETFs inside a Stocks and Shares ISA are entirely exempt from CGT, regardless of how large the gains become.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I sell shares to crystallise a loss and immediately rebuy?</summary>
+        <div class="faq-answer"><p>Not in the same account, the 30-day rule would match the repurchase against the sale, neutralising the loss. To genuinely crystallise a loss: wait 31+ days to repurchase; buy back inside an ISA; or switch to a similar but different fund.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to report share disposals to HMRC?</summary>
+        <div class="faq-answer"><p>Yes, through Self Assessment if your total disposals exceeded four times the AEA (£12,000 for 2026/27), or if CGT is owed. Unlike property, there is no 60-day reporting rule for shares, the deadline is 31 January following the end of the tax year.</p></div>
+      </details>
+    </div>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial or tax advice. Consult a qualified tax adviser for guidance on your specific situation.</p>
+</section>
+{% endblock %}

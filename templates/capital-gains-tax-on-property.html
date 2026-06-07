@@ -1,0 +1,142 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Capital Gains Tax on Property UK 2026/27","description":"Guide to capital gains tax on residential property in 2026/27. Covers 18%/24% rates, allowable costs, the 60-day rule, Private Residence Relief and how to reduce your CGT bill.","url":"{{ site_url }}/capital-gains-tax-on-property","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Capital Gains Tax on Property","item":"{{ site_url }}/capital-gains-tax-on-property"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the CGT rate on property in 2026/27?","acceptedAnswer":{"@type":"Answer","text":"18% for gains within the basic-rate band, 24% for gains in the higher-rate band. These rates apply to second homes, buy-to-let and inherited property. They replaced the previous 28% higher rate from October 2024."}},{"@type":"Question","name":"Do I pay CGT when selling my main home?","acceptedAnswer":{"@type":"Answer","text":"Usually no. Private Residence Relief (PRR) exempts the gain on your only or main home. PRR applies in full if the property was your main home throughout ownership. It applies partially if you only lived there for part of the period."}},{"@type":"Question","name":"How long do I have to report a property gain?","acceptedAnswer":{"@type":"Answer","text":"60 days from the completion date. Use HMRC's online UK property reporting service. Failure to report within 60 days results in an automatic £100 penalty plus interest on unpaid tax."}},{"@type":"Question","name":"Can I deduct stamp duty from my CGT gain?","acceptedAnswer":{"@type":"Answer","text":"Yes. Stamp duty paid on purchase is an allowable acquisition cost and reduces your CGT gain."}},{"@type":"Question","name":"What counts as an improvement for CGT purposes?","acceptedAnswer":{"@type":"Answer","text":"Capital works that enhance the property: extensions, loft conversions, adding a bathroom. Normal maintenance and redecoration are not allowable improvement costs."}}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Capital Gains Tax on Property UK 2026/27</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">Capital gains tax on residential property in 2026/27 is charged at <strong>18% (basic rate)</strong> or <strong>24% (higher rate)</strong>. This guide covers second homes, buy-to-let, inherited property, allowable costs, the 60-day reporting rule and how to reduce your bill.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Last updated for the 2026/27 tax year. Rates reflect the October 2024 Autumn Budget changes.</p>
+
+    <h2>Which properties are subject to CGT?</h2>
+    <p>CGT applies when you dispose of a UK property that is not your only or main home. This includes:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Second homes and holiday properties</strong>, where you have never nominated the property as your main residence</li>
+      <li><strong>Buy-to-let properties</strong>, rental investment properties</li>
+      <li><strong>Inherited property</strong>, CGT is measured from the probate value, not the deceased's original purchase price</li>
+      <li><strong>Former main homes</strong>, where the property was your main home for only part of your ownership period</li>
+      <li><strong>Property sold by non-UK residents</strong>, all UK residential property disposals must be reported</li>
+    </ul>
+    <p style="margin-bottom:0;">Your main home is normally exempt via <strong>Private Residence Relief</strong>. The full gain is sheltered if you lived there throughout. And the final 9 months always count as a main-home period even after you move out.</p>
+
+    <h2>CGT rates on residential property 2026/27</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span style="font-weight:600;">Basic-rate taxpayer (income + gain ≤ £50,270)</span><span style="font-weight:600;color:var(--accent);">18%</span>
+        <span style="font-weight:600;">Higher/additional-rate taxpayer (income + gain &gt; £50,270)</span><span style="font-weight:600;color:var(--accent);">24%</span>
+        <span>Annual exempt amount (per individual)</span><span>£3,000</span>
+        <span>Property reporting deadline</span><span>60 days from completion</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">These rates have applied since the <strong>Autumn Budget of 30 October 2024</strong>. The previous higher rate was 28%. It was cut to 24% from that date. All qualifying residential property gains in 2026/27 use the 18%/24% structure.</p>
+
+    <h2>How to calculate the gain, allowable costs</h2>
+    <p>The CGT gain = <strong>sale proceeds − allowable costs</strong>. Allowable costs include:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li>Purchase price (or probate value for inherited property)</li>
+      <li>Buying costs: solicitor fees, stamp duty, surveyor fees</li>
+      <li>Capital improvements: extensions, loft conversions, new bathrooms (not repairs or redecoration)</li>
+      <li>Selling costs: estate agent fees, solicitor fees on sale</li>
+    </ul>
+    <p>Example: bought for £200,000, £5,000 buying costs, £15,000 extension, sold for £310,000 with £7,000 selling costs.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Sale proceeds</span><span style="font-variant-numeric:tabular-nums;">£310,000</span>
+        <span>Purchase price</span><span style="font-variant-numeric:tabular-nums;">−£200,000</span>
+        <span>Buying costs</span><span style="font-variant-numeric:tabular-nums;">−£5,000</span>
+        <span>Capital improvements</span><span style="font-variant-numeric:tabular-nums;">−£15,000</span>
+        <span>Selling costs</span><span style="font-variant-numeric:tabular-nums;">−£7,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Gross gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£83,000</span>
+        <span>Annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;">Taxable gain</span><span style="font-weight:600;font-variant-numeric:tabular-nums;">£80,000</span>
+      </div>
+    </div>
+
+    <h2>Worked example: higher-rate taxpayer</h2>
+    <p>Take the £80,000 taxable gain above. The taxpayer earns £65,000 — fully in the higher-rate band. No basic-rate band remains.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Taxable gain</span><span style="font-variant-numeric:tabular-nums;">£80,000</span>
+        <span>CGT at 24% (all higher rate)</span><span style="font-variant-numeric:tabular-nums;">£19,200</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">You must report this within <strong>60 days of completion</strong>.</p>
+
+    <h2>Worked example: basic-rate taxpayer with band split</h2>
+    <p>Same £80,000 taxable gain. The taxpayer's salary is £35,000. Taxable income = £22,430. Remaining basic-rate band = £37,700 − £22,430 = £15,270.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>First £15,270 at 18%</span><span style="font-variant-numeric:tabular-nums;">£2,749</span>
+        <span>Remaining £64,730 at 24%</span><span style="font-variant-numeric:tabular-nums;">£15,535</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£18,284</span>
+      </div>
+    </div>
+
+    <h2>The 60-day reporting rule</h2>
+    <p>Sell a UK residential property with CGT owed and you must <strong>report and pay within 60 days of completion</strong>. Use HMRC's online UK property reporting service, which is separate from Self Assessment. The 60-day clock starts on completion, not exchange of contracts.</p>
+    <p>Miss the deadline and you get an automatic £100 penalty, rising to £300 after 6 months and another £300 after 12 months, plus interest on unpaid tax. If there is no CGT to pay (gain within the AEA, or fully covered by losses), no report is required.</p>
+    <p style="margin-bottom:0;">When you file your Self Assessment return, reconcile the 60-day payment against your final CGT figure for the year. You may get a refund if you overpaid on account.</p>
+
+    <h2>Private Residence Relief, partial and full</h2>
+    <p>PRR applies where a property was your main home for part or all of the ownership period. The exempt fraction is the time it was your main residence (plus the final 9 months) divided by total ownership months.</p>
+    <p>Example: owned for 120 months, lived in it for 72 months, then let it out. PRR period = 72 months occupation + 9 months final period = 81 months. Exempt fraction = 81/120 = 67.5% of the gain. The remaining 32.5% is chargeable.</p>
+    <p style="margin-bottom:0;">Let Property Relief no longer provides extra relief for let periods in most cases since April 2020.</p>
+
+    <h2>Planning strategies to reduce property CGT</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><strong>Transfer to a lower-income spouse before sale</strong>, no-gain/no-loss transfer means the gain is taxed at their lower rate and their AEA is used</li>
+      <li><strong>Pension contributions in the year of sale</strong>, reduces taxable income, creating more basic-rate band headroom so more of the gain is taxed at 18%</li>
+      <li><strong>Use capital losses</strong>, losses from other disposals in the same year reduce the property gain before the AEA</li>
+      <li><strong>Joint ownership</strong>, property owned jointly by spouses means each person pays CGT on their half, each using their own AEA and rate</li>
+      <li><strong>Timing</strong>, if proceeds are near year-end, ensure completion is in the optimal tax year relative to income changes</li>
+    </ul>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Calculate your property CGT</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Enter your property sale details and income into our calculator for an instant 2026/27 CGT estimate.</p>
+    <a href="/property-cgt-calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Property CGT Calculator</a>
+  </div>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the CGT rate on property in 2026/27?</summary>
+        <div class="faq-answer"><p>18% for gains within the basic-rate band, 24% for gains in the higher-rate band. These rates apply to second homes, buy-to-let and inherited property. They replaced the previous 28% higher rate from October 2024.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I pay CGT when selling my main home?</summary>
+        <div class="faq-answer"><p>Usually no. Private Residence Relief (PRR) exempts the gain on your only or main home. PRR applies in full if the property was your main home throughout ownership. It applies partially if you only lived there for part of the period.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How long do I have to report a property gain?</summary>
+        <div class="faq-answer"><p>60 days from the completion date. Use HMRC's online UK property reporting service. Failure to report within 60 days results in an automatic £100 penalty plus interest on unpaid tax.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I deduct stamp duty from my CGT gain?</summary>
+        <div class="faq-answer"><p>Yes. Stamp duty paid on purchase is an allowable acquisition cost and reduces your CGT gain.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What counts as an improvement for CGT purposes?</summary>
+        <div class="faq-answer"><p>Capital works that enhance the property: extensions, loft conversions, adding a bathroom. Normal maintenance and redecoration are not allowable improvement costs.</p></div>
+      </details>
+    </div>
+
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/capital-gains-tax/rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK, Capital Gains Tax rates</a></li>
+      <li><a href="https://www.gov.uk/report-and-pay-your-capital-gains-tax" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK, Report and pay your Capital Gains Tax</a></li>
+      <li><a href="https://www.gov.uk/tax-sell-home" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK, Tax when you sell your home (PRR)</a></li>
+    </ul>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not tax or legal advice. Consult a qualified tax adviser before making disposal decisions.</p>
+</section>
+{% endblock %}

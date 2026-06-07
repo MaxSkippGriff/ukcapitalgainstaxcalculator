@@ -1,0 +1,128 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How to Calculate Capital Gains Tax UK 2026/27","description":"Step-by-step guide to calculating UK capital gains tax in 2026/27, with worked examples for property and shares. Covers S104 pooling, the annual exempt amount, income band split and how losses reduce your bill.","url":"{{ site_url }}/how-to-calculate-capital-gains-tax","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKCapitalGainsTaxCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"How to Calculate Capital Gains Tax","item":"{{ site_url }}/how-to-calculate-capital-gains-tax"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate capital gains tax on a property sale?","acceptedAnswer":{"@type":"Answer","text":"Subtract all allowable costs (purchase price, stamp duty, improvements, selling costs) from the sale proceeds. Deduct the £3,000 AEA. Apply 18% to the gain within your remaining basic-rate band and 24% to the gain above it."}},{"@type":"Question","name":"How do I calculate CGT on shares bought at different prices?","acceptedAnswer":{"@type":"Answer","text":"Use the Section 104 pool: average all your acquisition costs for that share. Multiply the average cost per share by the number sold to get the cost. Subtract from the sale proceeds to get the gain."}},{"@type":"Question","name":"Do losses reduce capital gains tax?","acceptedAnswer":{"@type":"Answer","text":"Yes. Current-year losses must be applied against current-year gains first. Brought-forward losses from earlier years are then applied, but only enough to bring the net gain to the AEA (£3,000) — so they don't waste the exemption."}},{"@type":"Question","name":"What is the CGT rate in 2026/27?","acceptedAnswer":{"@type":"Answer","text":"18% for gains within the basic-rate band and 24% for gains above it. These rates apply to all assets. The threshold is £50,270 of total income (personal allowance plus basic-rate band)."}}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>How to Calculate Capital Gains Tax UK 2026/27</h1>
+  <p style="font-size:1.05rem;margin-bottom:0.4rem;">A step-by-step guide to calculating UK capital gains tax in 2026/27, with worked examples for property and shares. Covers S104 pooling, the annual exempt amount, income band split and how losses reduce your bill.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1.5rem;">Last updated for the 2026/27 tax year.</p>
+
+    <h2>The five steps to calculate UK CGT</h2>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><strong>Calculate the gross gain</strong>, proceeds minus allowable costs</li>
+      <li><strong>Deduct current-year losses</strong>, losses from other disposals this year reduce the gain first</li>
+      <li><strong>Apply the annual exempt amount</strong>, £3,000 for 2026/27 (brought-forward losses applied here too, but only to the extent needed)</li>
+      <li><strong>Work out remaining basic-rate band</strong>, how much of the £37,700 basic-rate band is unused after your income</li>
+      <li><strong>Apply the rates</strong>, 18% up to the remaining band, 24% above it</li>
+    </ol>
+
+    <h2>Step 1: Calculate the gross gain</h2>
+    <p>The gross gain is disposal proceeds minus all allowable costs. What counts as allowable depends on the asset type:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li><strong>Property:</strong> purchase price + buying costs (stamp duty, solicitor fees, survey) + capital improvements (extensions, not repairs) + selling costs (estate agent, solicitor)</li>
+      <li><strong>Shares:</strong> average pool cost (Section 104) × number of shares sold + broker commission</li>
+      <li><strong>Crypto:</strong> average pool cost × units disposed</li>
+      <li><strong>Gifted or sold below market value to a connected person:</strong> use market value at date of disposal as proceeds</li>
+    </ul>
+    <p style="margin-bottom:0;">If disposal proceeds are less than your allowable costs, you have a capital loss, not a gain. Losses are still useful — they can offset other gains.</p>
+
+    <h2>Step 2: Deduct current-year losses</h2>
+    <p>Other disposals in the same tax year that made a loss must be deducted from your gains before anything else. You cannot defer a current-year loss — it is compulsory. If total losses exceed total gains, the net loss is carried forward.</p>
+    <p style="margin-bottom:0;">Example: gain of £15,000 from selling shares, loss of £4,000 from a different sale. Net position: £11,000.</p>
+
+    <h2>Step 3: Apply the annual exempt amount (and brought-forward losses)</h2>
+    <p>The annual exempt amount for 2026/27 is <strong>£3,000</strong>. Deduct it from the net gain after current-year losses. If you have brought-forward losses from previous years, apply them here — but only enough to bring the gain down to £3,000, not below it. Excess brought-forward losses are preserved for future years.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Net gain after current-year losses</span><span style="font-variant-numeric:tabular-nums;">£11,000</span>
+        <span>Annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Taxable gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£8,000</span>
+      </div>
+    </div>
+
+    <h2>Step 4: Work out your remaining basic-rate band</h2>
+    <p>Your CGT rate depends on how much basic-rate band remains after your income. Here is the calculation:</p>
+    <p style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.9rem;font-family:monospace;">Remaining band = £37,700 − (gross income − £12,570)</p>
+    <p>Examples:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li>Salary £25,000: taxable income = £12,430. Remaining band = £37,700 − £12,430 = <strong>£25,270</strong></li>
+      <li>Salary £45,000: taxable income = £32,430. Remaining band = £37,700 − £32,430 = <strong>£5,270</strong></li>
+      <li>Salary £60,000: taxable income = £47,430. Remaining band = £37,700 − £47,430 = <strong>£0</strong> (all at 24%)</li>
+    </ul>
+    <p style="margin-bottom:0;">Income includes salary, self-employment profit, pension, rental income, savings interest above the personal savings allowance, and dividends above the £500 allowance. Capital gains are not counted as income.</p>
+
+    <h2>Step 5: Apply the rates</h2>
+    <p>Apply 18% to the portion of taxable gain within the remaining basic-rate band and 24% to the portion above it.</p>
+    <p>Continuing the example (£8,000 taxable gain, salary £45,000, remaining band £5,270):</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>First £5,270 at 18%</span><span style="font-variant-numeric:tabular-nums;">£949</span>
+        <span>Remaining £2,730 at 24%</span><span style="font-variant-numeric:tabular-nums;">£655</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Total CGT</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£1,604</span>
+      </div>
+    </div>
+
+    <h2>Full worked example: property sale</h2>
+    <p>Mark earns £52,000 and sells a buy-to-let. Purchase price: £180,000. Buying costs: £4,500. Improvements: £12,000. Sold for £275,000. Selling costs: £6,500. No losses.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin:0.75rem 0;font-size:0.9rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0.25rem 1rem;">
+        <span>Proceeds</span><span style="font-variant-numeric:tabular-nums;">£275,000</span>
+        <span>Costs (£180,000 + £4,500 + £12,000 + £6,500)</span><span style="font-variant-numeric:tabular-nums;">−£203,000</span>
+        <span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;">Gross gain</span><span style="font-weight:600;border-top:1px solid var(--border);padding-top:0.4rem;font-variant-numeric:tabular-nums;">£72,000</span>
+        <span>Annual exempt amount</span><span style="font-variant-numeric:tabular-nums;">−£3,000</span>
+        <span style="font-weight:600;">Taxable gain</span><span style="font-weight:600;font-variant-numeric:tabular-nums;">£69,000</span>
+        <span>Mark's taxable income (£52,000 − £12,570)</span><span style="font-variant-numeric:tabular-nums;">£39,430</span>
+        <span>Remaining basic-rate band (£37,700 − £39,430)</span><span style="font-variant-numeric:tabular-nums;">£0</span>
+        <span>All £69,000 at 24%</span><span style="font-variant-numeric:tabular-nums;">£16,560</span>
+      </div>
+    </div>
+    <p style="margin-bottom:0;">Mark must report and pay within <strong>60 days of completion</strong> via HMRC's online property service.</p>
+
+    <h2>Section 104 pool: calculating gains on shares</h2>
+    <p>For shares, you cannot pick which lot you're selling. HMRC's Section 104 rule averages all your acquisitions:</p>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">
+      <li>Add up all acquisitions: total shares and total cost</li>
+      <li>Divide total cost by total shares = average cost per share</li>
+      <li>Gain per share = sale price − average cost</li>
+    </ol>
+    <p>Example: bought 500 shares at £2 (£1,000) and 500 more at £4 (£2,000). Pool: 1,000 shares, total cost £3,000, average £3/share. Sell all 1,000 at £6 — proceeds £6,000. Gain = £6,000 − £3,000 = £3,000. After AEA: taxable gain = £0. No CGT.</p>
+
+  <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.25rem;">
+    <p style="font-weight:600;color:var(--accent);margin-bottom:0.3rem;">Use our free CGT calculator</p>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Enter your figures and get an instant CGT breakdown for 2026/27, all five steps calculated automatically.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:0.87rem;padding:0.55rem 1.25rem;border-radius:999px;text-decoration:none;">Open the CGT calculator</a>
+  </div>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How do I calculate capital gains tax on a property sale?</summary>
+        <div class="faq-answer"><p>Subtract all allowable costs (purchase price, stamp duty, improvements, selling costs) from the sale proceeds. Deduct the £3,000 AEA. Apply 18% to the gain within your remaining basic-rate band and 24% to the gain above it.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I calculate CGT on shares bought at different prices?</summary>
+        <div class="faq-answer"><p>Use the Section 104 pool: average all your acquisition costs for that share. Multiply the average cost per share by the number sold to get the cost. Subtract from the sale proceeds to get the gain.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do losses reduce capital gains tax?</summary>
+        <div class="faq-answer"><p>Yes. Current-year losses must be applied against current-year gains first. Brought-forward losses from earlier years are then applied, but only enough to bring the net gain to the AEA (£3,000), so they don't waste the exemption.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the CGT rate in 2026/27?</summary>
+        <div class="faq-answer"><p>18% for gains within the basic-rate band and 24% for gains above it. These rates apply to all assets. The threshold is £50,270 of total income (personal allowance plus basic-rate band).</p></div>
+      </details>
+    </div>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This guide is for general information. Your actual CGT will depend on your full tax position. Consult a tax adviser for complex situations.</p>
+</section>
+{% endblock %}
