@@ -57,14 +57,39 @@
       <div class="results-row"><span class="results-label">CGT at 18% (basic rate portion)</span><span class="results-value">£<span id="r_basic_cgt">0</span></span></div>
       <div class="results-row"><span class="results-label">CGT at 24% (higher rate portion)</span><span class="results-value">£<span id="r_higher_cgt">0</span></span></div>
       <div class="results-row results-total"><span class="results-label">Total CGT due</span><span class="results-value">£<span id="r_total_cgt">0</span></span></div>
+      <div style="padding:0.6rem 0 0.2rem;font-size:0.82rem;color:var(--text-tertiary);">Got CGT to report? <a href="/cgt-survival-pack" style="color:var(--accent);font-weight:600;">CGT Survival Pack — £4.99 →</a></div>
     </div>
   </div>
+
+{% if stripe_pub_key %}
+<div style="margin:0.75rem 0 0;">
+  <div style="background:var(--surface-alt);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:1rem 1.25rem;display:flex;flex-wrap:wrap;gap:0.75rem 2rem;align-items:center;">
+    <div style="flex:1;min-width:220px;">
+      <div style="font-size:0.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">CGT Survival Pack · £4.99</div>
+      <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.5;margin:0 0 0.5rem;">You've run the numbers - now you need to report them. The pack gives you a record sheet for everything HMRC may ask for: proceeds, purchase cost, allowable expenses and losses. Property disposals must be reported within 60 days of completion.</p>
+      <a href="/cgt-survival-pack" style="font-size:0.82rem;color:var(--text-tertiary);text-decoration:underline;">What records do I need? →</a>
+    </div>
+    <div style="flex-shrink:0;">
+      <a href="/cgt-survival-pack" style="display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:0.875rem;padding:0.55rem 1.25rem;border-radius:100px;text-decoration:none;white-space:nowrap;">Get the CGT pack</a>
+    </div>
+  </div>
+</div>
+{% endif %}
 
   <article class="card">
     <h2>CGT rates for 2026/27</h2>
     <p>The CGT rates on most assets (shares, funds, second properties) are <strong>18%</strong> for gains falling in the basic rate band and <strong>24%</strong> for gains falling in the higher or additional rate band. Your taxable income before the gain determines how much basic rate band remains available.</p>
     <p style="margin-bottom:0;">The annual exempt amount of <strong>£3,000</strong> shelters the first £3,000 of net gains from CGT. Capital losses reduce the gain before the exempt amount is applied.</p>
   </article>
+
+{% if stripe_pub_key %}
+<section class="section" style="padding-top:0;padding-bottom:0.5rem;">
+  <div style="border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;display:flex;flex-wrap:wrap;gap:0.6rem 1.5rem;align-items:center;">
+    <p style="flex:1;min-width:180px;font-size:0.875rem;color:var(--text-secondary);margin:0;">Property gain? You have 60 days from completion to report it to HMRC. The <a href="/cgt-survival-pack" style="color:var(--accent);font-weight:600;">CGT Survival Pack — £4.99</a> has the record sheet and checklist you need.</p>
+    <a href="/cgt-survival-pack" style="flex-shrink:0;font-size:0.82rem;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:100px;white-space:nowrap;">See what's included →</a>
+  </div>
+</section>
+{% endif %}
 
   <article class="card">
     <h2>Frequently asked questions</h2>
@@ -78,7 +103,7 @@
       <details class="faq-item">
         <summary>How do I report a capital gain?</summary>
         <div class="faq-answer">
-          <p>For UK residential property, you must report and pay CGT within 60 days of completion using the HMRC online service. For other assets, report via Self Assessment by 31 January following the tax year end.</p>
+          <p>For UK residential property, you must report and pay CGT within 60 days of completion using the HMRC online service. For other assets, report via Self Assessment by 31 January following the tax year end.{% if stripe_pub_key %} The <a href="/cgt-survival-pack" style="color:var(--accent);font-weight:600;">CGT Survival Pack — £4.99</a> has a record sheet covering everything HMRC asks for — proceeds, costs, expenses and losses.{% endif %}</p>
         </div>
       </details>
       <details class="faq-item">
@@ -90,7 +115,7 @@
       <details class="faq-item">
         <summary>What about Business Asset Disposal Relief?</summary>
         <div class="faq-answer">
-          <p>Business Asset Disposal Relief (formerly Entrepreneurs' Relief) applies a reduced 14% CGT rate on qualifying business disposals, up to a lifetime limit of £1 million. It is not modelled in this calculator — use the <a href="/entrepreneurs-relief-calculator" style="color:var(--accent);">BADR calculator</a> for this scenario.</p>
+          <p>Business Asset Disposal Relief (formerly Entrepreneurs' Relief) applies a reduced 18% CGT rate on qualifying business disposals (from 6 April 2026), up to a lifetime limit of £1 million. It is not modelled in this calculator — use the <a href="/entrepreneurs-relief-calculator" style="color:var(--accent);">BADR calculator</a> for this scenario.</p>
         </div>
       </details>
     </div>
@@ -105,6 +130,7 @@
   </article>
 
   <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+
 </section>
 
 <script>

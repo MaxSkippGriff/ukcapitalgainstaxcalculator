@@ -183,6 +183,13 @@
           {% endblock %}
         </div>
       </div>
+      {% if stripe_pub_key %}
+      <div class="art-calc-card" style="border-top:2px solid var(--accent);">
+        <div class="art-calc-label">CGT Survival Pack · £4.99</div>
+        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.5;margin:0.35rem 0 0.7rem;">Record sheet for everything HMRC may ask for — proceeds, costs, expenses, losses. Includes the 60-day property reporting checklist.</p>
+        <a href="/cgt-survival-pack" style="display:block;text-align:center;font-size:0.84rem;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:100px;padding:0.4rem 0.9rem;text-decoration:none;transition:all 0.15s;">Get the pack →</a>
+      </div>
+      {% endif %}
     </aside>
   </div>
 

@@ -3,21 +3,40 @@
 <section class="section">
   <div class="badge">Contact</div>
   <h1>Contact — UKCapitalGainsTaxCalculator.co.uk</h1>
-  <p>For corrections, data-quality feedback or general enquiries about this site, please get in touch by email.</p>
+  <p>For corrections, data-quality feedback or general enquiries about this site, use the form below.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
-    <h2>Email</h2>
-    <p style="margin-bottom:0;"><a href="mailto:editorial@ukcapitalgainstaxcalculator.co.uk" style="color:var(--accent);font-weight:600;">editorial@ukcapitalgainstaxcalculator.co.uk</a></p>
+  {% if sent %}
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;border-left:4px solid #1B6B4A;">
+    <p style="margin:0;font-weight:600;">Message received — thank you. We aim to respond within two business days.</p>
   </article>
-
+  {% else %}
   <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
-    <h2>What to include</h2>
-    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
-      <li>A description of the issue or query.</li>
-      <li>The URL of the page you were looking at, if relevant.</li>
-      <li>Any source (e.g. GOV.UK guidance) that contradicts a figure shown on the site.</li>
-    </ul>
-    <p style="margin-top:0.75rem;margin-bottom:0;font-size:0.85rem;color:var(--text-tertiary);">We cannot provide personal tax advice. For individual circumstances, consult a qualified tax adviser or HMRC directly.</p>
+    <form method="post" action="/contact">
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.3rem;" for="contact-name">Name <span style="font-weight:normal;color:#9ca3af;">(optional)</span></label>
+        <input id="contact-name" name="name" type="text" maxlength="100"
+               style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:5px;padding:0.5rem 0.75rem;font-size:0.875rem;"
+               placeholder="Your name">
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.3rem;" for="contact-email">Email <span style="color:#ef4444;">*</span></label>
+        <input id="contact-email" name="email" type="email" required maxlength="200"
+               style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:5px;padding:0.5rem 0.75rem;font-size:0.875rem;"
+               placeholder="you@example.com">
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.3rem;" for="contact-message">Message <span style="color:#ef4444;">*</span></label>
+        <textarea id="contact-message" name="message" required maxlength="2000" rows="6"
+                  style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:5px;padding:0.5rem 0.75rem;font-size:0.875rem;resize:vertical;"
+                  placeholder="Describe your query or correction..."></textarea>
+      </div>
+      <p style="font-size:0.8rem;color:#6b7280;margin-bottom:1rem;">We cannot provide personal tax advice. For individual circumstances, consult a qualified tax adviser or HMRC directly.</p>
+      <button type="submit"
+              style="background:#1B6B4A;color:#fff;padding:0.55rem 1.4rem;border:none;border-radius:6px;font-size:0.95rem;font-weight:600;cursor:pointer;">
+        Send message
+      </button>
+    </form>
   </article>
+  {% endif %}
 </section>
 {% endblock %}

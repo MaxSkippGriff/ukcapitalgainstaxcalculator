@@ -105,5 +105,17 @@
     </div>
 
   <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:1.5rem;">This page is for general information only and is not financial, tax or legal advice. Reporting deadlines and requirements can change — always check current GOV.UK guidance or consult a qualified tax adviser for your specific circumstances.</p>
+
+  {% if stripe_pub_key %}
+  <div style="margin-top:1.75rem;background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;" class="cgt-pack-cta-grid">
+    <div>
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">PDF guide · £4.99 · 2026/27</div>
+      <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:0.25rem;">Capital Gains Tax Survival Pack</div>
+      <div style="font-size:0.83rem;color:var(--text-secondary);line-height:1.55;">Miss the 60-day deadline and the penalty is automatic — even if the gain is small. This PDF walks you through what to do and when.</div>
+    </div>
+    <a href="/cgt-survival-pack" style="white-space:nowrap;background:var(--accent);color:#fff;font-size:0.88rem;font-weight:600;padding:0.6rem 1.2rem;border-radius:100px;text-decoration:none;flex-shrink:0;">Get the pack →</a>
+  </div>
+  <style>@media(max-width:640px){.cgt-pack-cta-grid{grid-template-columns:1fr!important;}}</style>
+  {% endif %}
 </section>
 {% endblock %}

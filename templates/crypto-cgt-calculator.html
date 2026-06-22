@@ -89,6 +89,13 @@
     <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Disposal proceeds £15,000 minus acquisition cost £5,000 minus fees £200 = gross gain of £9,800. After the £3,000 annual exempt amount, £6,800 is taxable. With income of £40,000, £10,270 of basic-rate band remains, so the full £6,800 is charged at 18% — a total of £1,224.</p>
   </div>
 
+{% if stripe_pub_key %}
+<div style="margin:1rem 0;border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;display:flex;flex-wrap:wrap;gap:0.6rem 1.5rem;align-items:center;">
+  <p style="flex:1;min-width:180px;font-size:0.875rem;color:var(--text-secondary);margin:0;">Crypto gains can be messy. Use the <a href="/cgt-survival-pack" style="color:var(--accent);font-weight:600;">CGT Survival Pack — £4.99</a> to keep a clear record of disposals, costs, gains and losses before you complete your return.</p>
+  <a href="/cgt-survival-pack" style="flex-shrink:0;font-size:0.82rem;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:100px;white-space:nowrap;">Get the pack →</a>
+</div>
+{% endif %}
+
   <div class="card">
     <h2 style="font-size:1.05rem;margin-bottom:0.5rem;">Official sources</h2>
     <ul style="padding-left:1.25rem;line-height:1.9;font-size:0.9rem;">

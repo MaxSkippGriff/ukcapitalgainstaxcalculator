@@ -86,6 +86,13 @@
     <p>Miss the deadline and you get an automatic £100 penalty, rising to £300 after 6 months and another £300 after 12 months, plus interest on unpaid tax. If there is no CGT to pay (gain within the AEA, or fully covered by losses), no report is required.</p>
     <p style="margin-bottom:0;">When you file your Self Assessment return, reconcile the 60-day payment against your final CGT figure for the year. You may get a refund if you overpaid on account.</p>
 
+{% if stripe_pub_key %}
+<div style="margin:1rem 0;border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;display:flex;flex-wrap:wrap;gap:0.6rem 1.5rem;align-items:center;">
+  <p style="flex:1;min-width:180px;font-size:0.875rem;color:var(--text-secondary);margin:0;">Selling a second home or buy-to-let? Use the <a href="/cgt-survival-pack" style="color:var(--accent);font-weight:600;">CGT Survival Pack — £4.99</a> to organise your sale price, purchase cost, improvement costs, agent/legal fees and 60-day reporting notes.</p>
+  <a href="/cgt-survival-pack" style="flex-shrink:0;font-size:0.82rem;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:100px;white-space:nowrap;">Get the pack →</a>
+</div>
+{% endif %}
+
     <h2>Private Residence Relief, partial and full</h2>
     <p>PRR applies where a property was your main home for part or all of the ownership period. The exempt fraction is the time it was your main residence (plus the final 9 months) divided by total ownership months.</p>
     <p>Example: owned for 120 months, lived in it for 72 months, then let it out. PRR period = 72 months occupation + 9 months final period = 81 months. Exempt fraction = 81/120 = 67.5% of the gain. The remaining 32.5% is chargeable.</p>

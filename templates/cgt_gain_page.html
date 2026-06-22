@@ -73,6 +73,20 @@
     {% endfor %}
   </div>
 
+  {% if faq_items %}
+  <section style="margin-top:1.75rem;">
+    <h2 style="font-size:1.2rem;margin-bottom:0.6rem;">Frequently asked questions</h2>
+    <div class="faq-list">
+      {% for item in faq_items %}
+      <details class="faq-item">
+        <summary>{{ item.q }}</summary>
+        <div class="faq-answer"><p>{{ item.a }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <!-- Disclaimer -->
   <p style="font-size:0.78rem;color:var(--text-tertiary);border-top:1px solid var(--border);padding-top:0.85rem;">
     Figures are estimates for guidance only. CGT depends on your full tax position, allowable costs, losses and the asset type.

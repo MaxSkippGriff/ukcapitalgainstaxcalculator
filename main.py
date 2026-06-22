@@ -1,20 +1,38 @@
 """UKCapitalGainsTaxCalculator.co.uk Flask application."""
 from __future__ import annotations
+import logging
 import os
-from datetime import datetime
+import secrets
+from datetime import datetime, timedelta
 
 from dotenv import load_dotenv
-from flask import Flask, abort, make_response, redirect, render_template, request, send_from_directory
+from flask import Flask, abort, jsonify, make_response, redirect, render_template, request, send_file, send_from_directory
 from flask_limiter import Limiter
 from calculator import active_tax_year, TAX_YEAR, calculate_cgt, ANNUAL_EXEMPT_AMOUNT, CGT_LOWER_RATE, CGT_HIGHER_RATE, PERSONAL_ALLOWANCE, BASIC_RATE_LIMIT
 from scraper_guard import init_guard
 
+log = logging.getLogger(__name__)
+
 load_dotenv()
+
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY", "")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "")
+STRIPE_CGT_PACK_PRICE_ID = os.getenv("STRIPE_CGT_PACK_PRICE_ID", "")
+PACK_AMOUNT_PENCE = int(os.getenv("PACK_AMOUNT_PENCE", "499"))
+
+_stripe = None
+if STRIPE_SECRET_KEY and "sk_" in STRIPE_SECRET_KEY:
+    import stripe as _stripe
+    _stripe.api_key = STRIPE_SECRET_KEY
+
+_PACK_PDF = os.path.join(os.path.dirname(os.path.abspath(__file__)), "private", "Capital-Gains-Tax-Survival-Pack.pdf")
 
 _PUBLIC_PATHS = (
     "/sitemap.xml", "/robots.txt", "/ads.txt", "/favicon.ico",
     "/favicon-16x16.png", "/favicon-32x32.png", "/apple-touch-icon.png",
     "/site.webmanifest", "/health",
+    "/cgt-survival-pack/webhook",
 )
 _HONEYPOT_BLOCKED: set = set()
 
@@ -66,7 +84,8 @@ def cache_headers(r):
 
 def _ctx(**kw):
     return dict(site_url=SITE_URL, tax_year=active_tax_year(), now=datetime.utcnow(),
-                ga_measurement_id=GA_MEASUREMENT_ID, adsense_client=ADSENSE_CLIENT, **kw)
+                ga_measurement_id=GA_MEASUREMENT_ID, adsense_client=ADSENSE_CLIENT,
+                stripe_pub_key=STRIPE_PUBLISHABLE_KEY, **kw)
 
 
 @app.route("/favicon.ico")
@@ -135,6 +154,7 @@ def sitemap():
         (f"{SITE_URL}/privacy","0.3","yearly"),
         (f"{SITE_URL}/contact","0.3","yearly"),
         (f"{SITE_URL}/disclaimer","0.3","yearly"),
+        (f"{SITE_URL}/editorial-standards","0.4","yearly"),
         (f"{SITE_URL}/capital-gains-tax-on-inherited-property","0.7","monthly"),
         (f"{SITE_URL}/capital-gains-tax-on-buy-to-let","0.7","monthly"),
         (f"{SITE_URL}/capital-gains-tax-losses","0.6","monthly"),
@@ -229,13 +249,39 @@ def privacy():
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Privacy","url":SITE_URL+"/privacy"}],
     ))
 
-@app.route("/contact")
+@app.route("/editorial-standards")
+def editorial_standards():
+    return render_template("editorial_standards.html", **_ctx(
+        title="Editorial Standards, UKCapitalGainsTaxCalculator.co.uk",
+        meta_description="How UKCapitalGainsTaxCalculator.co.uk writes, reviews and maintains its calculator content and guides on UK capital gains tax.",
+        canonical_url=SITE_URL+"/editorial-standards",
+        breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Editorial Standards","url":SITE_URL+"/editorial-standards"}],
+    ))
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        name = request.form.get("name", "").strip()[:100]
+        email = request.form.get("email", "").strip()[:200]
+        message = request.form.get("message", "").strip()[:2000]
+        if email and message:
+            try:
+                db = get_db()
+                if db is not None:
+                    db.collection("contact_messages").add({
+                        "name": name, "email": email, "message": message,
+                        "site": SITE_URL, "created_at": server_timestamp(), "read": False,
+                    })
+            except Exception:
+                pass
+        return redirect("/contact?sent=1")
+    sent = request.args.get("sent") == "1"
     return render_template("contact.html", **_ctx(
         title="Contact, UKCapitalGainsTaxCalculator.co.uk",
         meta_description="Get in touch with UKCapitalGainsTaxCalculator.co.uk.",
         canonical_url=SITE_URL+"/contact",
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Contact","url":SITE_URL+"/contact"}],
+        sent=sent,
     ))
 
 @app.route("/disclaimer")
@@ -612,6 +658,18 @@ def cgt_gain_page(gain: int):
     calc_higher = calculate_cgt(sale_proceeds=gain, purchase_cost=0, buying_costs=0, selling_costs=0, taxable_income_before_gain=55000)
     nearby = [a for a in CGT_GAIN_AMOUNTS if a != gain]
     neighbours = sorted(nearby, key=lambda x: abs(x - gain))[:4]
+    aea = 3000
+    taxable = max(0, gain - aea)
+    faq_items = [
+        {"q": f"How much capital gains tax will I pay on a £{gain:,} gain in 2026/27?",
+         "a": f"After deducting the £{aea:,} annual exempt amount, the taxable gain is £{taxable:,}. A basic-rate taxpayer pays about £{calc_basic.total_cgt:,.0f} and a higher-rate taxpayer about £{calc_higher.total_cgt:,.0f}. CGT is charged at 18% within your remaining basic-rate band and 24% above it."},
+        {"q": "What is the capital gains tax allowance for 2026/27?",
+         "a": f"The annual exempt amount is £{aea:,} for 2026/27 — you pay CGT only on gains above it. Allowable costs (the purchase price plus buying and selling fees) also reduce the taxable gain before CGT applies."},
+        {"q": f"Why do basic-rate and higher-rate taxpayers pay different CGT on a £{gain:,} gain?",
+         "a": "Capital gains tax rates depend on your total income. Gains that fall within your remaining basic-rate band are taxed at 18%; gains above it at 24%. A higher-rate taxpayer has little or no basic-rate band left, so more of the gain is taxed at 24%."},
+        {"q": f"When do I report and pay CGT on a £{gain:,} gain?",
+         "a": "For most assets, report and pay through Self Assessment by 31 January after the end of the tax year. For UK residential property you must report and pay within 60 days of completion using a Capital Gains Tax on UK property account."},
+    ]
     return render_template("cgt_gain_page.html", **_ctx(
         title=f"Capital Gains Tax on £{gain:,} Gain 2026/27 | CGT Calculator",
         meta_description=f"How much CGT on a £{gain:,} gain in 2026/27? After the £3,000 annual exempt amount, a basic-rate taxpayer pays £{calc_basic.total_cgt:,.0f} and a higher-rate taxpayer pays £{calc_higher.total_cgt:,.0f}.",
@@ -620,6 +678,7 @@ def cgt_gain_page(gain: int):
         calc_basic=calc_basic,
         calc_higher=calc_higher,
         neighbours=neighbours,
+        faq_items=faq_items,
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":f"CGT on £{gain:,}","url":SITE_URL+f"/cgt/{gain}"}],
     ))
 
@@ -1548,6 +1607,158 @@ def blog_post(slug):
             {"url": "https://www.gov.uk/tax-sell-home", "label": "HMRC: Tax when you sell your home"},
         ],
     ))
+
+
+@app.route("/cgt-survival-pack")
+def cgt_pack_landing():
+    return render_template("cgt_pack_landing.html", **_ctx(
+        title="Capital Gains Tax Survival Pack 2026/27 | PDF Guide — £4.99",
+        meta_description="Work out what you owe, claim every relief, and never miss the 60-day deadline. 11-section PDF guide covering 2026/27 rates, property, shares, crypto and more.",
+        canonical_url=SITE_URL + "/cgt-survival-pack",
+    ))
+
+
+@app.route("/cgt-survival-pack/checkout", methods=["POST"])
+@limiter.limit("10 per minute")
+def cgt_pack_checkout():
+    if not _stripe:
+        return jsonify({"error": "Payments not configured"}), 503
+    try:
+        session_kwargs = dict(
+            mode="payment",
+            payment_method_types=["card"],
+            line_items=[{
+                "price_data": {
+                    "currency": "gbp",
+                    "unit_amount": PACK_AMOUNT_PENCE,
+                    "product_data": {
+                        "name": "Capital Gains Tax Survival Pack",
+                        "description": "2026/27 PDF guide — rates, reliefs, 60-day rule, shares, crypto and property.",
+                    },
+                },
+                "quantity": 1,
+            }],
+            success_url=f"{SITE_URL}/cgt-survival-pack/success?session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=f"{SITE_URL}/cgt-survival-pack",
+            payment_intent_data={
+                "metadata": {"product": "cgt_survival_pack"},
+                "statement_descriptor_suffix": "CGTTAXPACK",
+            },
+        )
+        if STRIPE_CGT_PACK_PRICE_ID:
+            session_kwargs["line_items"] = [{"price": STRIPE_CGT_PACK_PRICE_ID, "quantity": 1}]
+        session = _stripe.checkout.Session.create(**session_kwargs)
+        return jsonify({"url": session.url})
+    except Exception as exc:
+        log.error("CGT pack checkout error: %s", exc)
+        return jsonify({"error": "Checkout failed"}), 500
+
+
+@app.route("/cgt-survival-pack/webhook", methods=["POST"])
+def cgt_pack_webhook():
+    payload = request.get_data()
+    sig = request.headers.get("Stripe-Signature", "")
+    if not STRIPE_WEBHOOK_SECRET or not _stripe:
+        abort(400)
+    try:
+        event = _stripe.Webhook.construct_event(payload, sig, STRIPE_WEBHOOK_SECRET)
+    except Exception:
+        abort(400)
+
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
+        meta = (session.get("payment_intent_data") or {}).get("metadata") or session.get("metadata") or {}
+        if meta.get("product") != "cgt_survival_pack":
+            intent_id = session.get("payment_intent")
+            if intent_id and _stripe:
+                try:
+                    pi = _stripe.PaymentIntent.retrieve(intent_id)
+                    if pi.get("metadata", {}).get("product") != "cgt_survival_pack":
+                        return "", 200
+                except Exception:
+                    pass
+
+        from firestore_client import get_db, server_timestamp
+        db = get_db()
+        if db:
+            event_ref = db.collection("webhook_events").document(event["id"])
+            if event_ref.get().exists:
+                return "", 200
+            event_ref.set({"processed_at": server_timestamp()})
+
+        token = secrets.token_urlsafe(32)
+        email = session.get("customer_details", {}).get("email") or session.get("customer_email") or ""
+        expires = datetime.utcnow() + timedelta(days=7)
+
+        if db:
+            db.collection("pack_downloads").document(token).set({
+                "product": "cgt_survival_pack",
+                "session_id": session.get("id", ""),
+                "email": email,
+                "created_at": server_timestamp(),
+                "expires_at": expires,
+                "download_count": 0,
+                "max_downloads": 5,
+            })
+
+    return "", 200
+
+
+@app.route("/cgt-survival-pack/success")
+def cgt_pack_success():
+    session_id = request.args.get("session_id", "")
+    token = None
+    email = ""
+    if session_id and _stripe:
+        try:
+            session = _stripe.checkout.Session.retrieve(session_id)
+            email = session.get("customer_details", {}).get("email") or session.get("customer_email") or ""
+            from firestore_client import get_db
+            db = get_db()
+            if db:
+                docs = db.collection("pack_downloads").where("session_id", "==", session_id).limit(1).get()
+                for doc in docs:
+                    token = doc.id
+                    break
+        except Exception as exc:
+            log.error("Success page lookup error: %s", exc)
+    return render_template("cgt_pack_success.html", **_ctx(
+        title="Download Your Capital Gains Tax Survival Pack",
+        meta_description="Your Capital Gains Tax Survival Pack is ready to download.",
+        canonical_url=SITE_URL + "/cgt-survival-pack/success",
+        token=token,
+        email=email,
+        session_id=session_id,
+    ))
+
+
+@app.route("/cgt-survival-pack/download/<token>")
+def cgt_pack_download(token):
+    from firestore_client import get_db, server_timestamp
+    db = get_db()
+    if not db:
+        abort(404)
+    ref = db.collection("pack_downloads").document(token)
+    doc = ref.get()
+    if not doc.exists:
+        abort(404)
+    data = doc.to_dict()
+    if data.get("product") != "cgt_survival_pack":
+        abort(404)
+    expires = data.get("expires_at")
+    if expires:
+        exp_dt = expires if isinstance(expires, datetime) else expires
+        try:
+            if hasattr(exp_dt, "replace"):
+                exp_dt = exp_dt.replace(tzinfo=None)
+            if exp_dt < datetime.utcnow():
+                abort(410)
+        except Exception:
+            pass
+    if data.get("download_count", 0) >= data.get("max_downloads", 5):
+        abort(410)
+    ref.update({"download_count": data.get("download_count", 0) + 1, "last_downloaded_at": server_timestamp()})
+    return send_file(_PACK_PDF, as_attachment=True, download_name="Capital-Gains-Tax-Survival-Pack.pdf", mimetype="application/pdf")
 
 
 if __name__ == "__main__":

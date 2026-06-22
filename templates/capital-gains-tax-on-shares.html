@@ -67,6 +67,13 @@
     </div>
     <p style="margin-bottom:0;">If David earned £55,000 instead (higher-rate band), the same £5,000 gain would be taxed at 24% = £1,200.</p>
 
+{% if stripe_pub_key %}
+<div style="margin:1rem 0;border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;display:flex;flex-wrap:wrap;gap:0.6rem 1.5rem;align-items:center;">
+  <p style="flex:1;min-width:180px;font-size:0.875rem;color:var(--text-secondary);margin:0;">Selling shares outside an ISA? Use the <a href="/cgt-survival-pack" style="color:var(--accent);font-weight:600;">CGT Survival Pack — £4.99</a> to track proceeds, purchase costs, losses and the figures you may need for Self Assessment.</p>
+  <a href="/cgt-survival-pack" style="flex-shrink:0;font-size:0.82rem;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:100px;white-space:nowrap;">Get the pack →</a>
+</div>
+{% endif %}
+
     <h2>Bed-and-ISA strategy</h2>
     <p>The bed-and-ISA strategy moves holdings from a taxable general investment account (GIA) into an ISA, where all future growth is permanently CGT-free.</p>
     <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.75rem;">

@@ -77,6 +77,13 @@
       <a href="/crypto-cgt-calculator" class="text-blue-600 font-semibold hover:underline">Crypto CGT calculator</a>
     </div>
   </div>
+  {% if stripe_pub_key %}
+  <div class="card p-4 mt-4" style="border-left:3px solid var(--accent);">
+    <div style="font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">CGT Survival Pack · £4.99</div>
+    <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.55;margin:0 0 0.5rem;">Record sheet for everything HMRC asks for — proceeds, costs, expenses, losses. Includes the 60-day property reporting checklist.</p>
+    <a href="/cgt-survival-pack" style="font-size:0.84rem;font-weight:600;color:var(--accent);text-decoration:none;">Get the CGT pack →</a>
+  </div>
+  {% endif %}
 
   {% if reference_facts %}
   <div class="card p-5 mt-8">
