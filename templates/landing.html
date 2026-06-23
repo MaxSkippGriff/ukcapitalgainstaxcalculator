@@ -419,6 +419,36 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary)
   </div>
 </section>
 
+<!-- MULTI-DISPOSAL CGT PLANNER — pools several disposals under one £3,000 allowance (client-side, no server call) -->
+<section class="section" id="multi-disposal" style="padding-top:0.4rem;padding-bottom:0.75rem;scroll-margin-top:90px;">
+  <div style="background:var(--surface);border:1.5px solid var(--border);border-top:3px solid var(--accent);border-radius:var(--radius);padding:1.4rem 1.6rem;">
+    <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent);">Multiple disposals</div>
+    <h2 style="font-size:1.3rem;font-weight:700;color:var(--text-primary);margin:0.25rem 0 0;letter-spacing:-0.01em;">Sold more than one thing this year? Pool them under one allowance</h2>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;margin:0.7rem 0 0;max-width:700px;">You get just <strong style="color:var(--text-primary);">one £3,000 annual exempt amount</strong> across <em>all</em> your disposals in a tax year — not £3,000 for each. Enter the gain on each disposal to see the correct combined Capital Gains Tax. <span style="color:var(--text-tertiary);">Estimate only — not advice.</span></p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem 1rem;margin-top:1.1rem;" class="md-grid">
+      <div class="field"><label for="md1" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Disposal 1 gain (e.g. shares)</label><div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:0 0.6rem;background:var(--surface);"><span style="color:var(--text-tertiary);">£</span><input type="text" id="md1" inputmode="decimal" value="20,000" style="border:none;background:none;padding:0.5rem 0.4rem;width:100%;font-size:0.95rem;color:var(--text-primary);outline:none;"></div></div>
+      <div class="field"><label for="md2" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Disposal 2 gain (e.g. second property)</label><div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:0 0.6rem;background:var(--surface);"><span style="color:var(--text-tertiary);">£</span><input type="text" id="md2" inputmode="decimal" value="15,000" style="border:none;background:none;padding:0.5rem 0.4rem;width:100%;font-size:0.95rem;color:var(--text-primary);outline:none;"></div></div>
+      <div class="field"><label for="md3" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Disposal 3 gain (e.g. crypto)</label><div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:0 0.6rem;background:var(--surface);"><span style="color:var(--text-tertiary);">£</span><input type="text" id="md3" inputmode="decimal" value="0" style="border:none;background:none;padding:0.5rem 0.4rem;width:100%;font-size:0.95rem;color:var(--text-primary);outline:none;"></div></div>
+      <div class="field"><label for="md4" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Disposal 4 gain</label><div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:0 0.6rem;background:var(--surface);"><span style="color:var(--text-tertiary);">£</span><input type="text" id="md4" inputmode="decimal" value="0" style="border:none;background:none;padding:0.5rem 0.4rem;width:100%;font-size:0.95rem;color:var(--text-primary);outline:none;"></div></div>
+      <div class="field"><label for="mdLosses" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Capital losses to offset (this year + brought forward)</label><div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:0 0.6rem;background:var(--surface);"><span style="color:var(--text-tertiary);">£</span><input type="text" id="mdLosses" inputmode="decimal" value="0" style="border:none;background:none;padding:0.5rem 0.4rem;width:100%;font-size:0.95rem;color:var(--text-primary);outline:none;"></div></div>
+      <div class="field"><label for="mdIncome" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Taxable income before gains</label><div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:0 0.6rem;background:var(--surface);"><span style="color:var(--text-tertiary);">£</span><input type="text" id="mdIncome" inputmode="decimal" value="37,700" style="border:none;background:none;padding:0.5rem 0.4rem;width:100%;font-size:0.95rem;color:var(--text-primary);outline:none;"></div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;margin-top:1.15rem;">
+      <div style="background:var(--accent-light);border-radius:var(--radius);padding:0.85rem 0.95rem;"><div style="font-size:0.74rem;color:var(--text-secondary);font-weight:600;">Total gains</div><div style="font-size:1.25rem;font-weight:800;color:var(--text-primary);font-variant-numeric:tabular-nums;" id="md-total">£0</div></div>
+      <div style="background:var(--accent-light);border-radius:var(--radius);padding:0.85rem 0.95rem;"><div style="font-size:0.74rem;color:var(--text-secondary);font-weight:600;">Less one £3,000 allowance</div><div style="font-size:1.25rem;font-weight:800;color:var(--text-primary);font-variant-numeric:tabular-nums;" id="md-exempt">£0</div></div>
+      <div style="background:var(--accent-light);border-radius:var(--radius);padding:0.85rem 0.95rem;"><div style="font-size:0.74rem;color:var(--text-secondary);font-weight:600;">Taxable gain</div><div style="font-size:1.25rem;font-weight:800;color:var(--text-primary);font-variant-numeric:tabular-nums;" id="md-taxable">£0</div></div>
+      <div style="background:var(--accent);border-radius:var(--radius);padding:0.85rem 0.95rem;"><div style="font-size:0.74rem;color:rgba(255,255,255,0.85);font-weight:600;">Total CGT due</div><div style="font-size:1.25rem;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;" id="md-cgt">£0</div></div>
+    </div>
+    <div style="font-size:0.8rem;color:var(--text-tertiary);margin-top:0.65rem;line-height:1.55;">Of which: <span id="md-basic" style="color:var(--text-secondary);font-weight:600;">£0</span> at 18% (within your basic-rate band) and <span id="md-higher" style="color:var(--text-secondary);font-weight:600;">£0</span> at 24% (above it). Property gains use the same 18%/24% rates for 2026/27.</div>
+
+    <div style="margin-top:1rem;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);font-size:0.84rem;color:var(--text-secondary);line-height:1.6;">
+      <strong style="color:var(--text-primary);">Common mistake:</strong> the £3,000 allowance applies <strong>once</strong> across all disposals in the year — not £3,000 per asset. Working out each sale separately and deducting £3,000 from each understates the tax you actually owe. UK residential property must also be reported and paid within 60 days of completion.
+    </div>
+  </div>
+</section>
+
 <section class="section" id="how-it-works" style="padding-top:0.9rem;padding-bottom:0.75rem;">
   <div class="section-label">How it works</div>
   <h2>Three steps to estimate your CGT</h2>
@@ -823,6 +853,27 @@ function calculate(){
 const sticky=document.getElementById('stickyBar'),panel=document.getElementById('resultsPanel');
 if(sticky&&panel)new IntersectionObserver(([e])=>sticky.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(panel);
 calculate();
+
+// Multi-disposal planner — reuses the same constants/logic as calculate() above. Pure client-side, no server call.
+function mdCalc(){
+  const gains=['md1','md2','md3','md4'].reduce((s,id)=>{const el=document.getElementById(id);return s+(el?parseCur(el.value):0);},0);
+  const losses=parseCur((document.getElementById('mdLosses')||{}).value);
+  const income=parseCur((document.getElementById('mdIncome')||{}).value);
+  const afterLoss=Math.max(0,gains-Math.min(losses,gains));
+  const exempt=Math.min(AEA,afterLoss);
+  const taxable=Math.max(0,afterLoss-exempt);
+  const remBasic=Math.max(0,BASIC_BAND-income);
+  const basicGain=Math.min(taxable,remBasic);
+  const higherGain=Math.max(0,taxable-basicGain);
+  setText('md-total',fmt(gains));
+  setText('md-exempt',fmt(exempt));
+  setText('md-taxable',fmt(taxable));
+  setText('md-cgt',fmt(basicGain*CGT_LOWER+higherGain*CGT_HR));
+  setText('md-basic',fmt(basicGain*CGT_LOWER));
+  setText('md-higher',fmt(higherGain*CGT_HR));
+}
+['md1','md2','md3','md4','mdLosses','mdIncome'].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener('input',mdCalc);});
+mdCalc();
 </script>
 </body>
 </html>
