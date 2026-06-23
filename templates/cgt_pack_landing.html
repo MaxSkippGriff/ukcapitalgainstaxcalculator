@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<style>
+  .pack-wrap { max-width: var(--max-w); margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+  .pack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+  .pack-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 600; padding: 0.28rem 0.7rem; border-radius: 100px; margin-bottom: 0.85rem; }
+  .pack-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+  .pack-title { font-family: var(--font-display); font-size: clamp(1.65rem, 3.5vw, 2.5rem); font-weight: 500; line-height: 1.16; letter-spacing: -0.03em; color: var(--text-primary); margin: 0 0 0.85rem; }
+  .pack-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem; }
+  .pack-list { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .pack-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+  .pack-list li::before { content: "✓"; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+  .pack-price-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+  .pack-price { font-family: var(--font-display); font-size: 2.5rem; font-weight: 600; color: var(--text-primary); letter-spacing: -0.04em; }
+  .pack-price-note { font-size: 0.85rem; color: var(--text-tertiary); }
+  .pack-buy-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--accent); color: #fff; font-family: var(--font-body); font-size: 1rem; font-weight: 600; padding: 0.85rem 2rem; border-radius: 100px; border: none; cursor: pointer; width: 100%; box-shadow: 0 2px 12px rgba(27,107,74,0.28); transition: opacity 0.15s; }
+  .pack-buy-btn:hover { opacity: 0.92; }
+  .pack-buy-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .pack-trust { display: flex; flex-wrap: wrap; gap: 0.38rem; margin-top: 0.8rem; }
+  .pack-trust span { font-size: 0.76rem; color: var(--text-tertiary); padding: 0.2rem 0.6rem; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 100px; }
+  .pack-anchor { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.6rem; line-height: 1.5; }
+  .pack-preview-col { display: flex; flex-direction: column; gap: 0.75rem; }
+  .pack-preview-img { width: 100%; display: block; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.13); border: 1px solid var(--border); }
+  .pack-preview-paywall { position: relative; overflow: hidden; border-radius: 8px; }
+  .pack-preview-paywall-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 55%; background: linear-gradient(to bottom, rgba(250,250,248,0) 0%, rgba(250,250,248,0.93) 45%, rgba(250,250,248,1) 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1rem; }
+  .pack-preview-paywall-label { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 0.3rem 0.85rem; }
+  .pack-contents { max-width: var(--max-w); margin: 2.5rem auto 0; padding: 0 1.25rem; }
+  .pack-contents-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  .pack-contents-title { font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 500; color: var(--text-primary); letter-spacing: -0.02em; margin: 0 0 1rem; }
+  .pack-contents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .pack-contents-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+  .pack-contents-card-title { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem; }
+  .pack-contents-card-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; }
+  .pack-bottom { max-width: var(--max-w); margin: 2.5rem auto 0; padding: 0 1.25rem 3rem; }
+  .pack-bottom-card { background: var(--surface); border: 1.5px solid var(--border); border-top: 3px solid var(--accent); border-radius: var(--radius); padding: 1.75rem 2rem; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; }
+  @media (max-width: 860px) {
+    .pack-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .pack-contents-grid { grid-template-columns: 1fr 1fr; }
+    .pack-bottom-card { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .pack-contents-grid { grid-template-columns: 1fr; }
+    .pack-title { font-size: 1.55rem; }
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="pack-wrap">
+  <div class="pack-grid">
+
+    <!-- LEFT: copy + CTA -->
+    <div>
+      <div class="pack-badge"><span class="pack-badge-dot"></span>Updated June 2026 · 2026/27 tax year</div>
+      <h1 class="pack-title">The Capital Gains Tax Survival Pack</h1>
+      <p class="pack-desc">CGT catches people out in two ways: they either pay more than they need to, or they miss a deadline and get an automatic penalty. This PDF deals with both — the 60-day property rule, the 2026/27 rates, every relief worth claiming, and exactly how to report and pay.</p>
+      <ul class="pack-list">
+        <li>The 60-day property rule: what it is, when the clock starts, and what happens if you miss it</li>
+        <li>Your 2026/27 rates (18%/24%) and the £3,000 allowance — and why more people have a bill now</li>
+        <li>What counts as a disposal, and what's completely exempt</li>
+        <li>How to work out your gain with a full buy-to-let worked example</li>
+        <li>Shares and crypto: the same-day rule, bed-and-breakfast rule, and Section 104 pool explained</li>
+        <li>Private Residence Relief: when your home is exempt and where a bill can still creep in</li>
+        <li>Legal ways to reduce your bill — spouse transfers, ISA bed-and-ISA, carrying losses forward</li>
+        <li>How and when to report and pay, plus the mistakes that cost people most</li>
+      </ul>
+      <div class="pack-price-row">
+        <span class="pack-price">£4.99</span>
+        <span class="pack-price-note">one-off · instant PDF download</span>
+      </div>
+      <button id="pack-buy-btn" class="pack-buy-btn">Get the pack — £4.99</button>
+      <div class="pack-trust">
+        <span>No subscription</span>
+        <span>Instant download</span>
+        <span>Full refund if not satisfied</span>
+        <span>Secure payment via Stripe</span>
+      </div>
+      <p class="pack-anchor">The automatic penalty for missing the 60-day deadline starts at £100, regardless of the size of your gain. This is £4.99, and it's a deductible cost against your gain.</p>
+    </div>
+
+    <!-- RIGHT: preview images -->
+    <div class="pack-preview-col">
+      <img src="{{ url_for('static', filename='pack_preview/page-01.png') }}" alt="Capital Gains Tax Survival Pack — cover" class="pack-preview-img" loading="lazy">
+      <img src="{{ url_for('static', filename='pack_preview/page-02.png') }}" alt="Capital Gains Tax Survival Pack — contents page" class="pack-preview-img" loading="lazy">
+      <div class="pack-preview-paywall">
+        <img src="{{ url_for('static', filename='pack_preview/page-03.png') }}" alt="Capital Gains Tax Survival Pack — when CGT applies" class="pack-preview-img" loading="lazy" style="filter:blur(2px);transform:scale(1.02);">
+        <div class="pack-preview-paywall-overlay">
+          <span class="pack-preview-paywall-label">Unlock full pack — £4.99</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="pack-contents">
+  <div class="pack-contents-label">What's in the pack</div>
+  <h2 class="pack-contents-title">11 sections, everything you need</h2>
+  <div class="pack-contents-grid">
+    <div class="pack-contents-card">
+      <div class="pack-contents-card-title">The 60-day property rule</div>
+      <div class="pack-contents-card-desc">Sell UK residential property and the clock starts on completion day. Miss it and there's an automatic £100 penalty — even if no tax is owed. This section tells you exactly what to do and when.</div>
+    </div>
+    <div class="pack-contents-card">
+      <div class="pack-contents-card-title">Your 2026/27 rates and allowance</div>
+      <div class="pack-contents-card-desc">18% in the basic-rate band, 24% above it — the same for property, shares and crypto since the October 2024 Budget. Annual Exempt Amount is £3,000 (down from £12,300 three years ago).</div>
+    </div>
+    <div class="pack-contents-card">
+      <div class="pack-contents-card-title">Working out your gain</div>
+      <div class="pack-contents-card-desc">Full worked example on a buy-to-let: sale price, less purchase price, less buying and selling costs, less improvements, less allowance. Includes what counts as an allowable cost and what doesn't.</div>
+    </div>
+    <div class="pack-contents-card">
+      <div class="pack-contents-card-title">Shares and crypto</div>
+      <div class="pack-contents-card-desc">The matching rules most people don't know: same-day, 30-day bed-and-breakfast, and the Section 104 pool. Swapping one crypto for another counts as a disposal too.</div>
+    </div>
+    <div class="pack-contents-card">
+      <div class="pack-contents-card-title">Private Residence Relief</div>
+      <div class="pack-contents-card-desc">Why most people pay nothing on their main home — and when a bill can still appear. Covers the final 9-month rule, letting relief, and what happens if you've ever used part for business.</div>
+    </div>
+    <div class="pack-contents-card">
+      <div class="pack-contents-card-title">Reducing your bill legally</div>
+      <div class="pack-contents-card-desc">Using both spouses' allowances, bed-and-ISA to shelter future gains, carrying losses forward, and Business Asset Disposal Relief at 18% for qualifying business sales.</div>
+    </div>
+  </div>
+</div>
+
+<div class="pack-bottom">
+  <div class="pack-bottom-card">
+    <div>
+      <div style="font-family:var(--font-display);font-size:1.35rem;font-weight:500;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:0.5rem;">Ready to get this sorted?</div>
+      <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.65;margin:0;">£4.99 — less than five minutes of an accountant's time. You get a download link straight away and can re-download up to 5 times over 7 days.</p>
+      <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.55rem;">Not what you needed? Email us for a full refund, no questions asked.</p>
+    </div>
+    <div style="min-width:200px;">
+      <button id="pack-buy-btn-2" class="pack-buy-btn" style="width:auto;padding:0.8rem 1.6rem;">Get the pack — £4.99</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  function startCheckout() {
+    var btns = [document.getElementById('pack-buy-btn'), document.getElementById('pack-buy-btn-2')];
+    btns.forEach(function (b) { if (b) { b.disabled = true; b.textContent = 'Loading…'; } });
+    if (window.trackEvent) window.trackEvent('begin_checkout', { currency: 'GBP', value: 4.99, items: [{ item_id: 'cgt_survival_pack', item_name: 'Capital Gains Tax Survival Pack', price: 4.99 }] });
+    fetch('/cgt-survival-pack/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        btns.forEach(function (b) { if (b) { b.disabled = false; b.textContent = 'Get the pack — £4.99'; } });
+        alert('Could not start checkout — please try again.');
+      }
+    })
+    .catch(function () {
+      btns.forEach(function (b) { if (b) { b.disabled = false; b.textContent = 'Get the pack — £4.99'; } });
+      alert('Could not start checkout — please try again.');
+    });
+  }
+  var b1 = document.getElementById('pack-buy-btn');
+  var b2 = document.getElementById('pack-buy-btn-2');
+  if (b1) b1.addEventListener('click', startCheckout);
+  if (b2) b2.addEventListener('click', startCheckout);
+  if (window.trackEvent) window.trackEvent('view_item', { currency: 'GBP', value: 4.99, items: [{ item_id: 'cgt_survival_pack', item_name: 'Capital Gains Tax Survival Pack', price: 4.99 }] });
+})();
+</script>
+{% endblock %}
